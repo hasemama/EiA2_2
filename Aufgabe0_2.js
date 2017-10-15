@@ -6,3 +6,4 @@ function fenster() {
             "Hi " + name;
     }
 }
+//# sourceMappingURL=Aufgabe0_2.js.map

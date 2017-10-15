@@ -1,3 +1,12 @@
+ 
+//Aufgabe: (Aufgabe 1)
+//Name: (Marcel Hasemann)
+//Matrikel: (256646)
+//Datum: (12.10.2017)
+//Hiermit versichere ich, dass ich diesen
+//Code selbst geschrieben habe. Er wurde
+//nicht kopiert und auch nicht diktiert.
+
 window.addEventListener("load",init);
 function init(): void {
    let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
