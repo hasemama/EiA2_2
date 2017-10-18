@@ -165,8 +165,15 @@ let crc2: CanvasRenderingContext2D;
     crc2.fill()
     
     drawTree(200,250);
+    drawTree(500,400);
+    drawTree(350,450);        
     }
 
+     for (let i: number = 0; i < 10; i++) {
+            let x: number = 150 + Math.random() * 100;
+            let y: number = 200 + Math.random() * 60;
+            drawTree(x, y);
+        }
     function drawTree(_x: number, _y: number): void {
         //Baumkronen 
     crc2.beginPath();
@@ -179,9 +186,10 @@ let crc2: CanvasRenderingContext2D;
    
     //Baumstämme 
     crc2.fillStyle="#8B4513";
-    crc2.fillRect(190,289,20,150);
+    crc2.fillRect(_x-10,_y+39,20,150);
     
   
     
     }
+   
 }
