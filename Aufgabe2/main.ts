@@ -6,7 +6,7 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-namespace aufgabe1{
+namespace aufgabe2{
 window.addEventListener("load",init);
 function init(): void {
    let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];

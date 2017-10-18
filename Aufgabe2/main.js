@@ -5,8 +5,8 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-var aufgabe1;
-(function (aufgabe1) {
+var aufgabe2;
+(function (aufgabe2) {
     window.addEventListener("load", init);
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -162,5 +162,5 @@ var aufgabe1;
         crc2.fillStyle = "#000000";
         crc2.fill();
     }
-})(aufgabe1 || (aufgabe1 = {}));
-//# sourceMappingURL=Aufgabe1.js.map
+})(aufgabe2 || (aufgabe2 = {}));
+//# sourceMappingURL=main.js.map
