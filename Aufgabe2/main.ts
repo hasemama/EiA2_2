@@ -167,14 +167,22 @@ namespace aufgabe2 {
     
     drawTree(200,250);
     drawTree(500,400);
-    drawTree(350,450);        
-    }
-
-    for(let i: number=0;i<5;i++){
-       let x: number = 150 + Math.random()*100;
-       let y: number = 200 + Math.random()*60;
+    drawTree(350,450);
+        
+        for(let i: number=0;i<5;i++){
+       let x: number = 50 + Math.random()*170;
+       let y: number = 200 + Math.random()*150;
        drawTree(x,y);
        }
+        for (let i: number = 0; i < 100; i++) {
+        let x: number = 1 + Math.random() * 800;
+       let y: number = 1 + Math.random() * 600;
+       drawSnowflake(x,y);
+        }
+        
+    }
+
+    
     
     
   function drawTree(_x: number, _y: number): void {
@@ -185,6 +193,7 @@ namespace aufgabe2 {
     crc2.stroke();
     crc2.fillStyle = "#228B22";
     crc2.fill();
+    
        
    
     //Baumstämme 
@@ -194,19 +203,13 @@ namespace aufgabe2 {
     
   
     
-   
-    //for (let i: number = 0; i < 100; i++) {
-        //let x: number = 1 + Math.random() * 800;
-       // let y: number = 1 + Math.random() * 600;
-        //drawSnowflake(x,y);
-        //}
-   // function drawSnowflake(_x: number, _y: number): void {
+   function drawSnowflake(_x: number, _y: number): void {
         
-     //   crc2.beginPath();
-      //  crc2.strokeStyle = "#228B22";
-      //  crc2.stroke();
-       // crc2.fillStyle = "#228B22";
-       // crc2.fill();
-       // }
+        crc2.beginPath();
+        crc2.strokeStyle = "#228B22";
+        crc2.stroke();
+        crc2.fillStyle = "#228B22";
+        crc2.fill();
+        }
    
 }

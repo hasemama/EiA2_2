@@ -138,11 +138,16 @@ var aufgabe2;
         drawTree(200, 250);
         drawTree(500, 400);
         drawTree(350, 450);
-    }
-    for (let i = 0; i < 5; i++) {
-        let x = 150 + Math.random() * 100;
-        let y = 200 + Math.random() * 60;
-        drawTree(x, y);
+        for (let i = 0; i < 5; i++) {
+            let x = 50 + Math.random() * 170;
+            let y = 200 + Math.random() * 150;
+            drawTree(x, y);
+        }
+        for (let i = 0; i < 100; i++) {
+            let x = 1 + Math.random() * 800;
+            let y = 1 + Math.random() * 600;
+            drawSnowflake(x, y);
+        }
     }
     function drawTree(_x, _y) {
         //Baumkronen 
@@ -155,6 +160,13 @@ var aufgabe2;
         //Baumst�mme 
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_x - 10, _y + 39, 20, 150);
+    }
+    function drawSnowflake(_x, _y) {
+        crc2.beginPath();
+        crc2.strokeStyle = "#228B22";
+        crc2.stroke();
+        crc2.fillStyle = "#228B22";
+        crc2.fill();
     }
 })(aufgabe2 || (aufgabe2 = {}));
 //# sourceMappingURL=main.js.map
