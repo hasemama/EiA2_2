@@ -6,9 +6,10 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-namespace aufgabe2{
-window.addEventListener("load",init);
-let crc2: CanvasRenderingContext2D;
+namespace aufgabe2 {
+    window.addEventListener("load",init);
+    let crc2: CanvasRenderingContext2D;
+    
     function init(): void {
    let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
    
@@ -169,27 +170,43 @@ let crc2: CanvasRenderingContext2D;
     drawTree(350,450);        
     }
 
-     for (let i: number = 0; i < 10; i++) {
-            let x: number = 150 + Math.random() * 100;
-            let y: number = 200 + Math.random() * 60;
-            drawTree(x, y);
-        }
-    function drawTree(_x: number, _y: number): void {
+    for(let i: number=0;i<5;i++){
+       let x: number = 150 + Math.random()*100;
+       let y: number = 200 + Math.random()*60;
+       drawTree(x,y);
+       }
+    
+    
+  function drawTree(_x: number, _y: number): void {
         //Baumkronen 
     crc2.beginPath();
     crc2.arc(_x,_y,40,0,2*Math.PI);
-    crc2.stroke();
     crc2.strokeStyle = "#228B22";
     crc2.stroke();
     crc2.fillStyle = "#228B22";
     crc2.fill();
+       
    
     //Baumstämme 
     crc2.fillStyle="#8B4513";
     crc2.fillRect(_x-10,_y+39,20,150);
+    }
     
   
     
-    }
+   
+    //for (let i: number = 0; i < 100; i++) {
+        //let x: number = 1 + Math.random() * 800;
+       // let y: number = 1 + Math.random() * 600;
+        //drawSnowflake(x,y);
+        //}
+   // function drawSnowflake(_x: number, _y: number): void {
+        
+     //   crc2.beginPath();
+      //  crc2.strokeStyle = "#228B22";
+      //  crc2.stroke();
+       // crc2.fillStyle = "#228B22";
+       // crc2.fill();
+       // }
    
 }

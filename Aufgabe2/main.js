@@ -139,7 +139,7 @@ var aufgabe2;
         drawTree(500, 400);
         drawTree(350, 450);
     }
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
         let x = 150 + Math.random() * 100;
         let y = 200 + Math.random() * 60;
         drawTree(x, y);
@@ -148,7 +148,6 @@ var aufgabe2;
         //Baumkronen 
         crc2.beginPath();
         crc2.arc(_x, _y, 40, 0, 2 * Math.PI);
-        crc2.stroke();
         crc2.strokeStyle = "#228B22";
         crc2.stroke();
         crc2.fillStyle = "#228B22";
