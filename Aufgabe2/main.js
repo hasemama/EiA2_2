@@ -163,9 +163,10 @@ var aufgabe2;
     }
     function drawSnowflake(_x, _y) {
         crc2.beginPath();
-        crc2.strokeStyle = "#228B22";
+        crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+        crc2.strokeStyle = "#FFFFFF";
         crc2.stroke();
-        crc2.fillStyle = "#228B22";
+        crc2.fillStyle = "#FFFFFF";
         crc2.fill();
     }
 })(aufgabe2 || (aufgabe2 = {}));
