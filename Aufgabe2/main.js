@@ -15,7 +15,7 @@ var aufgabe2;
         //Himmel
         crc2.fillStyle = "#5CACEE";
         crc2.fillRect(0, 0, 800, 600);
-        //Berg
+        //Be    
         crc2.beginPath();
         crc2.moveTo(150, 112);
         crc2.lineTo(200, 50);
@@ -35,7 +35,7 @@ var aufgabe2;
         crc2.stroke();
         crc2.fillStyle = "#FFFFFF";
         crc2.fill();
-        //Wolke
+        //Wol    
         crc2.beginPath();
         crc2.arc(420, 50, 20, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
