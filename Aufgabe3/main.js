@@ -5,10 +5,14 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-var aufgabe2;
-(function (aufgabe2) {
+var aufgabe3;
+(function (aufgabe3) {
     window.addEventListener("load", init);
     let crc2;
+    let arrayX = [];
+    let arrayY = [];
+    var imageData = crc2.getImageData(0, 0, 800, 600);
+    console.log(imageData);
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -143,11 +147,16 @@ var aufgabe2;
             let y = 200 + Math.random() * 150;
             drawTree(x, y);
         }
+        //for (let i: number = 0; i < 100; i++) {
+        // let x: number = 1 + Math.random() * 800;
+        // let y: number = 1 + Math.random() * 600;
+        // drawSnowflake(x, y);
+        // }
         for (let i = 0; i < 100; i++) {
-            let x = 1 + Math.random() * 800;
-            let y = 1 + Math.random() * 600;
-            drawSnowflake(x, y);
+            arrayX[i] = 200;
+            arrayY[i] = 150;
         }
+        animate();
     }
     function drawTree(_x, _y) {
         //Baumkronen 
@@ -161,13 +170,27 @@ var aufgabe2;
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_x - 10, _y + 39, 20, 150);
     }
-    function drawSnowflake(_x, _y) {
-        crc2.beginPath();
-        crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
-        crc2.strokeStyle = "#FFFFFF";
-        crc2.stroke();
-        crc2.fillStyle = "#FFFFFF";
-        crc2.fill();
+    //  function drawSnowflake(_x: number, _y: number): void {
+    // crc2.beginPath();
+    // crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+    // crc2.strokeStyle = "#FFFFFF";
+    // crc2.stroke();
+    //crc2.fillStyle = "#FFFFFF";
+    //crc2.fill();
+    //  }
+    function animate() {
+        console.log("Timeout");
+        crc2.putImageData(imageData, 0, 0); // hier Hintergrund restaurieren
+        for (let i = 0; i < arrayX.length; i++) {
+            arrayX[i] += Math.random() * 4 - 2; // hier experimentieren um
+            arrayY[i] += Math.random() * 4 - 2; // andere Bewegungsmuster zu finden
+            crc2.arc(arrayX[i], arrayY[i], 5, 0, 2 * Math.PI);
+            crc2.strokeStyle = "#FFFFFF";
+            crc2.stroke();
+            crc2.fillStyle = "#FFFFFF";
+            crc2.fill();
+        }
+        window.setTimeout(animate, 20);
     }
-})(aufgabe2 || (aufgabe2 = {}));
+})(aufgabe3 || (aufgabe3 = {}));
 //# sourceMappingURL=main.js.map
