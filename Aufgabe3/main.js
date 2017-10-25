@@ -11,8 +11,7 @@ var aufgabe3;
     let crc2;
     let arrayX = [];
     let arrayY = [];
-    var imageData = crc2.getImageData(0, 0, 800, 600);
-    console.log(imageData);
+    let hoehe = 50;
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -152,11 +151,13 @@ var aufgabe3;
         // let y: number = 1 + Math.random() * 600;
         // drawSnowflake(x, y);
         // }
-        for (let i = 0; i < 100; i++) {
-            arrayX[i] = 200;
-            arrayY[i] = 150;
-        }
-        animate();
+        //for (let i: number = 0; i < 100; i++) {
+        //arrayX[i] = 200;
+        //arrayY[i] = 150;
+        //}
+        let img = crc2.getImageData(0, 0, 800, 600);
+        console.log(img);
+        animate(img);
     }
     function drawTree(_x, _y) {
         //Baumkronen 
@@ -178,19 +179,18 @@ var aufgabe3;
     //crc2.fillStyle = "#FFFFFF";
     //crc2.fill();
     //  }
-    function animate() {
-        console.log("Timeout");
-        crc2.putImageData(imageData, 0, 0); // hier Hintergrund restaurieren
+    function animate(img) {
+        crc2.putImageData(img, 0, 0); // hier Hintergrund restaurieren
         for (let i = 0; i < arrayX.length; i++) {
-            arrayX[i] += Math.random() * 4 - 2; // hier experimentieren um
-            arrayY[i] += Math.random() * 4 - 2; // andere Bewegungsmuster zu finden
-            crc2.arc(arrayX[i], arrayY[i], 5, 0, 2 * Math.PI);
-            crc2.strokeStyle = "#FFFFFF";
+            hoehe += 20;
+            crc2.beginPath();
+            crc2.arc(100, hoehe, 20, 0, 2 * Math.PI);
+            crc2.strokeStyle = "#FFFF00";
             crc2.stroke();
-            crc2.fillStyle = "#FFFFFF";
+            crc2.fillStyle = "#FFFF00";
             crc2.fill();
         }
-        window.setTimeout(animate, 20);
+        window.setTimeout(animate(img), 20);
     }
 })(aufgabe3 || (aufgabe3 = {}));
 //# sourceMappingURL=main.js.map
