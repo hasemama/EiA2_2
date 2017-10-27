@@ -10,8 +10,8 @@ namespace aufgabe3 {
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
     let img: ImageData;
-    // let arrayX: number[] = [];
-    //   let arrayY: number[] = [];
+    let snowX: number[] = [];
+    let snowY: number[] = [];
     let hoehe: number = 50;
 
 
@@ -180,15 +180,11 @@ namespace aufgabe3 {
             drawTree(x, y);
         }
 
-        //for (let i: number = 0; i < 100; i++) {
-        // let x: number = 1 + Math.random() * 800;
-        // let y: number = 1 + Math.random() * 600;
-        // drawSnowflake(x, y);
-        // }
-        //for (let i: number = 0; i < 100; i++) {
-        //arrayX[i] = 200;
-        //arrayY[i] = 150;
-        //}
+        for (let i: number = 0; i < 140; i++) {
+            snowX[i] = 0 + Math.random() * 800;
+            snowY[i] = 0 + Math.random() * 600;
+        }
+
 
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
@@ -197,9 +193,6 @@ namespace aufgabe3 {
 
 
     }
-
-
-
 
     function drawTree(_x: number, _y: number): void {
         //Baumkronen 
@@ -210,16 +203,36 @@ namespace aufgabe3 {
         crc2.fillStyle = "#228B22";
         crc2.fill();
 
-
-
-
         //Baumstämme 
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_x - 10, _y + 39, 20, 150);
     }
 
+    function snowflake(_x: number, _y: number): void {
+        crc2.fillStyle = "#ffffff";
+        crc2.beginPath();
+        crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+        crc2.fill();
+    }
 
 
+
+
+
+    function animate(): void {
+        crc2.putImageData(img, 0, 0); // hier Hintergrund restaurieren
+        for (let i: number = 0; i < snowX.length; i++) {
+            if (snowY[i] >600) {
+                snowY[i] = 0;
+            }
+            snowY[i] += Math.random(); // andere Bewegungsmuster zu finden
+            snowflake(snowX[i], snowY[i]);
+        }
+
+        window.setTimeout(animate, 20);
+    }
+
+}
     ////  function drawSnowflake(_x: number, _y: number): void {
 
     // / crc2.beginPath();
@@ -230,18 +243,9 @@ namespace aufgabe3 {
     ////crc2.fill();
     ////  }
 
-    function animate(): void {
-        crc2.putImageData(img, 0, 0); // hier Hintergrund restaurieren
-        hoehe += 20;
-        crc2.beginPath();
-        crc2.arc(100, hoehe, 5, 0, 2 * Math.PI);
-        crc2.strokeStyle = "#FFFFFF";
-        crc2.stroke();
-        crc2.fillStyle = "#FFFF00";
-        crc2.fill();
-        window.setTimeout(animate, 20);
-    }
-}
 
-
-
+ //for (let i: number = 0; i < 100; i++) {
+        // let x: number = 1 + Math.random() * 800;
+        // let y: number = 1 + Math.random() * 600;
+        // drawSnowflake(x, y);
+        // }
