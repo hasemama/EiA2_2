@@ -9,9 +9,9 @@
 namespace aufgabe3 {
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
-    let img:ImageData;
-   // let arrayX: number[] = [];
- //   let arrayY: number[] = [];
+    let img: ImageData;
+    // let arrayX: number[] = [];
+    //   let arrayY: number[] = [];
     let hoehe: number = 50;
 
 
@@ -220,17 +220,17 @@ namespace aufgabe3 {
 
 
 
-  ////  function drawSnowflake(_x: number, _y: number): void {
+    ////  function drawSnowflake(_x: number, _y: number): void {
 
-  // / crc2.beginPath();
-  // / crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
-  // / crc2.strokeStyle = "#FFFFFF";
-  // / crc2.stroke();
-  ////crc2.fillStyle = "#FFFFFF";
-  ////crc2.fill();
-  ////  }
+    // / crc2.beginPath();
+    // / crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+    // / crc2.strokeStyle = "#FFFFFF";
+    // / crc2.stroke();
+    ////crc2.fillStyle = "#FFFFFF";
+    ////crc2.fill();
+    ////  }
 
-    function animate() :void {
+    function animate(): void {
         crc2.putImageData(img, 0, 0); // hier Hintergrund restaurieren
         hoehe += 20;
         crc2.beginPath();
