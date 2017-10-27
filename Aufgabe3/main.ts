@@ -12,6 +12,10 @@ namespace aufgabe3 {
     let img: ImageData;
     let snowX: number[] = [];
     let snowY: number[] = [];
+    let skiX: number[] = [];
+    let skiY: number[] = [];
+    let wolkeX: number[] = [];
+    let wolkeY: number[] = [];
     let hoehe: number = 50;
 
 
@@ -49,30 +53,30 @@ namespace aufgabe3 {
         crc2.fill();
 
         //Wol    
-        crc2.beginPath();
-        crc2.arc(420, 50, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-
-        crc2.beginPath();
-        crc2.arc(410, 60, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-
-        crc2.beginPath();
-        crc2.arc(410, 40, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-
-        crc2.beginPath();
-        crc2.arc(395, 35, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-
-        crc2.beginPath();
-        crc2.arc(385, 55, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
+//        crc2.beginPath();
+//        crc2.arc(420, 50, 20, 0, 2 * Math.PI);
+//        crc2.fillStyle = "#ffffff";
+//        crc2.fill();
+//
+//        crc2.beginPath();
+//        crc2.arc(410, 60, 20, 0, 2 * Math.PI);
+//        crc2.fillStyle = "#ffffff";
+//        crc2.fill();
+//
+//        crc2.beginPath();
+//        crc2.arc(410, 40, 20, 0, 2 * Math.PI);
+//        crc2.fillStyle = "#ffffff";
+//        crc2.fill();
+//
+//        crc2.beginPath();
+//        crc2.arc(395, 35, 20, 0, 2 * Math.PI);
+//        crc2.fillStyle = "#ffffff";
+//        crc2.fill();
+//
+//        crc2.beginPath();
+//        crc2.arc(385, 55, 20, 0, 2 * Math.PI);
+//        crc2.fillStyle = "#ffffff";
+//        crc2.fill();
 
         //Sonne
         crc2.beginPath();
@@ -184,6 +188,15 @@ namespace aufgabe3 {
             snowX[i] = 0 + Math.random() * 800;
             snowY[i] = 0 + Math.random() * 600;
         }
+        for (let i: number = 0; i < 1; i++) {
+            skiX[i] = 0;
+            skiY[i] = 0;
+        }
+        for (let i: number = 0; i < 4; i++) {
+            wolkeX[i] = 0 + Math.random() * 800;
+            wolkeY[i] = 0 + Math.random() * 80+50;
+        }
+
 
 
         img = crc2.getImageData(0, 0, 800, 600);
@@ -214,21 +227,75 @@ namespace aufgabe3 {
         crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
         crc2.fill();
     }
+    function ski(_x: number, _y: number): void {
+        crc2.fillStyle = "#000000";
+        crc2.fillRect(_x, _y, 5, -20);
+        crc2.beginPath();
+        crc2.arc(_x + 2.5, _y - 20, 7, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.beginPath();
+        crc2.moveTo(_x - 4, _y - 4);
+        crc2.lineTo(_x + 13, _y + 7);
+        crc2.strokeStyle = "#000000";
+        crc2.stroke();
 
 
+    }
+    function wolke(_x: number, _y: number): void {
+        crc2.beginPath();
+        crc2.arc(_x, _y, 20, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
 
+        crc2.beginPath();
+        crc2.arc(_x - 10, _y + 10, 20, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
 
+        crc2.beginPath();
+        crc2.arc(_x - 10, _y - 10, 20, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
 
+        crc2.beginPath();
+        crc2.arc(_x - 25, _y - 15, 20, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
+
+        crc2.beginPath();
+        crc2.arc(_x - 35, _y + 5, 20, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
+
+    }
     function animate(): void {
-        crc2.putImageData(img, 0, 0); // hier Hintergrund restaurieren
+        crc2.putImageData(img, 0, 0);
+        //Schnee
         for (let i: number = 0; i < snowX.length; i++) {
-            if (snowY[i] >600) {
+            if (snowY[i] > 600) {
                 snowY[i] = 0;
             }
-            snowY[i] += Math.random(); // andere Bewegungsmuster zu finden
+            snowY[i] += Math.random();
             snowflake(snowX[i], snowY[i]);
         }
 
+        for (let i: number = 0; i < skiX.length; i++) {
+            if (skiX[i] > 800) {
+                skiX[i] = 0;
+                skiY[i] = 0;
+            }
+            skiY[i] += 3.75;
+            skiX[i] += 5;
+            ski(skiX[i], skiY[i]);
+
+        }
+        for (let i: number = 0; i < wolkeX.length; i++) {
+            if (wolkeX[i] > 800) {
+                wolkeX[i] = 0;
+            }
+            wolkeX[i] += 1;
+            wolke(wolkeX[i], wolkeY[i]);
+        }
         window.setTimeout(animate, 20);
     }
 
