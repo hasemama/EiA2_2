@@ -9,8 +9,9 @@
 namespace aufgabe3 {
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
-    let arrayX: number[] = [];
-    let arrayY: number[] = [];
+    let img:ImageData;
+   // let arrayX: number[] = [];
+ //   let arrayY: number[] = [];
     let hoehe: number = 50;
 
 
@@ -188,11 +189,11 @@ namespace aufgabe3 {
         //arrayX[i] = 200;
         //arrayY[i] = 150;
         //}
-        
-        let img = crc2.getImageData(0, 0, 800, 600);
+
+        img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
-        animate(img);
-        
+        animate();
+
 
 
     }
@@ -211,6 +212,7 @@ namespace aufgabe3 {
 
 
 
+
         //Baumstämme 
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_x - 10, _y + 39, 20, 150);
@@ -218,35 +220,26 @@ namespace aufgabe3 {
 
 
 
-    //  function drawSnowflake(_x: number, _y: number): void {
+  ////  function drawSnowflake(_x: number, _y: number): void {
 
-    // crc2.beginPath();
-    // crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
-    // crc2.strokeStyle = "#FFFFFF";
-    // crc2.stroke();
-    //crc2.fillStyle = "#FFFFFF";
-    //crc2.fill();
-    //  }
+  // / crc2.beginPath();
+  // / crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+  // / crc2.strokeStyle = "#FFFFFF";
+  // / crc2.stroke();
+  ////crc2.fillStyle = "#FFFFFF";
+  ////crc2.fill();
+  ////  }
 
-    function animate(img: any): void {
-
-
-
+    function animate() :void {
         crc2.putImageData(img, 0, 0); // hier Hintergrund restaurieren
-
-        for (let i: number = 0; i < arrayX.length; i++) {
-            hoehe += 20;
-            crc2.beginPath();
-            crc2.arc(100, hoehe, 20, 0, 2 * Math.PI);
-            crc2.strokeStyle = "#FFFF00";
-            crc2.stroke();
-            crc2.fillStyle = "#FFFF00";
-            crc2.fill();
-
-        }
-
-
-        window.setTimeout(animate(img), 20);
+        hoehe += 20;
+        crc2.beginPath();
+        crc2.arc(100, hoehe, 5, 0, 2 * Math.PI);
+        crc2.strokeStyle = "#FFFFFF";
+        crc2.stroke();
+        crc2.fillStyle = "#FFFF00";
+        crc2.fill();
+        window.setTimeout(animate, 20);
     }
 }
 

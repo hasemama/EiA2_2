@@ -9,8 +9,9 @@ var aufgabe3;
 (function (aufgabe3) {
     window.addEventListener("load", init);
     let crc2;
-    let arrayX = [];
-    let arrayY = [];
+    let img;
+    // let arrayX: number[] = [];
+    //   let arrayY: number[] = [];
     let hoehe = 50;
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -155,9 +156,9 @@ var aufgabe3;
         //arrayX[i] = 200;
         //arrayY[i] = 150;
         //}
-        let img = crc2.getImageData(0, 0, 800, 600);
+        img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
-        animate(img);
+        animate();
     }
     function drawTree(_x, _y) {
         //Baumkronen 
@@ -171,26 +172,24 @@ var aufgabe3;
         crc2.fillStyle = "#8B4513";
         crc2.fillRect(_x - 10, _y + 39, 20, 150);
     }
-    //  function drawSnowflake(_x: number, _y: number): void {
-    // crc2.beginPath();
-    // crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
-    // crc2.strokeStyle = "#FFFFFF";
-    // crc2.stroke();
-    //crc2.fillStyle = "#FFFFFF";
-    //crc2.fill();
-    //  }
-    function animate(img) {
+    ////  function drawSnowflake(_x: number, _y: number): void {
+    // / crc2.beginPath();
+    // / crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+    // / crc2.strokeStyle = "#FFFFFF";
+    // / crc2.stroke();
+    ////crc2.fillStyle = "#FFFFFF";
+    ////crc2.fill();
+    ////  }
+    function animate() {
         crc2.putImageData(img, 0, 0); // hier Hintergrund restaurieren
-        for (let i = 0; i < arrayX.length; i++) {
-            hoehe += 20;
-            crc2.beginPath();
-            crc2.arc(100, hoehe, 20, 0, 2 * Math.PI);
-            crc2.strokeStyle = "#FFFF00";
-            crc2.stroke();
-            crc2.fillStyle = "#FFFF00";
-            crc2.fill();
-        }
-        window.setTimeout(animate(img), 20);
+        hoehe += 20;
+        crc2.beginPath();
+        crc2.arc(100, hoehe, 5, 0, 2 * Math.PI);
+        crc2.strokeStyle = "#FFFFFF";
+        crc2.stroke();
+        crc2.fillStyle = "#FFFF00";
+        crc2.fill();
+        window.setTimeout(animate, 20);
     }
 })(aufgabe3 || (aufgabe3 = {}));
 //# sourceMappingURL=main.js.map
