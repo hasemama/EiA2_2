@@ -15,9 +15,13 @@ namespace aufgabe4 {
         skiY: number;
         color: string;
     }
-    let snowX: number[] = [];
-    let snowY: number[] = [];
+    interface Snowinfo {
+        snowX: number;
+        snowY: number;
+    }
     let fahrer: Skiinfo[] = [];
+    let snow: Snowinfo[] = [];
+
 
     let wolkeX: number[] = [];
     let wolkeY: number[] = [];
@@ -57,31 +61,6 @@ namespace aufgabe4 {
         crc2.fillStyle = "#FFFFFF";
         crc2.fill();
 
-        //Wol    
-        //        crc2.beginPath();
-        //        crc2.arc(420, 50, 20, 0, 2 * Math.PI);
-        //        crc2.fillStyle = "#ffffff";
-        //        crc2.fill();
-        //
-        //        crc2.beginPath();
-        //        crc2.arc(410, 60, 20, 0, 2 * Math.PI);
-        //        crc2.fillStyle = "#ffffff";
-        //        crc2.fill();
-        //
-        //        crc2.beginPath();
-        //        crc2.arc(410, 40, 20, 0, 2 * Math.PI);
-        //        crc2.fillStyle = "#ffffff";
-        //        crc2.fill();
-        //
-        //        crc2.beginPath();
-        //        crc2.arc(395, 35, 20, 0, 2 * Math.PI);
-        //        crc2.fillStyle = "#ffffff";
-        //        crc2.fill();
-        //
-        //        crc2.beginPath();
-        //        crc2.arc(385, 55, 20, 0, 2 * Math.PI);
-        //        crc2.fillStyle = "#ffffff";
-        //        crc2.fill();
 
         //Sonne
         crc2.beginPath();
@@ -190,14 +169,16 @@ namespace aufgabe4 {
         }
 
         for (let i: number = 0; i < 140; i++) {
-            snowX[i] = 0 + Math.random() * 800;
-            snowY[i] = 0 + Math.random() * 600;
+            snow[i] = {
+                snowX: 0 + Math.random() * 800,
+                snowY: 0 + Math.random() * 600
+            }
         }
         for (let i: number = 0; i < 1; i++) {
             fahrer[i] = {
                 skiX: 0,
                 skiY: 0,
-                color: "#000000"
+                color: "#0000FF"
 
             }
             for (let i: number = 0; i < 4; i++) {
@@ -229,22 +210,22 @@ namespace aufgabe4 {
             crc2.fillRect(_x - 10, _y + 39, 20, 150);
         }
 
-        function snowflake(_x: number, _y: number): void {
+        function snowflake(_snow: Snowinfo): void {
             crc2.fillStyle = "#ffffff";
             crc2.beginPath();
-            crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+            crc2.arc(_snow.snowX, _snow.snowY, 5, 0, 2 * Math.PI);
             crc2.fill();
         }
-        function ski(_x: number, _y: number): void {
-            crc2.fillStyle = "#000000";
-            crc2.fillRect(_x, _y, 5, -20);
+        function ski(_fahrer: Skiinfo): void {
+            crc2.fillStyle = _fahrer.color;
+            crc2.fillRect(_fahrer.skiX, _fahrer.skiY, 5, -20);
             crc2.beginPath();
-            crc2.arc(_x + 2.5, _y - 20, 7, 0, 2 * Math.PI);
+            crc2.arc(_fahrer.skiX + 2.5, _fahrer.skiY - 20, 7, 0, 2 * Math.PI);
             crc2.fill();
             crc2.beginPath();
-            crc2.moveTo(_x - 4, _y - 4);
-            crc2.lineTo(_x + 13, _y + 7);
-            crc2.strokeStyle = "#000000";
+            crc2.moveTo(_fahrer.skiX - 4, _fahrer.skiY - 4);
+            crc2.lineTo(_fahrer.skiX + 13, _fahrer.skiY + 7);
+            crc2.strokeStyle = _fahrer.color;
             crc2.stroke();
 
 
@@ -279,12 +260,12 @@ namespace aufgabe4 {
         function animate(): void {
             crc2.putImageData(img, 0, 0);
             //Schnee
-            for (let i: number = 0; i < snowX.length; i++) {
-                if (snowY[i] > 600) {
-                    snowY[i] = 0;
+            for (let i: number = 0; i < snow.length; i++) {
+                if (snow[i].snowX > 600) {
+                    snow[i].snowY = 0;
                 }
-                snowY[i] += Math.random();
-                snowflake(snowX[i], snowY[i]);
+                snow[i].snowY += Math.random();
+                snowflake(snow[i]);
             }
 
             for (let i: number = 0; i < fahrer.length; i++) {
@@ -294,7 +275,7 @@ namespace aufgabe4 {
                 }
                 fahrer[i].skiY += 3.75;
                 fahrer[i].skiX += 5;
-                ski(fahrer[i].skiX, fahrer[i].skiY);
+                ski(fahrer[i]);
 
             }
             for (let i: number = 0; i < wolkeX.length; i++) {
@@ -308,19 +289,5 @@ namespace aufgabe4 {
         }
 
     }
-    ////  function drawSnowflake(_x: number, _y: number): void {
 
-    // / crc2.beginPath();
-    // / crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
-    // / crc2.strokeStyle = "#FFFFFF";
-    // / crc2.stroke();
-    ////crc2.fillStyle = "#FFFFFF";
-    ////crc2.fill();
-    ////  }
-
-
- //for (let i: number = 0; i < 100; i++) {
-        // let x: number = 1 + Math.random() * 800;
-        // let y: number = 1 + Math.random() * 600;
-        // drawSnowflake(x, y);
-        // }
+}
