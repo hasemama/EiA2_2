@@ -19,12 +19,17 @@ namespace aufgabe4 {
         snowX: number;
         snowY: number;
     }
+    
+    interface Wolkeinfo{
+        wolkeX:number;
+        wolkeY:number;
+    }
     let fahrer: Skiinfo[] = [];
     let snow: Snowinfo[] = [];
+    let wolke: Wolkeinfo[]=[];
 
 
-    let wolkeX: number[] = [];
-    let wolkeY: number[] = [];
+    
     let hoehe: number = 50;
 
 
@@ -182,8 +187,10 @@ namespace aufgabe4 {
 
             }
             for (let i: number = 0; i < 4; i++) {
-                wolkeX[i] = 0 + Math.random() * 800;
-                wolkeY[i] = 0 + Math.random() * 80 + 50;
+               wolke[i] = { 
+                wolkeX: 0 + Math.random() * 800,
+                wolkeY: 0 + Math.random() * 80 + 50
+                   }
             }
 
 
@@ -278,12 +285,12 @@ namespace aufgabe4 {
                 ski(fahrer[i]);
 
             }
-            for (let i: number = 0; i < wolkeX.length; i++) {
-                if (wolkeX[i] > 800) {
-                    wolkeX[i] = 0;
+            for (let i: number = 0; i < wolke.length; i++) {
+                if (wolke[i].wolkeX > 800) {
+                    wolke[i].wolkeY = 0;
                 }
-                wolkeX[i] += 1;
-                wolke(wolkeX[i], wolkeY[i]);
+                wolke[i].wolkeX += 1;
+                wolke(wolke[i]);
             }
             window.setTimeout(animate, 20);
         }
