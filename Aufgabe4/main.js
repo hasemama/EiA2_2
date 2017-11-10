@@ -13,6 +13,7 @@ var aufgabe4;
     let fahrer = [];
     let snow = [];
     let wolke = [];
+    let baum = [];
     let hoehe = 50;
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -89,43 +90,41 @@ var aufgabe4;
         crc2.stroke();
         //Schnemann 
         crc2.beginPath();
-        crc2.arc(250, 550, 40, 0, 2 * Math.PI);
+        crc2.arc(500, 550, 40, 0, 2 * Math.PI);
         crc2.strokeStyle = "#000000";
         crc2.stroke();
         crc2.fillStyle = "#DCDCDC";
         crc2.fill();
         crc2.beginPath();
-        crc2.arc(250, 480, 30, 0, 2 * Math.PI);
+        crc2.arc(500, 480, 30, 0, 2 * Math.PI);
         crc2.strokeStyle = "#000000";
         crc2.stroke();
         crc2.fillStyle = "#DCDCDC";
         crc2.fill();
         crc2.beginPath();
-        crc2.arc(250, 430, 20, 0, 2 * Math.PI);
+        crc2.arc(500, 430, 20, 0, 2 * Math.PI);
         crc2.strokeStyle = "##000000";
         crc2.stroke();
         crc2.fillStyle = "##DCDCDC";
         crc2.fill();
         //Augen Schneemann
         crc2.beginPath();
-        crc2.arc(245, 430, 2, 0, 2 * Math.PI);
+        crc2.arc(495, 430, 2, 0, 2 * Math.PI);
         crc2.strokeStyle = "#000000";
         crc2.stroke();
         crc2.fillStyle = "#000000";
         crc2.fill();
         crc2.beginPath();
-        crc2.arc(260, 430, 2, 0, 2 * Math.PI);
+        crc2.arc(510, 430, 2, 0, 2 * Math.PI);
         crc2.strokeStyle = "#000000";
         crc2.stroke();
         crc2.fillStyle = "#000000";
         crc2.fill();
-        drawTree(200, 250);
-        drawTree(500, 400);
-        drawTree(350, 450);
         for (let i = 0; i < 5; i++) {
-            let x = 50 + Math.random() * 170;
-            let y = 200 + Math.random() * 150;
-            drawTree(x, y);
+            baum[i] = {
+                baumX: 50 + Math.random() * 170,
+                baumY: 200 + Math.random() * 150
+            };
         }
         for (let i = 0; i < 140; i++) {
             snow[i] = {
@@ -151,17 +150,17 @@ var aufgabe4;
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
-        function drawTree(_x, _y) {
+        function drawTree(_baum) {
             //Baumkronen 
             crc2.beginPath();
-            crc2.arc(_x, _y, 40, 0, 2 * Math.PI);
+            crc2.arc(_baum.baumX, _baum.baumY, 40, 0, 2 * Math.PI);
             crc2.strokeStyle = "#228B22";
             crc2.stroke();
             crc2.fillStyle = "#228B22";
             crc2.fill();
             //Baumst�mme 
             crc2.fillStyle = "#8B4513";
-            crc2.fillRect(_x - 10, _y + 39, 20, 150);
+            crc2.fillRect(_baum.baumX - 10, _baum.baumY + 39, 20, 150);
         }
         function snowflake(_snow) {
             crc2.fillStyle = "#ffffff";
@@ -225,6 +224,9 @@ var aufgabe4;
                 fahrer[i].skiY += fahrer[i].dy;
                 fahrer[i].skiX += fahrer[i].dx;
                 ski(fahrer[i]);
+            }
+            for (let i = 0; i < baum.length; i++) {
+                drawTree(baum[i]);
             }
             for (let i = 0; i < wolke.length; i++) {
                 if (wolke[i].wolkeX > 800) {

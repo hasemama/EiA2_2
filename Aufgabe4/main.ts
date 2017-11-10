@@ -25,9 +25,14 @@ namespace aufgabe4 {
         wolkeX: number;
         wolkeY: number;
     }
+    interface Baume {
+        baumX: number;
+        baumY: number;
+    }
     let fahrer: Skiinfo[] = [];
     let snow: Snowinfo[] = [];
     let wolke: Wolkeinfo[] = [];
+    let baum: Baume[] = [];
     let hoehe: number = 50;
 
 
@@ -126,21 +131,21 @@ namespace aufgabe4 {
 
         //Schnemann 
         crc2.beginPath();
-        crc2.arc(250, 550, 40, 0, 2 * Math.PI);
+        crc2.arc(500, 550, 40, 0, 2 * Math.PI);
         crc2.strokeStyle = "#000000";
         crc2.stroke();
         crc2.fillStyle = "#DCDCDC";
         crc2.fill();
 
         crc2.beginPath();
-        crc2.arc(250, 480, 30, 0, 2 * Math.PI);
+        crc2.arc(500, 480, 30, 0, 2 * Math.PI);
         crc2.strokeStyle = "#000000";
         crc2.stroke();
         crc2.fillStyle = "#DCDCDC";
         crc2.fill();
 
         crc2.beginPath();
-        crc2.arc(250, 430, 20, 0, 2 * Math.PI);
+        crc2.arc(500, 430, 20, 0, 2 * Math.PI);
         crc2.strokeStyle = "##000000";
         crc2.stroke();
         crc2.fillStyle = "##DCDCDC";
@@ -148,27 +153,27 @@ namespace aufgabe4 {
 
         //Augen Schneemann
         crc2.beginPath();
-        crc2.arc(245, 430, 2, 0, 2 * Math.PI);
+        crc2.arc(495, 430, 2, 0, 2 * Math.PI);
         crc2.strokeStyle = "#000000";
         crc2.stroke();
         crc2.fillStyle = "#000000";
         crc2.fill();
 
         crc2.beginPath();
-        crc2.arc(260, 430, 2, 0, 2 * Math.PI);
+        crc2.arc(510, 430, 2, 0, 2 * Math.PI);
         crc2.strokeStyle = "#000000";
         crc2.stroke();
         crc2.fillStyle = "#000000";
         crc2.fill();
 
-        drawTree(200, 250);
-        drawTree(500, 400);
-        drawTree(350, 450);
+
+
 
         for (let i: number = 0; i < 5; i++) {
-            let x: number = 50 + Math.random() * 170;
-            let y: number = 200 + Math.random() * 150;
-            drawTree(x, y);
+            baum[i] = {
+                baumX: 50 + Math.random() * 170,
+                baumY: 200 + Math.random() * 150
+            };
         }
 
         for (let i: number = 0; i < 140; i++) {
@@ -204,10 +209,10 @@ namespace aufgabe4 {
 
 
 
-        function drawTree(_x: number, _y: number): void {
+        function drawTree(_baum: Baume): void {
             //Baumkronen 
             crc2.beginPath();
-            crc2.arc(_x, _y, 40, 0, 2 * Math.PI);
+            crc2.arc(_baum.baumX, _baum.baumY, 40, 0, 2 * Math.PI);
             crc2.strokeStyle = "#228B22";
             crc2.stroke();
             crc2.fillStyle = "#228B22";
@@ -215,7 +220,7 @@ namespace aufgabe4 {
 
             //Baumstämme 
             crc2.fillStyle = "#8B4513";
-            crc2.fillRect(_x - 10, _y + 39, 20, 150);
+            crc2.fillRect(_baum.baumX - 10, _baum.baumY + 39, 20, 150);
         }
 
         function snowflake(_snow: Snowinfo): void {
@@ -289,7 +294,13 @@ namespace aufgabe4 {
                 fahrer[i].skiX += fahrer[i].dx;
                 ski(fahrer[i]);
 
+
             }
+            for (let i: number = 0; i < baum.length; i++) {
+
+                drawTree(baum[i]);
+            }
+
             for (let i: number = 0; i < wolke.length; i++) {
                 if (wolke[i].wolkeX > 800) {
                     wolke[i].wolkeY = 0;
