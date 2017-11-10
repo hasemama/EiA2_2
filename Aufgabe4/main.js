@@ -12,8 +12,7 @@ var aufgabe4;
     let img;
     let fahrer = [];
     let snow = [];
-    let wolkeX = [];
-    let wolkeY = [];
+    let wolke = [];
     let hoehe = 50;
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -141,8 +140,10 @@ var aufgabe4;
                 color: "#0000FF"
             };
             for (let i = 0; i < 4; i++) {
-                wolkeX[i] = 0 + Math.random() * 800;
-                wolkeY[i] = 0 + Math.random() * 80 + 50;
+                wolke[i] = {
+                    wolkeX: 0 + Math.random() * 800,
+                    wolkeY: 0 + Math.random() * 80 + 50
+                };
             }
             img = crc2.getImageData(0, 0, 800, 600);
             console.log(img);
@@ -178,25 +179,25 @@ var aufgabe4;
             crc2.strokeStyle = _fahrer.color;
             crc2.stroke();
         }
-        function wolke(_x, _y) {
+        function wolken(_wolke) {
             crc2.beginPath();
-            crc2.arc(_x, _y, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX, _wolke.wolkeY, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
             crc2.beginPath();
-            crc2.arc(_x - 10, _y + 10, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX - 10, _wolke.wolkeY + 10, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
             crc2.beginPath();
-            crc2.arc(_x - 10, _y - 10, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX - 10, _wolke.wolkeY - 10, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
             crc2.beginPath();
-            crc2.arc(_x - 25, _y - 15, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX - 25, _wolke.wolkeY - 15, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
             crc2.beginPath();
-            crc2.arc(_x - 35, _y + 5, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX - 35, _wolke.wolkeY + 5, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
         }
@@ -204,7 +205,7 @@ var aufgabe4;
             crc2.putImageData(img, 0, 0);
             //Schnee
             for (let i = 0; i < snow.length; i++) {
-                if (snow[i].snowX > 600) {
+                if (snow[i].snowY > 600) {
                     snow[i].snowY = 0;
                 }
                 snow[i].snowY += Math.random();
@@ -219,12 +220,12 @@ var aufgabe4;
                 fahrer[i].skiX += 5;
                 ski(fahrer[i]);
             }
-            for (let i = 0; i < wolkeX.length; i++) {
-                if (wolkeX[i] > 800) {
-                    wolkeX[i] = 0;
+            for (let i = 0; i < wolke.length; i++) {
+                if (wolke[i].wolkeX > 800) {
+                    wolke[i].wolkeY = 0;
                 }
-                wolkeX[i] += 1;
-                wolke(wolkeX[i], wolkeY[i]);
+                wolke[i].wolkeX += 1;
+                wolken(wolke[i]);
             }
             window.setTimeout(animate, 20);
         }

@@ -19,17 +19,14 @@ namespace aufgabe4 {
         snowX: number;
         snowY: number;
     }
-    
-    interface Wolkeinfo{
-        wolkeX:number;
-        wolkeY:number;
+
+    interface Wolkeinfo {
+        wolkeX: number;
+        wolkeY: number;
     }
     let fahrer: Skiinfo[] = [];
     let snow: Snowinfo[] = [];
-    let wolke: Wolkeinfo[]=[];
-
-
-    
+    let wolke: Wolkeinfo[] = [];
     let hoehe: number = 50;
 
 
@@ -187,10 +184,10 @@ namespace aufgabe4 {
 
             }
             for (let i: number = 0; i < 4; i++) {
-               wolke[i] = { 
-                wolkeX: 0 + Math.random() * 800,
-                wolkeY: 0 + Math.random() * 80 + 50
-                   }
+                wolke[i] = {
+                    wolkeX: 0 + Math.random() * 800,
+                    wolkeY: 0 + Math.random() * 80 + 50
+                }
             }
 
 
@@ -237,29 +234,29 @@ namespace aufgabe4 {
 
 
         }
-        function wolke(_x: number, _y: number): void {
+        function wolken(_wolke: Wolkeinfo): void {
             crc2.beginPath();
-            crc2.arc(_x, _y, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX, _wolke.wolkeY, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
 
             crc2.beginPath();
-            crc2.arc(_x - 10, _y + 10, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX - 10, _wolke.wolkeY + 10, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
 
             crc2.beginPath();
-            crc2.arc(_x - 10, _y - 10, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX - 10, _wolke.wolkeY - 10, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
 
             crc2.beginPath();
-            crc2.arc(_x - 25, _y - 15, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX - 25, _wolke.wolkeY - 15, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
 
             crc2.beginPath();
-            crc2.arc(_x - 35, _y + 5, 20, 0, 2 * Math.PI);
+            crc2.arc(_wolke.wolkeX - 35, _wolke.wolkeY + 5, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
             crc2.fill();
 
@@ -268,7 +265,7 @@ namespace aufgabe4 {
             crc2.putImageData(img, 0, 0);
             //Schnee
             for (let i: number = 0; i < snow.length; i++) {
-                if (snow[i].snowX > 600) {
+                if (snow[i].snowY > 600) {
                     snow[i].snowY = 0;
                 }
                 snow[i].snowY += Math.random();
@@ -290,7 +287,7 @@ namespace aufgabe4 {
                     wolke[i].wolkeY = 0;
                 }
                 wolke[i].wolkeX += 1;
-                wolke(wolke[i]);
+                wolken(wolke[i]);
             }
             window.setTimeout(animate, 20);
         }
