@@ -1,4 +1,3 @@
-
 //Aufgabe: (Aufgabe 1)
 //Name: (Marcel Hasemann)
 //Matrikel: (256646)
@@ -14,6 +13,8 @@ namespace aufgabe4 {
         skiX: number;
         skiY: number;
         color: string;
+        dx: number;
+        dy: number;
     }
     interface Snowinfo {
         snowX: number;
@@ -174,31 +175,34 @@ namespace aufgabe4 {
             snow[i] = {
                 snowX: 0 + Math.random() * 800,
                 snowY: 0 + Math.random() * 600
-            }
+            };
         }
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i < 4; i++) {
             fahrer[i] = {
                 skiX: 0,
                 skiY: 0,
-                color: "#0000FF"
+                color: "#0000FF",
+                dx: Math.random() * 2 + 1,
+                dy: Math.random() * 2 + 1
 
-            }
-            for (let i: number = 0; i < 4; i++) {
-                wolke[i] = {
-                    wolkeX: 0 + Math.random() * 800,
-                    wolkeY: 0 + Math.random() * 80 + 50
-                }
-            }
-
-
-
-            img = crc2.getImageData(0, 0, 800, 600);
-            console.log(img);
-            animate();
-
-
-
+            };
         }
+        for (let i: number = 0; i < 4; i++) {
+            wolke[i] = {
+                wolkeX: 0 + Math.random() * 800,
+                wolkeY: 0 + Math.random() * 80 + 50
+            };
+        }
+
+
+
+        img = crc2.getImageData(0, 0, 800, 600);
+        console.log(img);
+        animate();
+
+
+
+
 
         function drawTree(_x: number, _y: number): void {
             //Baumkronen 
@@ -277,8 +281,12 @@ namespace aufgabe4 {
                     fahrer[i].skiX = 0;
                     fahrer[i].skiY = 0;
                 }
-                fahrer[i].skiY += 3.75;
-                fahrer[i].skiX += 5;
+                if (fahrer[i].skiY > 600) {
+                    fahrer[i].skiX = 0;
+                    fahrer[i].skiY = 0;
+                }
+                fahrer[i].skiY += fahrer[i].dy;
+                fahrer[i].skiX += fahrer[i].dx;
                 ski(fahrer[i]);
 
             }
