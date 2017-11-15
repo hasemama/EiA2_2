@@ -13,7 +13,6 @@ var aufgabe5;
     let snow = [];
     let wolke = [];
     let baum = [];
-    let hoehe = 50;
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         aufgabe5.crc2 = canvas.getContext("2d");
@@ -120,89 +119,40 @@ var aufgabe5;
         aufgabe5.crc2.fillStyle = "#000000";
         aufgabe5.crc2.fill();
         for (let i = 0; i < 5; i++) {
-            baum[i] = {
-                baumX: 50 + Math.random() * 170,
-                baumY: 200 + Math.random() * 150
-            };
+            let s = new aufgabe5.Baum(50 + Math.random() * 170, 200 + Math.random() * 150);
+            baum[i] = s;
         }
+        ;
         for (let i = 0; i < 4; i++) {
             let s = new aufgabe5.Ski(0, 0, "#0000FF");
             fahrer[i] = s;
         }
         for (let i = 0; i < 140; i++) {
-            snow[i] = {
-                snowX: 0 + Math.random() * 800,
-                snowY: 0 + Math.random() * 600
-            };
+            let s = new aufgabe5.Snow(0 + Math.random() * 800, 0 + Math.random() * 600);
+            snow[i] = s;
         }
+        ;
         for (let i = 0; i < 4; i++) {
-            wolke[i] = {
-                wolkeX: 0 + Math.random() * 800,
-                wolkeY: 0 + Math.random() * 80 + 50
-            };
+            let s = new aufgabe5.Wolken(0 + Math.random() * 800, 0 + Math.random() * 80 + 50);
+            wolke[i] = s;
         }
         img = aufgabe5.crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
-        function drawTree(_baum) {
-            //Baumkronen 
-            aufgabe5.crc2.beginPath();
-            aufgabe5.crc2.arc(_baum.baumX, _baum.baumY, 40, 0, 2 * Math.PI);
-            aufgabe5.crc2.strokeStyle = "#228B22";
-            aufgabe5.crc2.stroke();
-            aufgabe5.crc2.fillStyle = "#228B22";
-            aufgabe5.crc2.fill();
-            //Baumst�mme 
-            aufgabe5.crc2.fillStyle = "#8B4513";
-            aufgabe5.crc2.fillRect(_baum.baumX - 10, _baum.baumY + 39, 20, 150);
-        }
-        function snowflake(_snow) {
-            aufgabe5.crc2.fillStyle = "#ffffff";
-            aufgabe5.crc2.beginPath();
-            aufgabe5.crc2.arc(_snow.snowX, _snow.snowY, 5, 0, 2 * Math.PI);
-            aufgabe5.crc2.fill();
-        }
-        function wolken(_wolke) {
-            aufgabe5.crc2.beginPath();
-            aufgabe5.crc2.arc(_wolke.wolkeX, _wolke.wolkeY, 20, 0, 2 * Math.PI);
-            aufgabe5.crc2.fillStyle = "#ffffff";
-            aufgabe5.crc2.fill();
-            aufgabe5.crc2.beginPath();
-            aufgabe5.crc2.arc(_wolke.wolkeX - 10, _wolke.wolkeY + 10, 20, 0, 2 * Math.PI);
-            aufgabe5.crc2.fillStyle = "#ffffff";
-            aufgabe5.crc2.fill();
-            aufgabe5.crc2.beginPath();
-            aufgabe5.crc2.arc(_wolke.wolkeX - 10, _wolke.wolkeY - 10, 20, 0, 2 * Math.PI);
-            aufgabe5.crc2.fillStyle = "#ffffff";
-            aufgabe5.crc2.fill();
-            aufgabe5.crc2.beginPath();
-            aufgabe5.crc2.arc(_wolke.wolkeX - 25, _wolke.wolkeY - 15, 20, 0, 2 * Math.PI);
-            aufgabe5.crc2.fillStyle = "#ffffff";
-            aufgabe5.crc2.fill();
-            aufgabe5.crc2.beginPath();
-            aufgabe5.crc2.arc(_wolke.wolkeX - 35, _wolke.wolkeY + 5, 20, 0, 2 * Math.PI);
-            aufgabe5.crc2.fillStyle = "#ffffff";
-            aufgabe5.crc2.fill();
-        }
         function animate() {
             aufgabe5.crc2.putImageData(img, 0, 0);
             //Schnee
             for (let i = 0; i < snow.length; i++) {
-                if (snow[i].snowY > 600) {
-                    snow[i].snowY = 0;
-                }
-                snow[i].snowY += Math.random();
-                snowflake(snow[i]);
+                let s = snow[i];
+                s.move();
             }
             for (let i = 0; i < baum.length; i++) {
-                drawTree(baum[i]);
+                let s = baum[i];
+                s.drawTree();
             }
             for (let i = 0; i < wolke.length; i++) {
-                if (wolke[i].wolkeX > 800) {
-                    wolke[i].wolkeY = 0;
-                }
-                wolke[i].wolkeX += 1;
-                wolken(wolke[i]);
+                let s = wolke[i];
+                s.move();
             }
             for (let i = 0; i < fahrer.length; i++) {
                 let s = fahrer[i];
