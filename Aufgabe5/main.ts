@@ -5,17 +5,11 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-namespace aufgabe4 {
+namespace aufgabe5 {
     window.addEventListener("load", init);
-    let crc2: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
-    interface Skiinfo {
-        skiX: number;
-        skiY: number;
-        color: string;
-        dx: number;
-        dy: number;
-    }
+    
     interface Snowinfo {
         snowX: number;
         snowY: number;
@@ -29,7 +23,7 @@ namespace aufgabe4 {
         baumX: number;
         baumY: number;
     }
-    let fahrer: Skiinfo[] = [];
+    let fahrer: Ski;
     let snow: Snowinfo[] = [];
     let wolke: Wolkeinfo[] = [];
     let baum: Baume[] = [];
@@ -182,16 +176,7 @@ namespace aufgabe4 {
                 snowY: 0 + Math.random() * 600
             };
         }
-        for (let i: number = 0; i < 4; i++) {
-            fahrer[i] = {
-                skiX: 0,
-                skiY: 0,
-                color: "#0000FF",
-                dx: Math.random() * 2 + 1,
-                dy: Math.random() * 2 + 1
-
-            };
-        }
+        
         for (let i: number = 0; i < 4; i++) {
             wolke[i] = {
                 wolkeX: 0 + Math.random() * 800,
@@ -229,20 +214,7 @@ namespace aufgabe4 {
             crc2.arc(_snow.snowX, _snow.snowY, 5, 0, 2 * Math.PI);
             crc2.fill();
         }
-        function ski(_fahrer: Skiinfo): void {
-            crc2.fillStyle = _fahrer.color;
-            crc2.fillRect(_fahrer.skiX, _fahrer.skiY, 5, -20);
-            crc2.beginPath();
-            crc2.arc(_fahrer.skiX + 2.5, _fahrer.skiY - 20, 7, 0, 2 * Math.PI);
-            crc2.fill();
-            crc2.beginPath();
-            crc2.moveTo(_fahrer.skiX - 4, _fahrer.skiY - 4);
-            crc2.lineTo(_fahrer.skiX + 13, _fahrer.skiY + 7);
-            crc2.strokeStyle = _fahrer.color;
-            crc2.stroke();
-
-
-        }
+        
         function wolken(_wolke: Wolkeinfo): void {
             crc2.beginPath();
             crc2.arc(_wolke.wolkeX, _wolke.wolkeY, 20, 0, 2 * Math.PI);
@@ -281,21 +253,7 @@ namespace aufgabe4 {
                 snowflake(snow[i]);
             }
 
-            for (let i: number = 0; i < fahrer.length; i++) {
-                if (fahrer[i].skiX > 800) {
-                    fahrer[i].skiX = 0;
-                    fahrer[i].skiY = 0;
-                }
-                if (fahrer[i].skiY > 600) {
-                    fahrer[i].skiX = 0;
-                    fahrer[i].skiY = 0;
-                }
-                fahrer[i].skiY += fahrer[i].dy;
-                fahrer[i].skiX += fahrer[i].dx;
-                ski(fahrer[i]);
-
-
-            }
+            
             for (let i: number = 0; i < baum.length; i++) {
 
                 drawTree(baum[i]);
