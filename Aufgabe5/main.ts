@@ -171,6 +171,7 @@ namespace aufgabe5 {
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
+        }
 
         //Animate
         function animate(): void {
@@ -201,6 +202,6 @@ namespace aufgabe5 {
             window.setTimeout(animate, 20);
         }
 
-    }
+   
 
 }

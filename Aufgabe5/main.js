@@ -139,31 +139,31 @@ var aufgabe5;
         img = aufgabe5.crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
-        //Animate
-        function animate() {
-            aufgabe5.crc2.putImageData(img, 0, 0);
-            //Schnee
-            for (let i = 0; i < snow.length; i++) {
-                let s = snow[i];
-                s.move();
-            }
-            //B�ume
-            for (let i = 0; i < baum.length; i++) {
-                let s = baum[i];
-                s.drawTree();
-            }
-            //Wolken
-            for (let i = 0; i < wolke.length; i++) {
-                let s = wolke[i];
-                s.move();
-            }
-            //Skifahrer
-            for (let i = 0; i < fahrer.length; i++) {
-                let s = fahrer[i];
-                s.move();
-            }
-            window.setTimeout(animate, 20);
+    }
+    //Animate
+    function animate() {
+        aufgabe5.crc2.putImageData(img, 0, 0);
+        //Schnee
+        for (let i = 0; i < snow.length; i++) {
+            let s = snow[i];
+            s.move();
         }
+        //B�ume
+        for (let i = 0; i < baum.length; i++) {
+            let s = baum[i];
+            s.drawTree();
+        }
+        //Wolken
+        for (let i = 0; i < wolke.length; i++) {
+            let s = wolke[i];
+            s.move();
+        }
+        //Skifahrer
+        for (let i = 0; i < fahrer.length; i++) {
+            let s = fahrer[i];
+            s.move();
+        }
+        window.setTimeout(animate, 20);
     }
 })(aufgabe5 || (aufgabe5 = {}));
 //# sourceMappingURL=main.js.map
