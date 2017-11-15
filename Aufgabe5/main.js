@@ -124,7 +124,7 @@ var aufgabe5;
         }
         ;
         for (let i = 0; i < 4; i++) {
-            let s = new aufgabe5.Ski(0, 0, "#0000FF");
+            let s = new aufgabe5.Ski(0, 0, "#0000FF", Math.random() * 2 + 5, Math.random() * 2 + 5);
             fahrer[i] = s;
         }
         for (let i = 0; i < 140; i++) {

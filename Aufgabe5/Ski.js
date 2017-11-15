@@ -1,10 +1,12 @@
 var aufgabe5;
 (function (aufgabe5) {
     class Ski {
-        constructor(_x, _y, _color) {
+        constructor(_x, _y, _color, _dx, _dy) {
             this.skiX = _x;
             this.skiY = _y;
             this.color = _color;
+            this.dx = _dx;
+            this.dy = _dy;
         }
         draw() {
             aufgabe5.crc2.fillStyle = this.color;
@@ -27,10 +29,8 @@ var aufgabe5;
                 this.skiX = 0;
                 this.skiY = 0;
             }
-            this.dy = Math.random() * 2 + 5;
-            this.dy = Math.random() * 2 + 5;
-            this.skiY += this.dy = Math.random() * 2 + 5;
-            this.skiX += this.dx = Math.random() * 2 + 5;
+            this.skiY += this.dy;
+            this.skiX += this.dx;
             this.draw();
         }
     }

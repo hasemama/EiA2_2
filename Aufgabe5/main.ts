@@ -153,7 +153,7 @@ namespace aufgabe5 {
         };
 
         for (let i: number = 0; i < 4; i++) {
-            let s: Ski = new Ski(0, 0, "#0000FF");
+            let s: Ski = new Ski(0, 0, "#0000FF", Math.random() * 2 + 5, Math.random() * 2 + 5);
 
             fahrer[i] = s;
         }

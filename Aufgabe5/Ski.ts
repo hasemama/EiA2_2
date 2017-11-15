@@ -7,10 +7,12 @@ namespace aufgabe5 {
         dx: number;
         dy: number;
 
-        constructor(_x: number, _y: number, _color: string) {
+        constructor(_x: number, _y: number, _color: string, _dx: number, _dy: number) {
             this.skiX = _x;
             this.skiY = _y;
             this.color = _color;
+            this.dx = _dx;
+            this.dy = _dy;
         }
 
         draw(): void {
@@ -36,11 +38,10 @@ namespace aufgabe5 {
                 this.skiX = 0;
                 this.skiY = 0;
             }
-            this.dy = Math.random() * 2 + 5;
-            this.dy = Math.random() * 2 + 5;
-            
-            this.skiY += this.dy = Math.random() * 2 + 5;
-            this.skiX += this.dx = Math.random() * 2 + 5;
+
+
+            this.skiY += this.dy;
+            this.skiX += this.dx;
             this.draw();
 
 
