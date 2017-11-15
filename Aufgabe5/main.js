@@ -9,7 +9,7 @@ var aufgabe5;
 (function (aufgabe5) {
     window.addEventListener("load", init);
     let img;
-    let fahrer;
+    let fahrer = [];
     let snow = [];
     let wolke = [];
     let baum = [];
@@ -125,6 +125,10 @@ var aufgabe5;
                 baumY: 200 + Math.random() * 150
             };
         }
+        for (let i = 0; i < 4; i++) {
+            let s = new aufgabe5.Ski(0, 0, "#0000FF");
+            fahrer[i] = s;
+        }
         for (let i = 0; i < 140; i++) {
             snow[i] = {
                 snowX: 0 + Math.random() * 800,
@@ -199,6 +203,10 @@ var aufgabe5;
                 }
                 wolke[i].wolkeX += 1;
                 wolken(wolke[i]);
+            }
+            for (let i = 0; i < fahrer.length; i++) {
+                let s = fahrer[i];
+                s.move();
             }
             window.setTimeout(animate, 20);
         }

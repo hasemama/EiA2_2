@@ -9,7 +9,7 @@ namespace aufgabe5 {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
-    
+
     interface Snowinfo {
         snowX: number;
         snowY: number;
@@ -23,7 +23,7 @@ namespace aufgabe5 {
         baumX: number;
         baumY: number;
     }
-    let fahrer: Ski;
+    let fahrer: Ski[] = [];
     let snow: Snowinfo[] = [];
     let wolke: Wolkeinfo[] = [];
     let baum: Baume[] = [];
@@ -169,6 +169,11 @@ namespace aufgabe5 {
                 baumY: 200 + Math.random() * 150
             };
         }
+        for (let i: number = 0; i < 4; i++) {
+            let s: Ski = new Ski(0, 0, "#0000FF");
+
+            fahrer[i] = s;
+        }
 
         for (let i: number = 0; i < 140; i++) {
             snow[i] = {
@@ -176,7 +181,7 @@ namespace aufgabe5 {
                 snowY: 0 + Math.random() * 600
             };
         }
-        
+
         for (let i: number = 0; i < 4; i++) {
             wolke[i] = {
                 wolkeX: 0 + Math.random() * 800,
@@ -214,7 +219,7 @@ namespace aufgabe5 {
             crc2.arc(_snow.snowX, _snow.snowY, 5, 0, 2 * Math.PI);
             crc2.fill();
         }
-        
+
         function wolken(_wolke: Wolkeinfo): void {
             crc2.beginPath();
             crc2.arc(_wolke.wolkeX, _wolke.wolkeY, 20, 0, 2 * Math.PI);
@@ -242,6 +247,7 @@ namespace aufgabe5 {
             crc2.fill();
 
         }
+
         function animate(): void {
             crc2.putImageData(img, 0, 0);
             //Schnee
@@ -253,7 +259,7 @@ namespace aufgabe5 {
                 snowflake(snow[i]);
             }
 
-            
+
             for (let i: number = 0; i < baum.length; i++) {
 
                 drawTree(baum[i]);
@@ -266,6 +272,11 @@ namespace aufgabe5 {
                 wolke[i].wolkeX += 1;
                 wolken(wolke[i]);
             }
+            for (let i: number = 0; i < fahrer.length; i++) {
+                let s: Ski = fahrer[i];
+                s.move();
+            }
+
             window.setTimeout(animate, 20);
         }
 
