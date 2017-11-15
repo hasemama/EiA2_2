@@ -10,23 +10,15 @@ namespace aufgabe5 {
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
 
-
-
-
-
     let fahrer: Ski[] = [];
     let snow: Snow[] = [];
     let wolke: Wolken[] = [];
     let baum: Baum[] = [];
 
-
-
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 
         crc2 = canvas.getContext("2d");
-
-
 
         //Himmel
         crc2.fillStyle = "#5CACEE";
@@ -180,6 +172,7 @@ namespace aufgabe5 {
         console.log(img);
         animate();
 
+        //Animate
         function animate(): void {
             crc2.putImageData(img, 0, 0);
             //Schnee
@@ -188,17 +181,18 @@ namespace aufgabe5 {
                 s.move();
             }
 
-
+            //Bäume
             for (let i: number = 0; i < baum.length; i++) {
                 let s: Baum = baum[i];
 
                 s.drawTree();
             }
-
+            //Wolken
             for (let i: number = 0; i < wolke.length; i++) {
                 let s: Wolken = wolke[i];
                 s.move();
             }
+            //Skifahrer
             for (let i: number = 0; i < fahrer.length; i++) {
                 let s: Ski = fahrer[i];
                 s.move();
