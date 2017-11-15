@@ -37,7 +37,7 @@ namespace aufgabe5 {
         }
         move(): void {
             if (this.wolkeX > 800) {
-                this.wolkeY = 0;
+                this.wolkeX = 0;
             }
             this.wolkeX += 1;
             this.draw();

@@ -29,7 +29,7 @@ var aufgabe5;
         }
         move() {
             if (this.wolkeX > 800) {
-                this.wolkeY = 0;
+                this.wolkeX = 0;
             }
             this.wolkeX += 1;
             this.draw();
