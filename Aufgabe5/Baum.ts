@@ -5,8 +5,8 @@ namespace aufgabe5 {
         baumY: number;
 
         constructor(_x: number, _y: number) {
-            _x = this.baumX;
-            _y = this.baumY;
+            this.baumX = _x;
+            this.baumY = _y;
         }
         drawTree(): void {
             //Baumkronen 

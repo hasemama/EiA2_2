@@ -2,8 +2,8 @@ var aufgabe5;
 (function (aufgabe5) {
     class Baum {
         constructor(_x, _y) {
-            _x = this.baumX;
-            _y = this.baumY;
+            this.baumX = _x;
+            this.baumY = _y;
         }
         drawTree() {
             //Baumkronen 
