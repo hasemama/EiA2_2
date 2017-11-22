@@ -1,6 +1,9 @@
 var aufgabe6;
 (function (aufgabe6) {
     class Snow extends aufgabe6.MovingObjects {
+        constructor(_x, _y) {
+            super(_x, _y);
+        }
         draw() {
             aufgabe6.crc2.fillStyle = "#ffffff";
             aufgabe6.crc2.beginPath();
@@ -12,7 +15,6 @@ var aufgabe6;
                 this.snowY = 0;
             }
             this.snowY += Math.random();
-            this.draw();
         }
     }
     aufgabe6.Snow = Snow;

@@ -1,6 +1,9 @@
 var aufgabe6;
 (function (aufgabe6) {
     class Wolken extends aufgabe6.MovingObjects {
+        constructor(_x, _y) {
+            super(_x, _y);
+        }
         draw() {
             aufgabe6.crc2.beginPath();
             aufgabe6.crc2.arc(this.wolkeX, this.wolkeY, 20, 0, 2 * Math.PI);
@@ -28,7 +31,6 @@ var aufgabe6;
                 this.wolkeY = 0;
             }
             this.wolkeX += 1;
-            this.draw();
         }
     }
     aufgabe6.Wolken = Wolken;

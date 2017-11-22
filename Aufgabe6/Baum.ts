@@ -4,7 +4,9 @@ namespace aufgabe6 {
         baumX: number;
         baumY: number;
 
-       
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+        }
         drawTree(): void {
             //Baumkronen 
             crc2.beginPath();

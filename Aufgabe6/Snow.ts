@@ -4,7 +4,10 @@ namespace aufgabe6 {
         snowX: number;
         snowY: number;
 
-        
+        constructor(_x: number, _y: number) {
+             super(_x, _y);
+
+        }
         draw(): void {
             crc2.fillStyle = "#ffffff";
             crc2.beginPath();
@@ -16,7 +19,7 @@ namespace aufgabe6 {
                 this.snowY = 0;
             }
             this.snowY += Math.random();
-            this.draw();
+            
         }
     }
 }

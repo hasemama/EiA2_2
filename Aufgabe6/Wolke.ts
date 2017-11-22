@@ -3,7 +3,10 @@ namespace aufgabe6 {
         wolkeX: number;
         wolkeY: number;
 
-        
+        constructor(_x: number, _y: number) {
+             super(_x, _y);
+
+        }
         draw(): void {
             crc2.beginPath();
             crc2.arc(this.wolkeX, this.wolkeY, 20, 0, 2 * Math.PI);
@@ -36,7 +39,7 @@ namespace aufgabe6 {
                 this.wolkeY = 0;
             }
             this.wolkeX += 1;
-            this.draw();
+            
         }
     }
 
