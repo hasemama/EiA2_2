@@ -1,4 +1,4 @@
-namespace aufgabe5 {
+namespace aufgabe6 {
 
     export class Baum {
         baumX: number;

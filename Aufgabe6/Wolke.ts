@@ -1,4 +1,4 @@
-namespace aufgabe5 {
+namespace aufgabe6 {
     export class Wolken {
         wolkeX: number;
         wolkeY: number;
