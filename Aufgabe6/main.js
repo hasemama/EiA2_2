@@ -117,7 +117,7 @@ var aufgabe6;
         aufgabe6.crc2.fillStyle = "#000000";
         aufgabe6.crc2.fill();
         for (let i = 0; i < n; i++) {
-            let s = new aufgabe6.Ski(300, 150);
+            let s = new aufgabe6.Ski(300, 150, "#0000ff", Math.random() * 1 + 2, Math.random() * 1 + 2);
             object.push(s);
             let t = new aufgabe6.Baum(100, 150);
             object.push(t);

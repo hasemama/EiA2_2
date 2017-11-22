@@ -16,7 +16,7 @@ namespace aufgabe6 {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 
         crc2 = canvas.getContext("2d");
-        let n = 10;
+        let n: number = 10;
 
         //Himmel
         crc2.fillStyle = "#5CACEE";
@@ -145,7 +145,7 @@ namespace aufgabe6 {
 
 
         for (let i: number = 0; i < n; i++) {
-            let s: Ski = new Ski(300, 150);
+            let s: Ski = new Ski(300, 150, "#0000ff", Math.random() * 1 + 2, Math.random() * 1 + 2);
             object.push(s);
             let t: Baum = new Baum(100, 150);
             object.push(t);
@@ -164,7 +164,7 @@ namespace aufgabe6 {
     //Animate
     function animate(): void {
         crc2.putImageData(img, 0, 0);
-       
+
         for (let i: number = 0; i < object.length; i++) {
             let s: MovingObjects = object[i];
             s.update();

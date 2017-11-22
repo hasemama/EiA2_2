@@ -1,8 +1,7 @@
 namespace aufgabe6 {
 
     export class Snow extends MovingObjects {
-        snowX: number;
-        snowY: number;
+       
 
         constructor(_x: number, _y: number) {
              super(_x, _y);
@@ -11,14 +10,14 @@ namespace aufgabe6 {
         draw(): void {
             crc2.fillStyle = "#ffffff";
             crc2.beginPath();
-            crc2.arc(this.snowX, this.snowY, 5, 0, 2 * Math.PI);
+            crc2.arc(this.x, this.y, 5, 0, 2 * Math.PI);
             crc2.fill();
         }
         move(): void {
-            if (this.snowY > 600) {
-                this.snowY = 0;
+            if (this.y > 600) {
+                this.y = 0;
             }
-            this.snowY += Math.random();
+            this.y += Math.random();
             
         }
     }
