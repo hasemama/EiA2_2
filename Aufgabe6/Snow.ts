@@ -1,14 +1,10 @@
 namespace aufgabe6 {
 
-    export class Snow {
+    export class Snow extends MovingObjects {
         snowX: number;
         snowY: number;
 
-        constructor(_x: number, _y: number) {
-            this.snowX = _x;
-            this.snowY = _y;
-
-        }
+        
         draw(): void {
             crc2.fillStyle = "#ffffff";
             crc2.beginPath();

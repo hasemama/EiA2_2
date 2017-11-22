@@ -1,19 +1,13 @@
 namespace aufgabe6 {
 
-    export class Ski {
+    export class Ski extends MovingObjects {
         skiX: number;
         skiY: number;
         color: string;
         dx: number;
         dy: number;
 
-        constructor(_x: number, _y: number, _color: string, _dx: number, _dy: number) {
-            this.skiX = _x;
-            this.skiY = _y;
-            this.color = _color;
-            this.dx = _dx;
-            this.dy = _dy;
-        }
+       
 
         draw(): void {
             crc2.fillStyle = this.color;

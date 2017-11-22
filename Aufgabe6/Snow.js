@@ -1,10 +1,6 @@
 var aufgabe6;
 (function (aufgabe6) {
-    class Snow {
-        constructor(_x, _y) {
-            this.snowX = _x;
-            this.snowY = _y;
-        }
+    class Snow extends aufgabe6.MovingObjects {
         draw() {
             aufgabe6.crc2.fillStyle = "#ffffff";
             aufgabe6.crc2.beginPath();

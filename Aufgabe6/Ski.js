@@ -1,13 +1,6 @@
 var aufgabe6;
 (function (aufgabe6) {
-    class Ski {
-        constructor(_x, _y, _color, _dx, _dy) {
-            this.skiX = _x;
-            this.skiY = _y;
-            this.color = _color;
-            this.dx = _dx;
-            this.dy = _dy;
-        }
+    class Ski extends aufgabe6.MovingObjects {
         draw() {
             aufgabe6.crc2.fillStyle = this.color;
             aufgabe6.crc2.fillRect(this.skiX, this.skiY, 5, -20);

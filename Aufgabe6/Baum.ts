@@ -1,13 +1,10 @@
 namespace aufgabe6 {
 
-    export class Baum {
+    export class Baum extends MovingObjects {
         baumX: number;
         baumY: number;
 
-        constructor(_x: number, _y: number) {
-            this.baumX = _x;
-            this.baumY = _y;
-        }
+       
         drawTree(): void {
             //Baumkronen 
             crc2.beginPath();

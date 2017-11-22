@@ -1,10 +1,6 @@
 var aufgabe6;
 (function (aufgabe6) {
-    class Baum {
-        constructor(_x, _y) {
-            this.baumX = _x;
-            this.baumY = _y;
-        }
+    class Baum extends aufgabe6.MovingObjects {
         drawTree() {
             //Baumkronen 
             aufgabe6.crc2.beginPath();

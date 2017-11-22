@@ -1,13 +1,9 @@
 namespace aufgabe6 {
-    export class Wolken {
+    export class Wolken extends MovingObjects {
         wolkeX: number;
         wolkeY: number;
 
-        constructor(_x: number, _y: number) {
-            this.wolkeX = _x;
-            this.wolkeY = _y;
-
-        }
+        
         draw(): void {
             crc2.beginPath();
             crc2.arc(this.wolkeX, this.wolkeY, 20, 0, 2 * Math.PI);
