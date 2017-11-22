@@ -10,15 +10,13 @@ namespace aufgabe6 {
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
 
-    let fahrer: Ski[] = [];
-    let snow: Snow[] = [];
-    let wolke: Wolken[] = [];
-    let baum: Baum[] = [];
+    let object: MovingObjects[] = [];
 
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 
         crc2 = canvas.getContext("2d");
+        let n = 10;
 
         //Himmel
         crc2.fillStyle = "#5CACEE";
@@ -146,62 +144,36 @@ namespace aufgabe6 {
 
 
 
-        for (let i: number = 0; i < 5; i++) {
-            let s: Baum = new Baum(50 + Math.random() * 170, 200 + Math.random() * 150);
-            baum[i] = s;
-
-        };
-
-        for (let i: number = 0; i < 4; i++) {
-            let s: Ski = new Ski(0, 0, "#0000FF", Math.random() * 2 + 5, Math.random() * 2 + 5);
-
-            fahrer[i] = s;
+        for (let i: number = 0; i < n; i++) {
+            let s: Ski = new Ski(300, 150);
+            object.push(s);
+            let t: Baum = new Baum(100, 150);
+            object.push(t);
+            let w: Wolken = new Wolken(100, 150);
+            object.push(w);
+            let sn: Snow = new Snow(100, 150);
+            object.push(sn);
         }
 
-        for (let i: number = 0; i < 140; i++) {
-            let s: Snow = new Snow(0 + Math.random() * 800, 0 + Math.random() * 600);
-            snow[i] = s;
-        };
 
-
-        for (let i: number = 0; i < 4; i++) {
-            let s: Wolken = new Wolken(0 + Math.random() * 800, 0 + Math.random() * 80 + 50);
-            wolke[i] = s;
-        }
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
+    }
+
+    //Animate
+    function animate(): void {
+        crc2.putImageData(img, 0, 0);
+       
+        for (let i: number = 0; i < object.length; i++) {
+            let s: MovingObjects = object[i];
+            s.update();
         }
 
-        //Animate
-        function animate(): void {
-            crc2.putImageData(img, 0, 0);
-            //Schnee
-            for (let i: number = 0; i < snow.length; i++) {
-                let s: Snow = snow[i];
-                s.move();
-            }
 
-            //Bäume
-            for (let i: number = 0; i < baum.length; i++) {
-                let s: Baum = baum[i];
+        window.setTimeout(animate, 20);
+    }
 
-                s.drawTree();
-            }
-            //Wolken
-            for (let i: number = 0; i < wolke.length; i++) {
-                let s: Wolken = wolke[i];
-                s.move();
-            }
-            //Skifahrer
-            for (let i: number = 0; i < fahrer.length; i++) {
-                let s: Ski = fahrer[i];
-                s.move();
-            }
 
-            window.setTimeout(animate, 20);
-        }
-
-   
 
 }

@@ -9,13 +9,11 @@ var aufgabe6;
 (function (aufgabe6) {
     window.addEventListener("load", init);
     let img;
-    let fahrer = [];
-    let snow = [];
-    let wolke = [];
-    let baum = [];
+    let object = [];
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         aufgabe6.crc2 = canvas.getContext("2d");
+        let n = 10;
         //Himmel
         aufgabe6.crc2.fillStyle = "#5CACEE";
         aufgabe6.crc2.fillRect(0, 0, 800, 600);
@@ -118,23 +116,15 @@ var aufgabe6;
         aufgabe6.crc2.stroke();
         aufgabe6.crc2.fillStyle = "#000000";
         aufgabe6.crc2.fill();
-        for (let i = 0; i < 5; i++) {
-            let s = new aufgabe6.Baum(50 + Math.random() * 170, 200 + Math.random() * 150);
-            baum[i] = s;
-        }
-        ;
-        for (let i = 0; i < 4; i++) {
-            let s = new aufgabe6.Ski(0, 0, "#0000FF", Math.random() * 2 + 5, Math.random() * 2 + 5);
-            fahrer[i] = s;
-        }
-        for (let i = 0; i < 140; i++) {
-            let s = new aufgabe6.Snow(0 + Math.random() * 800, 0 + Math.random() * 600);
-            snow[i] = s;
-        }
-        ;
-        for (let i = 0; i < 4; i++) {
-            let s = new aufgabe6.Wolken(0 + Math.random() * 800, 0 + Math.random() * 80 + 50);
-            wolke[i] = s;
+        for (let i = 0; i < n; i++) {
+            let s = new aufgabe6.Ski(300, 150);
+            object.push(s);
+            let t = new aufgabe6.Baum(100, 150);
+            object.push(t);
+            let w = new aufgabe6.Wolken(100, 150);
+            object.push(w);
+            let sn = new aufgabe6.Snow(100, 150);
+            object.push(sn);
         }
         img = aufgabe6.crc2.getImageData(0, 0, 800, 600);
         console.log(img);
@@ -143,25 +133,9 @@ var aufgabe6;
     //Animate
     function animate() {
         aufgabe6.crc2.putImageData(img, 0, 0);
-        //Schnee
-        for (let i = 0; i < snow.length; i++) {
-            let s = snow[i];
-            s.move();
-        }
-        //B�ume
-        for (let i = 0; i < baum.length; i++) {
-            let s = baum[i];
-            s.drawTree();
-        }
-        //Wolken
-        for (let i = 0; i < wolke.length; i++) {
-            let s = wolke[i];
-            s.move();
-        }
-        //Skifahrer
-        for (let i = 0; i < fahrer.length; i++) {
-            let s = fahrer[i];
-            s.move();
+        for (let i = 0; i < object.length; i++) {
+            let s = object[i];
+            s.update();
         }
         window.setTimeout(animate, 20);
     }

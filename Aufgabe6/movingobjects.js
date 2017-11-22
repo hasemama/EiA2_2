@@ -1,10 +1,9 @@
 var aufgabe6;
 (function (aufgabe6) {
     class MovingObjects {
-        constructor(_x, _y, _color) {
+        constructor(_x, _y) {
             this.x = _x;
             this.y = _y;
-            this.color = _color;
         }
         ;
         update() {
