@@ -21,4 +21,4 @@ var aufgabe6;
     }
     aufgabe6.MovingObjects = MovingObjects;
 })(aufgabe6 || (aufgabe6 = {}));
-//# sourceMappingURL=MovingObjects.js.map
+//# sourceMappingURL=MovingObject.js.map
