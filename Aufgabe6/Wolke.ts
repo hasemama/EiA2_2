@@ -33,8 +33,8 @@ namespace aufgabe6 {
 
         }
         move(): void {
-            if (this.x > 810) {
-                this.y = 0;
+            if (this.x > 800) {
+                this.x = 0;
             }
             this.x += 1;
             

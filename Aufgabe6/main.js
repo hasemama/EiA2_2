@@ -13,7 +13,7 @@ var aufgabe6;
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         aufgabe6.crc2 = canvas.getContext("2d");
-        let n = 10;
+        let n = 5;
         //Himmel
         aufgabe6.crc2.fillStyle = "#5CACEE";
         aufgabe6.crc2.fillRect(0, 0, 800, 600);
@@ -117,13 +117,16 @@ var aufgabe6;
         aufgabe6.crc2.fillStyle = "#000000";
         aufgabe6.crc2.fill();
         for (let i = 0; i < n; i++) {
-            let s = new aufgabe6.Ski(300, 150, "#0000ff", Math.random() * 1 + 2, Math.random() * 1 + 2);
+            let s = new aufgabe6.Ski(0, 0, "#0000ff", Math.random() * 2 + 5, Math.random() * 2 + 5);
             object.push(s);
-            let t = new aufgabe6.Baum(100, 150);
+            let t = new aufgabe6.Baum(50 + Math.random() * 170, 200 + Math.random() * 150);
             object.push(t);
-            let w = new aufgabe6.Wolken(100, 150);
+            let w = new aufgabe6.Wolken(0 + Math.random() * 800, 0 + Math.random() * 80);
             object.push(w);
-            let sn = new aufgabe6.Snow(100, 150);
+        }
+        let m = 150;
+        for (let i = 0; i < m; i++) {
+            let sn = new aufgabe6.Snow(0 + Math.random() * 800, 0 + Math.random() * 600);
             object.push(sn);
         }
         img = aufgabe6.crc2.getImageData(0, 0, 800, 600);

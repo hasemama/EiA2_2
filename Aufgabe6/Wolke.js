@@ -27,8 +27,8 @@ var aufgabe6;
             aufgabe6.crc2.fill();
         }
         move() {
-            if (this.x > 810) {
-                this.y = 0;
+            if (this.x > 800) {
+                this.x = 0;
             }
             this.x += 1;
         }
