@@ -164,7 +164,7 @@ namespace aufgabe6 {
         animate();
     }
 
-    //Animate
+    //Animate 
     function animate(): void {
         crc2.putImageData(img, 0, 0);
 

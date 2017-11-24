@@ -133,7 +133,7 @@ var aufgabe6;
         console.log(img);
         animate();
     }
-    //Animate
+    //Animate 
     function animate() {
         aufgabe6.crc2.putImageData(img, 0, 0);
         for (let i = 0; i < object.length; i++) {
