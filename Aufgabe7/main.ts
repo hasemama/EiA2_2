@@ -1,11 +1,11 @@
 namespace StudiVZ {
     interface StudentData {
-        name: string,
-        vorname: string,
-        alter: number,
-        mn: number,
-        geschlecht: boolean,
-        kommentar: string
+        name: string;
+        vorname: string;
+        alter: number;
+        mn: number;
+        geschlecht: boolean;
+        kommentar: string;
     }
     var students: StudentData[] = [];
     var stop: boolean = false;
@@ -44,12 +44,17 @@ namespace StudiVZ {
             kommentar: splitted[5]
 
         };
-       
+
         students.push(student);
-        
-        return ;
+
+        return;
     }
     function queryData(_matrikel: number): string {
+        //if (students[i].mn = _matrikel) {
+            //sasd
+       // }
+
+
         return "Hier fehlt noch der richtige Code...";
     }
 }

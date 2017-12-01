@@ -35,6 +35,9 @@ var StudiVZ;
         return;
     }
     function queryData(_matrikel) {
+        //if (students[i].mn = _matrikel) {
+        //sasd
+        // }
         return "Hier fehlt noch der richtige Code...";
     }
 })(StudiVZ || (StudiVZ = {}));
