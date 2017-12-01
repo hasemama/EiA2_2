@@ -1,12 +1,17 @@
 namespace StudiVZ {
     interface StudentData {
-        // hier ist noch die richtige Datenstruktur festzulegen
+        name: string,
+        vorname: string,
+        alter: number,
+        mn: number,
+        geschlecht: boolean,
+        kommentar: string
     }
     var students: StudentData[] = [];
     var stop: boolean = false;
 
     while (!stop) {
-        var action: string = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
+        var action: string = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s),n, a oder s eingeben");
 
         switch (action) {
             case "n":
@@ -26,7 +31,23 @@ namespace StudiVZ {
     }
 
     function saveData(_input: string): string {
-        return "Hier fehlt noch der richtige Code...";
+        let splitted: string[] = _input.split(",");
+
+        var geeschlecht: boolean = parseInt(splitted[4]) == 1;
+
+        let student: StudentData = {
+            name: splitted[1],
+            vorname: splitted[2],
+            alter: parseInt(splitted[3]),
+            mn: parseInt(splitted[0]),
+            geschlecht: geeschlecht,
+            kommentar: splitted[5]
+
+        };
+       
+        students.push(student);
+        
+        return ;
     }
     function queryData(_matrikel: number): string {
         return "Hier fehlt noch der richtige Code...";
