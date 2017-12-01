@@ -44,17 +44,28 @@ namespace StudiVZ {
             kommentar: splitted[5]
 
         };
+        if (Number.isNaN(student.mn)) {
+            return "Matrikelnummer ist keine Nummer";
+        }
 
         students.push(student);
 
-        return;
+        return "Daten zur eingegebenen Matrikelnummer: " + student.mn + "\nName: " + student.name + "\nVorname: " + student.vorname + "\nAlter: " + student.alter + "\nGeschlecht: " + student.geschlecht + "\nKommentar: " + student.kommentar;
     }
-    function queryData(_matrikel: number): string {
-        //if (students[i].mn = _matrikel) {
-            //sasd
-       // }
+    function queryData(_matrikelnummer: number): string {
 
+        for (let i: number = 0; i < students.length; i++) {
 
-        return "Hier fehlt noch der richtige Code...";
+            if (students[i].mn == _matrikelnummer) {
+
+                return "Daten zur eingegebenen Matrikelnummer: " + students[i].mn + "\nName: " + students[i].name + "\nVorname: " + students[i].vorname + "\nAlter: " + students[i].alter + "\nGeschlecht: " + students[i].geschlecht + "\nKommentar: " + students[i].kommentar;
+            }
+
+            else {
+                continue;
+            }
+        }
+        return "Die eingegebene Matrikelnummer wurde nicht gefunden";
+
     }
 }

@@ -31,14 +31,22 @@ var StudiVZ;
             geschlecht: geeschlecht,
             kommentar: splitted[5]
         };
+        if (Number.isNaN(student.mn)) {
+            return "Matrikelnummer ist keine Nummer";
+        }
         students.push(student);
-        return;
+        return "Daten zur eingegebenen Matrikelnummer: " + student.mn + "\nName: " + student.name + "\nVorname: " + student.vorname + "\nAlter: " + student.alter + "\nGeschlecht: " + student.geschlecht + "\nKommentar: " + student.kommentar;
     }
-    function queryData(_matrikel) {
-        //if (students[i].mn = _matrikel) {
-        //sasd
-        // }
-        return "Hier fehlt noch der richtige Code...";
+    function queryData(_matrikelnummer) {
+        for (let i = 0; i < students.length; i++) {
+            if (students[i].mn == _matrikelnummer) {
+                return "Daten zur eingegebenen Matrikelnummer: " + students[i].mn + "\nName: " + students[i].name + "\nVorname: " + students[i].vorname + "\nAlter: " + students[i].alter + "\nGeschlecht: " + students[i].geschlecht + "\nKommentar: " + students[i].kommentar;
+            }
+            else {
+                continue;
+            }
+        }
+        return "Die eingegebene Matrikelnummer wurde nicht gefunden";
     }
 })(StudiVZ || (StudiVZ = {}));
 //# sourceMappingURL=main.js.map
