@@ -9,19 +9,22 @@ namespace L08_DOM {
     }
     var quadrat: Quadrat[] = [];
 
-    var input: string = prompt("Farbe,Groesse,Position");
-    alert(saveData(input));
+    var input1: string = prompt("Anzahl zwischen 10  und 100");
+
+    var input2: string = prompt("Farbe,Groesse,Position");
+    alert(saveData(input2));
 
     function init(): void {
-
-        let h: HTMLElement = document.createElement("div");
-        //console.log(h);
-        h.style.position = "absolute";
-        // h.style.top = "50px";
-        h.style.height = "40px";
-        h.style.width = "40px";
-        h.style.backgroundColor = "red";
-        document.body.appendChild(h);
+        for (let i: number = 0; i < parseInt(input1); i++) {
+            let h: HTMLElement = document.createElement("div");
+            //console.log(h);
+            h.style.position = "absolute";
+            // h.style.top = "50px";
+            h.style.height = "40px";
+            h.style.width = "40px";
+            h.style.backgroundColor = "red";
+            document.body.appendChild(h);
+        }
 
 
     }
