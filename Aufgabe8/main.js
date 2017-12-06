@@ -1,19 +1,28 @@
-var L07_DOM;
-(function (L07_DOM) {
+var L08_DOM;
+(function (L08_DOM) {
     window.addEventListener("load", init);
-    window.addEventListener("keydown", keypress);
-    function keypress(_event) {
-        console.log(_event.keyCode);
-    }
+    var quadrat = [];
+    var input = prompt("Farbe,Groesse,Position");
+    alert(saveData(input));
     function init() {
-        for (let i = 0; i < 10; i++) {
-            let h = document.createElement("h2");
-            //console.log(h);
-            h.innerText = "Hallo, ich bin h2-Element Nr." + i;
-            document.body.appendChild(h);
-            if (i == 3)
-                h.style.color = "red";
-        }
+        let h = document.createElement("div");
+        //console.log(h);
+        h.style.position = "absolute";
+        // h.style.top = "50px";
+        h.style.height = "40px";
+        h.style.width = "40px";
+        h.style.backgroundColor = "red";
+        document.body.appendChild(h);
     }
-})(L07_DOM || (L07_DOM = {}));
+    function saveData(_input) {
+        let splitted = _input.split(",");
+        let quadrati = {
+            Farbe: splitted[0],
+            Groesse: parseInt(splitted[1]),
+            Position: parseInt(splitted[2])
+        };
+        quadrat.push(quadrati);
+        return "Thank you";
+    }
+})(L08_DOM || (L08_DOM = {}));
 //# sourceMappingURL=main.js.map
