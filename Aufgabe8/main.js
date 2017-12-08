@@ -6,18 +6,19 @@ var L08_DOM;
         for (let i = 0; i < parseInt(input1); i++) {
             let farbe = "#" + Math.floor(Math.random() * 16777215).toString(16);
             let groesse = "40px";
-            let position = 500 * Math.random();
-            draw(position, farbe, groesse);
+            let x = window.innerHeight * Math.random();
+            let y = window.innerWidth * Math.random();
+            draw(x, y, farbe, groesse);
         }
     }
-    function draw(_position, _farbe, _groesse) {
+    function draw(_x, _y, _farbe, _groesse) {
         let h = document.createElement("div");
         //console.log(h);
         h.style.position = "absolute";
-        h.style.right = _position + "px";
-        h.style.left = _position + "px";
-        h.style.top = _position + "px";
-        h.style.bottom = _position + "px";
+        h.style.right = _y + "px";
+        h.style.left = _y + "px";
+        h.style.top = _x + "px";
+        h.style.bottom = _x + "px";
         h.style.height = _groesse;
         h.style.width = _groesse;
         h.style.backgroundColor = _farbe;
