@@ -3,38 +3,110 @@ namespace L08_DOM {
     window.addEventListener("load", init);
 
 
-
-    let abc: string[] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
+    let currentLetter: string;
 
 
 
+    //Buchstaben erstellen
     function init(): void {
 
-        for (let i: number = 0; i < abc.length; i++) {
-            let h: HTMLElement = document.createElement("div");
-            h.style.height = "50px";
-            h.style.width = "50px";
-            h.style.backgroundColor = "red";
-            h.textContent = abc[i];
-            h.style.margin = "15px";
-            h.style.padding = "5px";
-            h.id = abc[i];
-            h.addEventListener("click", clickonletter);
-            h.addEventListener("keydown", clickonletter);
+        let buchstaben: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-            document.body.appendChild(h);
+        let anzahl: number = buchstaben.length;
 
 
+        for (let i: number = 0; i < buchstaben.length; i++) {
+            drawBox(buchstaben[i]);
         }
 
 
+        drawBrief();
+
     }
-    function clickonletter(_event: MouseEvent): void {
-        var target: HTMLElement = <HTMLElement>_event.target;
-        target.style.color = "blue";
+
+    //Farbe ändern beim Klicken und Buchstaben auswählen
+    function handleClick(_event: MouseEvent): void {
+
+        let click: HTMLDivElement = <HTMLDivElement>_event.target;
+        click.style.color = "white";
+
+        currentLetter = click.id;
+
+        let divList: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("letters");
+
+        for (let i: number = 0; i < divList.length; i++) {
+            if (currentLetter != divList[i].id) {
+                divList[i].style.color = "black";
+            }
+        }
     }
 
 
+    //divs mit Buchstaben erstellen
+    function drawBox(_buchstaben: string): void {
+
+
+
+        let div: HTMLDivElement = document.createElement("div");
+
+        div.innerText = _buchstaben;
+        div.style.backgroundColor = "red";
+        div.style.width = "35px";
+        div.style.height = "35px";
+        div.style.marginLeft = "2px";
+        div.style.marginRight = "2px";
+        div.style.fontSize = "30px";
+        div.style.textAlign = "center";
+        div.id = _buchstaben;
+        div.className = "letters";
+
+        div.addEventListener("click", handleClick);
+        document.body.appendChild(div);
+
+    }
+
+    //Brief zeichnen
+    function drawBrief(): void {
+
+
+
+        let letter: HTMLDivElement = document.createElement("div");
+
+
+        letter.style.backgroundColor = "lightgrey";
+        letter.style.width = "800px";
+        letter.style.height = "300px";
+        letter.style.marginTop = "10px";
+        letter.style.marginRight = "2px";
+
+
+        letter.addEventListener("click", setLetters);
+        document.body.appendChild(letter);
+
+    }
+
+
+    //Buchstaben in Brief einfügen
+    function setLetters(_event: MouseEvent): void {
+
+        let box: HTMLDivElement = document.createElement("div");
+
+        box.innerText = currentLetter;
+        box.style.backgroundColor = "green";
+        box.style.width = "35px";
+        box.style.height = "35px";
+        box.style.marginLeft = "2px";
+        box.style.marginRight = "2px";
+        box.style.fontSize = "30px";
+        box.style.textAlign = "center";
+        box.style.position = "absolute";
+        box.style.left = _event.pageX + "px";
+        box.style.top = _event.pageY + "px";
+
+        box.addEventListener("click", setLetters);
+        document.body.appendChild(box);
+
+        
+    }
 
 }
