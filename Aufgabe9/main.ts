@@ -1,3 +1,10 @@
+//Aufgabe: (Aufgabe 9)
+//Name: (Marcel Hasemann)
+//Matrikel: (256646)
+//Datum: (17.12.2017)
+//Hiermit versichere ich, dass ich diesen
+//Code selbst geschrieben habe. Er wurde
+//nicht kopiert und auch nicht diktiert.
 namespace L08_DOM {
 
     window.addEventListener("load", init);
