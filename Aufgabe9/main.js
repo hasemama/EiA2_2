@@ -5,74 +5,84 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-var L08_DOM;
-(function (L08_DOM) {
+var L09_DOM;
+(function (L09_DOM) {
     window.addEventListener("load", init);
-    let currentLetter;
-    //Buchstaben erstellen
+    let buchstaben = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
+    let div;
+    let dataArray = buchstaben.split(",");
+    let safeDiv;
     function init() {
-        let buchstaben = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        let anzahl = buchstaben.length;
-        for (let i = 0; i < buchstaben.length; i++) {
-            drawBox(buchstaben[i]);
+        for (let i = 0; i < dataArray.length; i++) {
+            draw(i);
         }
-        drawBrief();
+        drawFlaeche();
     }
-    //Farbe �ndern beim Klicken und Buchstaben ausw�hlen
-    function handleClick(_event) {
-        let click = _event.target;
-        click.style.color = "white";
-        currentLetter = click.id;
-        let divList = document.getElementsByClassName("letters");
-        for (let i = 0; i < divList.length; i++) {
-            if (currentLetter != divList[i].id) {
-                divList[i].style.color = "black";
-            }
+    document.addEventListener("keydown", tastenDruck);
+    function tastenDruck(_event) {
+        console.log(_event.key);
+        let div = document.getElementById("" + _event.key);
+        if (safeDiv) {
+            safeDiv.style.backgroundColor = "black";
         }
-    }
-    //divs mit Buchstaben erstellen
-    function drawBox(_buchstaben) {
-        let div = document.createElement("div");
-        div.innerText = _buchstaben;
+        safeDiv = div;
         div.style.backgroundColor = "red";
-        div.style.width = "35px";
-        div.style.height = "35px";
-        div.style.marginLeft = "2px";
-        div.style.marginRight = "2px";
-        div.style.fontSize = "30px";
+    }
+    function draw(i) {
+        div = document.createElement("div");
+        div.addEventListener("click", handle);
+        div.style.width = "0.5em";
+        div.id = "" + dataArray[i];
+        div.style.backgroundColor = "black";
+        div.style.color = "white";
+        div.style.marginLeft = "0.5em";
+        div.style.fontSize = "1.5em";
         div.style.textAlign = "center";
-        div.id = _buchstaben;
-        div.className = "letters";
-        div.addEventListener("click", handleClick);
+        div.style.cssFloat = "left";
+        div.style.padding = "0.5em";
+        div.innerHTML = dataArray[i];
         document.body.appendChild(div);
     }
-    //Brief zeichnen
-    function drawBrief() {
-        let letter = document.createElement("div");
-        letter.style.backgroundColor = "lightgrey";
-        letter.style.width = "800px";
-        letter.style.height = "300px";
-        letter.style.marginTop = "10px";
-        letter.style.marginRight = "2px";
-        letter.addEventListener("click", setLetters);
-        document.body.appendChild(letter);
+    function drawFlaeche() {
+        div = document.createElement("div");
+        div.addEventListener("click", write);
+        div.style.width = "90%";
+        div.style.height = "50vh";
+        div.style.marginTop = "7em";
+        div.style.marginLeft = "5%";
+        div.style.backgroundColor = "white";
+        div.style.border = "1px solid black";
+        div.style.position = "absolute";
+        document.body.appendChild(div);
     }
-    //Buchstaben in Brief einf�gen
-    function setLetters(_event) {
-        let box = document.createElement("div");
-        box.innerText = currentLetter;
-        box.style.backgroundColor = "green";
-        box.style.width = "35px";
-        box.style.height = "35px";
-        box.style.marginLeft = "2px";
-        box.style.marginRight = "2px";
-        box.style.fontSize = "30px";
-        box.style.textAlign = "center";
-        box.style.position = "absolute";
-        box.style.left = _event.pageX + "px";
-        box.style.top = _event.pageY + "px";
-        box.addEventListener("click", setLetters);
-        document.body.appendChild(box);
+    function handle(_event) {
+        if (safeDiv) {
+            safeDiv.style.backgroundColor = "black";
+        }
+        let div = _event.target;
+        safeDiv = _event.target;
+        div.style.backgroundColor = "red";
     }
-})(L08_DOM || (L08_DOM = {}));
+    function write(_event) {
+        let div = document.createElement("div");
+        div.style.position = "absolute";
+        div.style.top = "" + (_event.clientY - 20) + "px";
+        div.style.left = "" + (_event.clientX - 20) + "px";
+        div.style.width = "0.5em";
+        div.style.color = "white";
+        div.style.textAlign = "center";
+        div.style.padding = "0.5em";
+        div.style.fontSize = "1.5em";
+        div.style.backgroundColor = "hsl( " + Math.random() * 360 + ",100%,20%)";
+        div.innerHTML = safeDiv.innerHTML;
+        div.addEventListener("click", deleteBuch);
+        document.body.appendChild(div);
+    }
+    function deleteBuch(_event) {
+        if (_event.altKey) {
+            let div = _event.target;
+            document.body.removeChild(div);
+        }
+    }
+})(L09_DOM || (L09_DOM = {}));
 //# sourceMappingURL=main.js.map
