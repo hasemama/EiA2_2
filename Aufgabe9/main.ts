@@ -56,14 +56,14 @@ namespace L09_DOM {
         let div: HTMLDivElement = document.createElement("div");
 
         div.innerText = _buchstaben;
-        div.style.backgroundColor = "lightblue";
+        div.style.backgroundColor = "red";
         div.style.width = "35px";
         div.style.height = "35px";
         div.style.marginLeft = "2px";
         div.style.marginRight = "2px";
         div.style.fontSize = "30px";
         div.style.textAlign = "center";
-        div.id = _buchstaben;  //ID erstellt um divs zu vergleichen
+        div.id = _buchstaben;
         div.className = "letters";
 
         div.addEventListener("click", handleClick);
@@ -79,11 +79,12 @@ namespace L09_DOM {
         let letter: HTMLDivElement = document.createElement("div");
 
 
-        letter.style.backgroundColor = "lightgrey";
+        letter.style.backgroundColor = "grey";
         letter.style.width = "800px";
         letter.style.height = "300px";
         letter.style.marginTop = "10px";
         letter.style.marginRight = "2px";
+        letter.style.position = "absolute";
 
 
         letter.addEventListener("click", setLetters);
@@ -98,7 +99,7 @@ namespace L09_DOM {
         let box: HTMLDivElement = document.createElement("div");
 
         box.innerText = currentLetter;
-        box.style.backgroundColor = "lightblue";
+        box.style.backgroundColor = "red";
         box.style.width = "35px";
         box.style.height = "35px";
         box.style.marginLeft = "2px";
@@ -249,7 +250,6 @@ namespace L09_DOM {
         }
 
 
-        //document.addEventListener ("keydown", tastaturEingabe);
 
 
     }
@@ -259,18 +259,15 @@ namespace L09_DOM {
 
 
     //ALt gedrückt halten
-    function handleAlt(_event: KeyboardEvent): void {
-        if (_event.keyCode == 18) {
 
-            deleteLetter;
-        }
-    }
 
     function deleteLetter(_event: MouseEvent): void {
 
         let d: HTMLDivElement = <HTMLDivElement>_event.target;
-        document.addEventListener("keypressed", handleAlt);
-        document.body.removeChild(d);
+        if (_event.altKey == true) {
+
+            document.body.removeChild(d);
+        }
     }
 
 

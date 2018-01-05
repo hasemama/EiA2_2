@@ -38,14 +38,14 @@ var L09_DOM;
     function drawBox(_buchstaben) {
         let div = document.createElement("div");
         div.innerText = _buchstaben;
-        div.style.backgroundColor = "lightblue";
+        div.style.backgroundColor = "red";
         div.style.width = "35px";
         div.style.height = "35px";
         div.style.marginLeft = "2px";
         div.style.marginRight = "2px";
         div.style.fontSize = "30px";
         div.style.textAlign = "center";
-        div.id = _buchstaben; //ID erstellt um divs zu vergleichen
+        div.id = _buchstaben;
         div.className = "letters";
         div.addEventListener("click", handleClick);
         document.body.appendChild(div);
@@ -53,11 +53,12 @@ var L09_DOM;
     //Brief zeichnen
     function drawBrief() {
         let letter = document.createElement("div");
-        letter.style.backgroundColor = "lightgrey";
+        letter.style.backgroundColor = "grey";
         letter.style.width = "800px";
         letter.style.height = "300px";
         letter.style.marginTop = "10px";
         letter.style.marginRight = "2px";
+        letter.style.position = "absolute";
         letter.addEventListener("click", setLetters);
         document.body.appendChild(letter);
     }
@@ -65,7 +66,7 @@ var L09_DOM;
     function setLetters(_event) {
         let box = document.createElement("div");
         box.innerText = currentLetter;
-        box.style.backgroundColor = "lightblue";
+        box.style.backgroundColor = "red";
         box.style.width = "35px";
         box.style.height = "35px";
         box.style.marginLeft = "2px";
@@ -185,18 +186,13 @@ var L09_DOM;
             currentLetter = event.key;
             setLetters;
         }
-        //document.addEventListener ("keydown", tastaturEingabe);
     }
     //ALt gedr�ckt halten
-    function handleAlt(_event) {
-        if (_event.keyCode == 18) {
-            deleteLetter;
-        }
-    }
     function deleteLetter(_event) {
         let d = _event.target;
-        document.addEventListener("keypressed", handleAlt);
-        document.body.removeChild(d);
+        if (_event.altKey == true) {
+            document.body.removeChild(d);
+        }
     }
 })(L09_DOM || (L09_DOM = {}));
 //# sourceMappingURL=main.js.map
