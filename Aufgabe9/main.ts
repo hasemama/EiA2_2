@@ -1,7 +1,7 @@
 //Aufgabe: (Aufgabe 9)
 //Name: (Marcel Hasemann)
 //Matrikel: (256646)
-//Datum: (17.12.2017)
+//Datum: (05.01.2018)
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
@@ -11,7 +11,7 @@ namespace A9 {
     let currentLetter: string;
 
     //document.addEventListener("keypressed", handleAlt);
-    document.addEventListener ("keydown", tastaturEingabe);
+    document.addEventListener("keydown", tastaturEingabe);
 
     //Buchstaben erstellen
     function init(): void {
@@ -25,27 +25,27 @@ namespace A9 {
                 drawBox(buchstaben[i]);
             }
         }
-        
+
         drawBrief();
 
     }
-    
-     //Farbe ändern beim Klicken und Buchstaben auswählen
+
+    //Farbe ändern beim Klicken und Buchstaben auswählen
     function handleClick(_event: MouseEvent): void {
 
-            let klicken: HTMLDivElement = <HTMLDivElement>_event.target;
-            klicken.style.color = "white";
+        let klicken: HTMLDivElement = <HTMLDivElement>_event.target;
+        klicken.style.color = "white";
 
-            currentLetter = klicken.id;
+        currentLetter = klicken.id;
 
-            let divList: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("letters");
+        let divList: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("letters");
 
-            for (let i: number = 0; i < divList.length; i++) {
-                if (currentLetter != divList[i].id) {
-                    divList[i].style.color = "black";
-                }
+        for (let i: number = 0; i < divList.length; i++) {
+            if (currentLetter != divList[i].id) {
+                divList[i].style.color = "black";
             }
         }
+    }
 
 
     //divs mit Buchstaben erstellen
@@ -72,7 +72,7 @@ namespace A9 {
     }
 
     //Brief zeichnen
-       function drawBrief(): void {
+    function drawBrief(): void {
 
 
 
@@ -85,49 +85,49 @@ namespace A9 {
         letter.style.marginTop = "10px";
         letter.style.marginRight = "2px";
 
-       
+
         letter.addEventListener("click", setLetters);
         document.body.appendChild(letter);
 
     }
 
-    
+
     //Buchstaben in Brief einfügen
     function setLetters(_event: MouseEvent): void {
 
         let box: HTMLDivElement = document.createElement("div");
-        
-        box.innerText =currentLetter;
-        box.style.backgroundColor ="lightblue";
+
+        box.innerText = currentLetter;
+        box.style.backgroundColor = "lightblue";
         box.style.width = "35px";
         box.style.height = "35px";
         box.style.marginLeft = "2px";
         box.style.marginRight = "2px";
         box.style.fontSize = "30px";
         box.style.textAlign = "center";
-        box.style.position="absolute";
+        box.style.position = "absolute";
         box.style.left = _event.pageX + "px";
-        box.style.top= _event.pageY + "px";
-        
+        box.style.top = _event.pageY + "px";
+
         box.addEventListener("click", deleteLetter);
         document.body.appendChild(box);
-        
-          let clicking: HTMLDivElement = <HTMLDivElement>_event.target;
+
+        let clicking: HTMLDivElement = <HTMLDivElement>_event.target;
     }
-    
+
     //Buchstaben mit Tastatur auswählen
     function tastaturEingabe(event: KeyboardEvent): void {
-        
-        if (event.key == "a" || event.key == "A") { 
-            currentLetter = event.key; 
+
+        if (event.key == "a" || event.key == "A") {
+            currentLetter = event.key;
             setLetters;
         }
-        
+
         else if (event.key == "b" || event.key == "B") {
             currentLetter = event.key;
             setLetters;
         }
-        
+
         else if (event.key == "c" || event.key == "C") {
             currentLetter = event.key;
             setLetters;
@@ -249,29 +249,29 @@ namespace A9 {
         }
 
 
-    //document.addEventListener ("keydown", tastaturEingabe);
+        //document.addEventListener ("keydown", tastaturEingabe);
 
 
     }
 
-    
-    
-    
-    
+
+
+
+
     //ALt gedrückt halten
-    function handleAlt (_event: KeyboardEvent): void {
-        if(_event.keyCode ==18) {
-            
+    function handleAlt(_event: KeyboardEvent): void {
+        if (_event.keyCode == 18) {
+
             deleteLetter;
-            }
         }
-    
-    function deleteLetter(_event:MouseEvent): void {
-        
-        let d: HTMLDivElement = <HTMLDivElement> _event.target;
+    }
+
+    function deleteLetter(_event: MouseEvent): void {
+
+        let d: HTMLDivElement = <HTMLDivElement>_event.target;
         document.addEventListener("keypressed", handleAlt);
         document.body.removeChild(d);
-        }
-  
+    }
+
 
 }
