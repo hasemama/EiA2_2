@@ -5,91 +5,273 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-namespace L09_DOM {
+namespace A9 {
+
     window.addEventListener("load", init);
-    let buchstaben: string = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
-    let div: HTMLDivElement;
-    let dataArray: string[] = buchstaben.split(",");
-    let safeDiv: HTMLDivElement;
+    let currentLetter: string;
+
+    //document.addEventListener("keypressed", handleAlt);
+    document.addEventListener ("keydown", tastaturEingabe);
+
+    //Buchstaben erstellen
     function init(): void {
-        for (let i: number = 0; i < dataArray.length; i++) {
-            draw(i);
+
+        let buchstaben: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+        let anzahl: number = buchstaben.length;
+
+        if (anzahl == buchstaben.length) {
+            for (let i: number = 0; i < buchstaben.length; i++) {
+                drawBox(buchstaben[i]);
+            }
         }
-        drawFlaeche();
+        
+        drawBrief();
 
     }
+    
+     //Farbe ändern beim Klicken und Buchstaben auswählen
+    function handleClick(_event: MouseEvent): void {
 
-    document.addEventListener("keydown", tastenDruck);
+            let klicken: HTMLDivElement = <HTMLDivElement>_event.target;
+            klicken.style.color = "white";
 
-    function tastenDruck(_event: KeyboardEvent): void {
-        console.log(_event.key);
-        let div: HTMLDivElement = <HTMLDivElement>document.getElementById("" + _event.key);
+            currentLetter = klicken.id;
 
-        if (safeDiv) {
-            safeDiv.style.backgroundColor = "black";
+            let divList: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("letters");
+
+            for (let i: number = 0; i < divList.length; i++) {
+                if (currentLetter != divList[i].id) {
+                    divList[i].style.color = "black";
+                }
+            }
         }
 
-        safeDiv = div;
-        div.style.backgroundColor = "red";
-    }
 
-    function draw(i: number): void {
+    //divs mit Buchstaben erstellen
+    function drawBox(_buchstaben: string): void {
 
-        div = document.createElement("div");
-        div.addEventListener("click", handle);
-        div.style.width = "0.5em";
 
-        div.id = "" + dataArray[i];
-        div.style.backgroundColor = "black";
-        div.style.color = "white";
-        div.style.marginLeft = "0.5em";
-        div.style.fontSize = "1.5em";
-        div.style.textAlign = "center";
-        div.style.cssFloat = "left";
-        div.style.padding = "0.5em";
-        div.innerHTML = dataArray[i];
-        document.body.appendChild(div);
-    }
-    function drawFlaeche(): void {
-        div = document.createElement("div");
-        div.addEventListener("click", write);
-        div.style.width = "90%";
-        div.style.height = "50vh";
-        div.style.marginTop = "7em";
-        div.style.marginLeft = "5%";
-        div.style.backgroundColor = "white";
-        div.style.border = "1px solid black";
-        div.style.position = "absolute";
-        document.body.appendChild(div);
-    }
-    function handle(_event: MouseEvent): void {
-        if (safeDiv) {
-            safeDiv.style.backgroundColor = "black";
-        }
-        let div: HTMLDivElement = <HTMLDivElement>_event.target;
-        safeDiv = <HTMLDivElement>_event.target;
-        div.style.backgroundColor = "red";
-    }
-    function write(_event: MouseEvent): void {
 
         let div: HTMLDivElement = document.createElement("div");
-        div.style.position = "absolute";
-        div.style.top = "" + (_event.clientY - 20) + "px";
-        div.style.left = "" + (_event.clientX - 20) + "px";
-        div.style.width = "0.5em";
-        div.style.color = "white";
+
+        div.innerText = _buchstaben;
+        div.style.backgroundColor = "lightblue";
+        div.style.width = "35px";
+        div.style.height = "35px";
+        div.style.marginLeft = "2px";
+        div.style.marginRight = "2px";
+        div.style.fontSize = "30px";
         div.style.textAlign = "center";
-        div.style.padding = "0.5em";
-        div.style.fontSize = "1.5em";
-        div.style.backgroundColor = "hsl( " + Math.random() * 360 + ",100%,20%)";
-        div.innerHTML = safeDiv.innerHTML;
-        div.addEventListener("click", deleteBuch);
+        div.id = _buchstaben;  //ID erstellt um divs zu vergleichen
+        div.className = "letters";
+
+        div.addEventListener("click", handleClick);
         document.body.appendChild(div);
+
     }
-    function deleteBuch(_event: MouseEvent): void {
-        if (_event.altKey) {
-            let div: HTMLDivElement = <HTMLDivElement>_event.target;
-            document.body.removeChild(div);
+
+    //Brief zeichnen
+       function drawBrief(): void {
+
+
+
+        let letter: HTMLDivElement = document.createElement("div");
+
+
+        letter.style.backgroundColor = "lightgrey";
+        letter.style.width = "800px";
+        letter.style.height = "300px";
+        letter.style.marginTop = "10px";
+        letter.style.marginRight = "2px";
+
+       
+        letter.addEventListener("click", setLetters);
+        document.body.appendChild(letter);
+
+    }
+
+    
+    //Buchstaben in Brief einfügen
+    function setLetters(_event: MouseEvent): void {
+
+        let box: HTMLDivElement = document.createElement("div");
+        
+        box.innerText =currentLetter;
+        box.style.backgroundColor ="lightblue";
+        box.style.width = "35px";
+        box.style.height = "35px";
+        box.style.marginLeft = "2px";
+        box.style.marginRight = "2px";
+        box.style.fontSize = "30px";
+        box.style.textAlign = "center";
+        box.style.position="absolute";
+        box.style.left = _event.pageX + "px";
+        box.style.top= _event.pageY + "px";
+        
+        box.addEventListener("click", deleteLetter);
+        document.body.appendChild(box);
+        
+          let clicking: HTMLDivElement = <HTMLDivElement>_event.target;
+    }
+    
+    //Buchstaben mit Tastatur auswählen
+    function tastaturEingabe(event: KeyboardEvent): void {
+        
+        if (event.key == "a" || event.key == "A") { 
+            currentLetter = event.key; 
+            setLetters;
         }
+        
+        else if (event.key == "b" || event.key == "B") {
+            currentLetter = event.key;
+            setLetters;
+        }
+        
+        else if (event.key == "c" || event.key == "C") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "d" || event.key == "D") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "e" || event.key == "E") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "f" || event.key == "F") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "g" || event.key == "G") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "h" || event.key == "H") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "i" || event.key == "I") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "j" || event.key == "J") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "k" || event.key == "K") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "l" || event.key == "L") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "m" || event.key == "M") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "n" || event.key == "N") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "o" || event.key == "O") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "p" || event.key == "P") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "q" || event.key == "Q") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "r" || event.key == "R") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "s" || event.key == "S") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "t" || event.key == "T") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "u" || event.key == "U") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "v" || event.key == "V") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "w" || event.key == "W") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "x" || event.key == "X") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "y" || event.key == "Y") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+        else if (event.key == "z" || event.key == "Z") {
+            currentLetter = event.key;
+            setLetters;
+        }
+
+
+    //document.addEventListener ("keydown", tastaturEingabe);
+
+
     }
+
+    
+    
+    
+    
+    //ALt gedrückt halten
+    function handleAlt (_event: KeyboardEvent): void {
+        if(_event.keyCode ==18) {
+            
+            deleteLetter;
+            }
+        }
+    
+    function deleteLetter(_event:MouseEvent): void {
+        
+        let d: HTMLDivElement = <HTMLDivElement> _event.target;
+        document.addEventListener("keypressed", handleAlt);
+        document.body.removeChild(d);
+        }
+  
+
 }
