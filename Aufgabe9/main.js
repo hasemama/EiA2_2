@@ -5,8 +5,8 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-var A9;
-(function (A9) {
+var L09_DOM;
+(function (L09_DOM) {
     window.addEventListener("load", init);
     let currentLetter;
     //document.addEventListener("keypressed", handleAlt);
@@ -198,5 +198,5 @@ var A9;
         document.addEventListener("keypressed", handleAlt);
         document.body.removeChild(d);
     }
-})(A9 || (A9 = {}));
+})(L09_DOM || (L09_DOM = {}));
 //# sourceMappingURL=main.js.map

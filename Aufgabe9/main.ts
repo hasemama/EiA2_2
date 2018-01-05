@@ -5,7 +5,7 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-namespace A9 {
+namespace L09_DOM {
 
     window.addEventListener("load", init);
     let currentLetter: string;
