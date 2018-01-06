@@ -70,9 +70,10 @@ var L10_DOM;
             var radio = document.createElement("INPUT");
             var label = document.createElement("LABEL");
             radio.setAttribute("type", "radio");
-            radio.setAttribute("name", baeume[i].name);
-            radio.setAttribute("value", baeume[i].name);
+            radio.setAttribute("name", "baeume");
+            //radio.setAttribute("value", baeume[i].name);
             radio.setAttribute("id", baeume[i].name);
+            radio.addEventListener("change", HandleChange);
             label.innerText = baeume[i].name;
             console.log(radio);
             fieldset.appendChild(radio);
@@ -85,9 +86,10 @@ var L10_DOM;
             var radio = document.createElement("INPUT");
             var label = document.createElement("LABEL");
             radio.setAttribute("type", "radio");
-            radio.setAttribute("name", halterung[i].name);
-            radio.setAttribute("value", halterung[i].name);
+            radio.setAttribute("name", "halterung");
+            //radio.setAttribute("value", halterung[i].name);
             radio.setAttribute("id", halterung[i].name);
+            radio.addEventListener("change", HandleChange);
             label.innerText = halterung[i].name;
             console.log(radio);
             fieldset2.appendChild(radio);
@@ -97,19 +99,22 @@ var L10_DOM;
         var fieldset3 = document.createElement("FIELDSET");
         document.body.appendChild(fieldset3);
         for (let i = 0; i < schmuck.length; i++) {
-            var box = document.createElement("INPUT");
+            // var box: HTMLElement = document.createElement("INPUT");
             var label = document.createElement("LABEL");
             var stepper = document.createElement("INPUT");
-            box.setAttribute("type", "checkbox");
-            box.setAttribute("name", schmuck[i].name);
-            box.setAttribute("value", schmuck[i].name);
-            box.setAttribute("id", schmuck[i].name);
+            //  box.setAttribute("type", "checkbox");
+            //  box.setAttribute("name", schmuck[i].name);
+            // box.setAttribute("value", schmuck[i].name);
+            //  box.setAttribute("id", schmuck[i].name);
+            stepper.setAttribute("name", schmuck[i].name);
             stepper.setAttribute("type", "number");
             stepper.setAttribute("min", "0");
             stepper.setAttribute("value", "0");
+            //  box.addEventListener("change", HandleChange);
+            stepper.addEventListener("change", HandleChange);
             label.innerText = schmuck[i].name;
-            console.log(box);
-            fieldset3.appendChild(box);
+            //  console.log(box);
+            //fieldset3.appendChild(box);
             fieldset3.appendChild(label);
             fieldset3.appendChild(stepper);
         }
@@ -117,21 +122,24 @@ var L10_DOM;
         var fieldset4 = document.createElement("FIELDSET");
         document.body.appendChild(fieldset4);
         for (let i = 0; i < kerze.length; i++) {
-            var box = document.createElement("INPUT");
+            // var box2: HTMLElement = document.createElement("INPUT");
             var label = document.createElement("LABEL");
-            var stepper = document.createElement("INPUT");
-            box.setAttribute("type", "checkbox");
-            box.setAttribute("name", kerze[i].name);
-            box.setAttribute("value", kerze[i].name);
-            box.setAttribute("id", kerze[i].name);
-            stepper.setAttribute("type", "number");
-            stepper.setAttribute("min", "0");
-            stepper.setAttribute("value", "0");
+            var stepper2 = document.createElement("INPUT");
+            //  box2.setAttribute("type", "checkbox");
+            //  box2.setAttribute("name", kerze[i].name);
+            //  box2.setAttribute("value", kerze[i].name);
+            //  box2.setAttribute("id", kerze[i].name);
+            stepper2.setAttribute("name", kerze[i].name);
+            stepper2.setAttribute("type", "number");
+            stepper2.setAttribute("min", "0");
+            stepper2.setAttribute("value", "0");
+            // box2.addEventListener("change", HandleChange);
+            stepper2.addEventListener("change", HandleChange);
             label.innerText = kerze[i].name;
-            console.log(box);
-            fieldset4.appendChild(box);
+            //console.log(box2);
+            //  fieldset4.appendChild(box2);
             fieldset4.appendChild(label);
-            fieldset4.appendChild(stepper);
+            fieldset4.appendChild(stepper2);
         }
         //Lieferung----------------------------------------------------------------------
         var fieldset5 = document.createElement("FIELDSET");
@@ -140,9 +148,10 @@ var L10_DOM;
             var radio = document.createElement("INPUT");
             var label = document.createElement("LABEL");
             radio.setAttribute("type", "radio");
-            radio.setAttribute("name", lieferung[i].name);
-            radio.setAttribute("value", lieferung[i].name);
+            radio.setAttribute("name", "lieferung");
+            //radio.setAttribute("value", lieferung[i].name);
             radio.setAttribute("id", lieferung[i].name);
+            radio.addEventListener("change", HandleChange);
             label.innerText = lieferung[i].name;
             console.log(radio);
             fieldset5.appendChild(radio);
@@ -156,11 +165,34 @@ var L10_DOM;
         adresse.setAttribute("name", "Adresse");
         adresse.setAttribute("placeholder", "Hier Adresse eingeben");
         adresse.setAttribute("id", "Adressfeld");
+        adresse.addEventListener("change", HandleChange);
         fieldset6.appendChild(adresse);
-        //Ausgabe-------------------------------------------------------------------------
-        var ausgabe = document.createElement("div");
-        ausgabe.innerHTML = "<h1>Artikel</h1>";
-        document.body.appendChild(ausgabe);
+        //ChangeHandler---------------------------------------------------------------------
+        function HandleChange(_event) {
+            let target = _event.target;
+            console.log("Changed " + target.name + " to " + target.value);
+            if (target.name == "stepper") {
+                let progress = document.getElementsByTagName("meter")[0];
+                progress.value = parseFloat(target.value);
+            }
+        }
+        let button = document.createElement("button");
+        button.name = "Button";
+        button.type = "button";
+        button.innerText = "Pruefen";
+        button.addEventListener("mousedown", handleMouseDown);
+        document.body.appendChild(button);
+        function handleMouseDown(_event) {
+            let feedback = document.createElement("div");
+            if (adresse) {
+                feedback.innerText = "Adresse falsch";
+                document.body.appendChild(feedback);
+            }
+            else {
+                feedback.innerText = "Passt";
+                document.body.appendChild(feedback);
+            }
+        }
     }
 })(L10_DOM || (L10_DOM = {}));
 //# sourceMappingURL=main.js.map
