@@ -188,18 +188,17 @@ namespace L10_DOM {
 
         //ChangeHandler---------------------------------------------------------------------
 
+        let neu: HTMLElement = document.createElement("div");
+        neu.innerText = "Warenkorb\n";
+        document.body.appendChild(neu);
+
         function HandleChange(_event: Event): void {
             let target: HTMLInputElement = <HTMLInputElement>_event.target;
-            console.log("Changed " + target.name + " to " + target.value);
-
-            let neu: HTMLElement = document.createElement("div");
-            neu.innerHTML = "<h1>Warenkorb</h1>";
-
-            document.body.appendChild(neu);
-
-
-
-            neu.innerText = target.id + " " + target.value + "Euro";
+            //  console.log("Changed " + target.name + " to " + target.value);
+            let div: HTMLElement = document.createElement("div");
+            div.id = target.id;
+            div.innerText += target.id + " " + target.value + "Euro" + "\n";
+            document.body.appendChild(div);
 
 
 

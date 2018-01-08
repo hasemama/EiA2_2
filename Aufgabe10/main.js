@@ -170,13 +170,16 @@ var L10_DOM;
         adresse.addEventListener("change", HandleChange);
         fieldset6.appendChild(adresse);
         //ChangeHandler---------------------------------------------------------------------
+        let neu = document.createElement("div");
+        neu.innerText = "Warenkorb\n";
+        document.body.appendChild(neu);
         function HandleChange(_event) {
             let target = _event.target;
-            console.log("Changed " + target.name + " to " + target.value);
-            let neu = document.createElement("div");
-            neu.innerHTML = "<h1>Warenkorb</h1>";
-            document.body.appendChild(neu);
-            neu.innerText = target.id + " " + target.value + "Euro";
+            //  console.log("Changed " + target.name + " to " + target.value);
+            let div = document.createElement("div");
+            div.id = target.id;
+            div.innerText += target.id + " " + target.value + "Euro" + "\n";
+            document.body.appendChild(div);
         }
         let button = document.createElement("button");
         button.name = "Button";
