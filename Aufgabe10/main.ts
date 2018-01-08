@@ -77,7 +77,7 @@ namespace L10_DOM {
             var label: HTMLElement = document.createElement("LABEL");
             radio.setAttribute("type", "radio");
             radio.setAttribute("name", "baeume");
-            //radio.setAttribute("value", baeume[i].name);
+            radio.setAttribute("value", baeume[i].preis.toString());
             radio.setAttribute("id", baeume[i].name);
             radio.addEventListener("change", HandleChange);
             label.innerText = baeume[i].name;
@@ -94,7 +94,7 @@ namespace L10_DOM {
             var label: HTMLElement = document.createElement("LABEL");
             radio.setAttribute("type", "radio");
             radio.setAttribute("name", "halterung");
-            //radio.setAttribute("value", halterung[i].name);
+            radio.setAttribute("value", halterung[i].preis.toString());
             radio.setAttribute("id", halterung[i].name);
             radio.addEventListener("change", HandleChange);
             label.innerText = halterung[i].name;
@@ -118,6 +118,7 @@ namespace L10_DOM {
             stepper.setAttribute("type", "number");
             stepper.setAttribute("min", "0");
             stepper.setAttribute("value", "0");
+            stepper.setAttribute("id", schmuck[i].name);
             //  box.addEventListener("change", HandleChange);
             stepper.addEventListener("change", HandleChange);
             label.innerText = schmuck[i].name;
@@ -143,6 +144,7 @@ namespace L10_DOM {
             stepper2.setAttribute("type", "number");
             stepper2.setAttribute("min", "0");
             stepper2.setAttribute("value", "0");
+            stepper2.setAttribute("id", kerze[i].name);
             // box2.addEventListener("change", HandleChange);
             stepper2.addEventListener("change", HandleChange);
             label.innerText = kerze[i].name;
@@ -160,7 +162,7 @@ namespace L10_DOM {
             var label: HTMLElement = document.createElement("LABEL");
             radio.setAttribute("type", "radio");
             radio.setAttribute("name", "lieferung");
-            //radio.setAttribute("value", lieferung[i].name);
+            radio.setAttribute("value", lieferung[i].preis.toString());
             radio.setAttribute("id", lieferung[i].name);
             radio.addEventListener("change", HandleChange);
             label.innerText = lieferung[i].name;
@@ -182,41 +184,51 @@ namespace L10_DOM {
         adresse.addEventListener("change", HandleChange);
         fieldset6.appendChild(adresse);
 
-    
+
 
         //ChangeHandler---------------------------------------------------------------------
 
         function HandleChange(_event: Event): void {
             let target: HTMLInputElement = <HTMLInputElement>_event.target;
             console.log("Changed " + target.name + " to " + target.value);
-            if (target.name == "stepper") {
-                let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("meter")[0];
-                progress.value = parseFloat(target.value);
-            }
-             
+
+            let neu: HTMLElement = document.createElement("div");
+            neu.innerHTML = "<h1>Warenkorb</h1>";
+
+            document.body.appendChild(neu);
+
+
+
+            neu.innerText = target.id + " " + target.value + "Euro";
+
+
+
+
+
 
         }
-        
-        
+
+
         let button: HTMLButtonElement = document.createElement("button");
         button.name = "Button";
         button.type = "button";
         button.innerText = "Pruefen";
         button.addEventListener("mousedown", handleMouseDown);
         document.body.appendChild(button);
-    
-        function handleMouseDown(_event: MouseEvent): void {
-        let feedback: HTMLDivElement = document.createElement("div");
-        if (adresse) {
-            feedback.innerText = "Adresse falsch";
-            document.body.appendChild(feedback);
 
+        function handleMouseDown(_event: MouseEvent): void {
+            let feedback: HTMLDivElement = document.createElement("div");
+            if (adresse) {
+                feedback.innerText = "Adresse falsch";
+                document.body.appendChild(feedback);
+
+            }
+            else {
+                feedback.innerText = "Passt";
+                document.body.appendChild(feedback);
+            }
         }
-        else {
-            feedback.innerText = "Passt";
-            document.body.appendChild(feedback);
-        }
-    }
+
 
 
 
