@@ -247,20 +247,22 @@ namespace L10_DOM {
         function HandleChange(_event: Event): void {
             let target: HTMLInputElement = <HTMLInputElement>_event.target;
             //  console.log("Changed " + target.name + " to " + target.value);
-            let div1: HTMLElement = document.createElement("div");
 
-            
+
+
 
             let divList: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("warenkorb");
 
             for (let i: number = 0; i < divList.length; i++) {
                 if (target.id == divList[i].id) {
-//                    let k: HTMLElement = document.getElementById("Warenkorbdiv");
-//                    var r: HTMLElement = document.getElementById("target.id");
-//                    k.removeChild(r);
-                    document.getElementById(target.id).remove;
+
+                    divList[i].remove();
 
                 }
+               
+
+
+
             }
             let div: HTMLElement = document.createElement("div");
             div.id = target.id;
@@ -274,16 +276,16 @@ namespace L10_DOM {
 
 
         }
-//        function change() {
-//        let summe = 0;
-//        for (let i = 0; i < schmuck.length; i++) {
-//            summe += parseInt(schmuck[i].value);
-//        }
-//        for (let i = 0; i < inputKerzenart.length; i++) {
-//            summe += parseInt(inputKerzenart[i].value);
-//        }
-//        changeAuswahluebersicht(summe);
-//    }
+        //        function change() {
+        //        let summe = 0;
+        //        for (let i = 0; i < schmuck.length; i++) {
+        //            summe += parseInt(schmuck[i].value);
+        //        }
+        //        for (let i = 0; i < inputKerzenart.length; i++) {
+        //            summe += parseInt(inputKerzenart[i].value);
+        //        }
+        //        changeAuswahluebersicht(summe);
+        //    }
 
 
         let button: HTMLButtonElement = document.createElement("button");

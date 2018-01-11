@@ -217,14 +217,10 @@ var L10_DOM;
         function HandleChange(_event) {
             let target = _event.target;
             //  console.log("Changed " + target.name + " to " + target.value);
-            let div1 = document.createElement("div");
             let divList = document.getElementsByClassName("warenkorb");
             for (let i = 0; i < divList.length; i++) {
                 if (target.id == divList[i].id) {
-                    //                    let k: HTMLElement = document.getElementById("Warenkorbdiv");
-                    //                    var r: HTMLElement = document.getElementById("target.id");
-                    //                    k.removeChild(r);
-                    document.getElementById(target.id).remove;
+                    divList[i].remove();
                 }
             }
             let div = document.createElement("div");
