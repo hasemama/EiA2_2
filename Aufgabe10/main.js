@@ -2,6 +2,13 @@ var L10_DOM;
 (function (L10_DOM) {
     window.addEventListener("load", init);
     function init() {
+        var name;
+        var strasse;
+        var hausnummer;
+        var ort;
+        var plz;
+        var mail;
+        var zusatz;
         let baum1 = {
             name: "Baum1",
             preis: 10
@@ -162,24 +169,70 @@ var L10_DOM;
         //Adresse-----------------------------------------------------------------------
         var fieldset6 = document.createElement("FIELDSET");
         document.body.appendChild(fieldset6);
-        var adresse = document.createElement("INPUT");
-        adresse.setAttribute("type", "Area");
-        adresse.setAttribute("name", "Adresse");
-        adresse.setAttribute("placeholder", "Hier Adresse eingeben");
-        adresse.setAttribute("id", "Adressfeld");
-        adresse.addEventListener("change", HandleChange);
-        fieldset6.appendChild(adresse);
+        let daten = document.createElement("daten");
+        fieldset6.appendChild(daten);
+        name = document.createElement("input");
+        name.type = "text";
+        name.name = "DatenName";
+        name.placeholder = "Vorname, Nachname";
+        name.required = true;
+        daten.appendChild(name);
+        strasse = document.createElement("input");
+        strasse.type = "text";
+        strasse.name = "DatenStrasse";
+        strasse.placeholder = "Stra�e";
+        strasse.required = true;
+        daten.appendChild(strasse);
+        hausnummer = document.createElement("input");
+        hausnummer.type = "number";
+        hausnummer.name = "DatenHausnummer";
+        hausnummer.placeholder = "Hausnummer";
+        hausnummer.pattern = "[0-9]{3}";
+        hausnummer.required = true;
+        daten.appendChild(hausnummer);
+        plz = document.createElement("input");
+        plz.type = "text";
+        plz.name = "DatenPLZ";
+        plz.placeholder = "Postleitzahl";
+        plz.pattern = "[0-9]{5}";
+        plz.required = true;
+        daten.appendChild(plz);
+        ort = document.createElement("input");
+        ort.type = "text";
+        ort.name = "DatenOrt";
+        ort.placeholder = "Ort";
+        ort.required = true;
+        daten.appendChild(ort);
+        mail = document.createElement("input");
+        mail.type = "email";
+        mail.name = "DatenMail";
+        mail.placeholder = "E-Mail";
+        mail.required = true;
+        daten.appendChild(mail);
         //ChangeHandler---------------------------------------------------------------------
         let neu = document.createElement("div");
         neu.innerText = "Warenkorb\n";
+        neu.id = "Warenkorbdiv";
         document.body.appendChild(neu);
         function HandleChange(_event) {
             let target = _event.target;
             //  console.log("Changed " + target.name + " to " + target.value);
+            let div1 = document.createElement("div");
+            div1.className = "warenkorb";
+            neu.appendChild(div1);
+            let divList = document.getElementsByClassName("warenkorb");
+            for (let i = 0; i < divList.length; i++) {
+                if (target.id == divList[i].id) {
+                    let k = document.getElementById("Warenkorbdiv");
+                    var r = document.getElementById("target.id");
+                    k.removeChild(r);
+                }
+            }
             let div = document.createElement("div");
             div.id = target.id;
+            div.className = "warenkorb";
             div.innerText += target.id + " " + target.value + "Euro" + "\n";
-            document.body.appendChild(div);
+            neu.appendChild(div);
         }
         let button = document.createElement("button");
         button.name = "Button";
@@ -189,7 +242,7 @@ var L10_DOM;
         document.body.appendChild(button);
         function handleMouseDown(_event) {
             let feedback = document.createElement("div");
-            if (adresse) {
+            if (name.checkValidity() == false || strasse.checkValidity() == false || hausnummer.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
                 feedback.innerText = "Adresse falsch";
                 document.body.appendChild(feedback);
             }

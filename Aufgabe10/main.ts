@@ -1,6 +1,14 @@
 namespace L10_DOM {
     window.addEventListener("load", init);
     function init(): void {
+        var name: HTMLInputElement;
+        var strasse: HTMLInputElement;
+        var hausnummer: HTMLInputElement;
+        var ort: HTMLInputElement;
+        var plz: HTMLInputElement;
+        var mail: HTMLInputElement;
+        var zusatz: HTMLTextAreaElement;
+
         interface Produkte {
             name: string;
             preis: number;
@@ -119,6 +127,7 @@ namespace L10_DOM {
             stepper.setAttribute("min", "0");
             stepper.setAttribute("value", "0");
             stepper.setAttribute("id", schmuck[i].name);
+
             //  box.addEventListener("change", HandleChange);
             stepper.addEventListener("change", HandleChange);
             label.innerText = schmuck[i].name;
@@ -175,14 +184,56 @@ namespace L10_DOM {
         var fieldset6: HTMLElement = document.createElement("FIELDSET");
         document.body.appendChild(fieldset6);
 
-        var adresse: HTMLElement = document.createElement("INPUT");
+        let daten: HTMLDivElement = <HTMLDivElement>document.createElement("daten");
+        fieldset6.appendChild(daten);
 
-        adresse.setAttribute("type", "Area");
-        adresse.setAttribute("name", "Adresse");
-        adresse.setAttribute("placeholder", "Hier Adresse eingeben");
-        adresse.setAttribute("id", "Adressfeld");
-        adresse.addEventListener("change", HandleChange);
-        fieldset6.appendChild(adresse);
+        name = document.createElement("input");
+        name.type = "text";
+        name.name = "DatenName";
+        name.placeholder = "Vorname, Nachname";
+        name.required = true;
+        daten.appendChild(name);
+
+        strasse = document.createElement("input");
+        strasse.type = "text";
+        strasse.name = "DatenStrasse";
+        strasse.placeholder = "Straﬂe";
+        strasse.required = true;
+        daten.appendChild(strasse);
+
+        hausnummer = document.createElement("input");
+        hausnummer.type = "number";
+        hausnummer.name = "DatenHausnummer";
+        hausnummer.placeholder = "Hausnummer";
+        hausnummer.pattern = "[0-9]{3}";
+        hausnummer.required = true;
+        daten.appendChild(hausnummer);
+
+        plz = document.createElement("input");
+        plz.type = "text";
+        plz.name = "DatenPLZ";
+        plz.placeholder = "Postleitzahl";
+        plz.pattern = "[0-9]{5}";
+        plz.required = true;
+        daten.appendChild(plz);
+
+        ort = document.createElement("input");
+        ort.type = "text";
+        ort.name = "DatenOrt";
+        ort.placeholder = "Ort";
+        ort.required = true;
+        daten.appendChild(ort);
+
+
+
+        mail = document.createElement("input");
+        mail.type = "email";
+        mail.name = "DatenMail";
+        mail.placeholder = "E-Mail";
+        mail.required = true;
+        daten.appendChild(mail);
+
+
 
 
 
@@ -190,15 +241,32 @@ namespace L10_DOM {
 
         let neu: HTMLElement = document.createElement("div");
         neu.innerText = "Warenkorb\n";
+        neu.id = "Warenkorbdiv";
         document.body.appendChild(neu);
 
         function HandleChange(_event: Event): void {
             let target: HTMLInputElement = <HTMLInputElement>_event.target;
             //  console.log("Changed " + target.name + " to " + target.value);
+            let div1: HTMLElement = document.createElement("div");
+
+            div1.className = "warenkorb";
+            neu.appendChild(div1);
+
+            let divList: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("warenkorb");
+
+            for (let i: number = 0; i < divList.length; i++) {
+                if (target.id == divList[i].id) {
+                    let k: HTMLElement = document.getElementById("Warenkorbdiv");
+                    var r: HTMLElement = document.getElementById("target.id");
+                    k.removeChild(r);
+
+                }
+            }
             let div: HTMLElement = document.createElement("div");
             div.id = target.id;
+            div.className = "warenkorb";
             div.innerText += target.id + " " + target.value + "Euro" + "\n";
-            document.body.appendChild(div);
+            neu.appendChild(div);
 
 
 
@@ -217,7 +285,7 @@ namespace L10_DOM {
 
         function handleMouseDown(_event: MouseEvent): void {
             let feedback: HTMLDivElement = document.createElement("div");
-            if (adresse) {
+            if (name.checkValidity() == false || strasse.checkValidity() == false || hausnummer.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
                 feedback.innerText = "Adresse falsch";
                 document.body.appendChild(feedback);
 
