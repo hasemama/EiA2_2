@@ -218,14 +218,13 @@ var L10_DOM;
             let target = _event.target;
             //  console.log("Changed " + target.name + " to " + target.value);
             let div1 = document.createElement("div");
-            div1.className = "warenkorb";
-            neu.appendChild(div1);
             let divList = document.getElementsByClassName("warenkorb");
             for (let i = 0; i < divList.length; i++) {
                 if (target.id == divList[i].id) {
-                    let k = document.getElementById("Warenkorbdiv");
-                    var r = document.getElementById("target.id");
-                    k.removeChild(r);
+                    //                    let k: HTMLElement = document.getElementById("Warenkorbdiv");
+                    //                    var r: HTMLElement = document.getElementById("target.id");
+                    //                    k.removeChild(r);
+                    document.getElementById(target.id).remove;
                 }
             }
             let div = document.createElement("div");

@@ -249,16 +249,16 @@ namespace L10_DOM {
             //  console.log("Changed " + target.name + " to " + target.value);
             let div1: HTMLElement = document.createElement("div");
 
-            div1.className = "warenkorb";
-            neu.appendChild(div1);
+            
 
             let divList: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("warenkorb");
 
             for (let i: number = 0; i < divList.length; i++) {
                 if (target.id == divList[i].id) {
-                    let k: HTMLElement = document.getElementById("Warenkorbdiv");
-                    var r: HTMLElement = document.getElementById("target.id");
-                    k.removeChild(r);
+//                    let k: HTMLElement = document.getElementById("Warenkorbdiv");
+//                    var r: HTMLElement = document.getElementById("target.id");
+//                    k.removeChild(r);
+                    document.getElementById(target.id).remove;
 
                 }
             }
