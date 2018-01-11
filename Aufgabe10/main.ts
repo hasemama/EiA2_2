@@ -274,6 +274,16 @@ namespace L10_DOM {
 
 
         }
+//        function change() {
+//        let summe = 0;
+//        for (let i = 0; i < schmuck.length; i++) {
+//            summe += parseInt(schmuck[i].value);
+//        }
+//        for (let i = 0; i < inputKerzenart.length; i++) {
+//            summe += parseInt(inputKerzenart[i].value);
+//        }
+//        changeAuswahluebersicht(summe);
+//    }
 
 
         let button: HTMLButtonElement = document.createElement("button");

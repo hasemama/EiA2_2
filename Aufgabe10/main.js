@@ -234,6 +234,16 @@ var L10_DOM;
             div.innerText += target.id + " " + target.value + "Euro" + "\n";
             neu.appendChild(div);
         }
+        //        function change() {
+        //        let summe = 0;
+        //        for (let i = 0; i < schmuck.length; i++) {
+        //            summe += parseInt(schmuck[i].value);
+        //        }
+        //        for (let i = 0; i < inputKerzenart.length; i++) {
+        //            summe += parseInt(inputKerzenart[i].value);
+        //        }
+        //        changeAuswahluebersicht(summe);
+        //    }
         let button = document.createElement("button");
         button.name = "Button";
         button.type = "button";
