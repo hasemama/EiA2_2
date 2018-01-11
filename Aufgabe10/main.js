@@ -223,6 +223,11 @@ var L10_DOM;
                     divList[i].remove();
                 }
             }
+            //            if (target.id + "bla" == "Baum1bla") {
+            //                document.getElementById("Baum1bla").remove;
+            //                document.getElementById("Baum2bla").remove;
+            //                document.getElementById("Baum3bla").remove;
+            //            }
             let div = document.createElement("div");
             div.id = target.id + "bla";
             div.className = "warenkorb";

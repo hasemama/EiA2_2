@@ -260,7 +260,11 @@ namespace L10_DOM {
 
                 }
             }
-            
+//            if (target.id + "bla" == "Baum1bla") {
+//                document.getElementById("Baum1bla").remove;
+//                document.getElementById("Baum2bla").remove;
+//                document.getElementById("Baum3bla").remove;
+//            }
 
 
 
