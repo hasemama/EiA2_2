@@ -233,6 +233,8 @@ var L10_DOM;
             div.className = "warenkorb";
             div.innerText += target.id + " " + target.value + "Euro" + "\n";
             neu.appendChild(div);
+            //            let summe:number;
+            //            summe= document.getElementById("Schmuck1").value;
         }
         //        function change() {
         //        let summe = 0;

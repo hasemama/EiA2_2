@@ -277,7 +277,8 @@ namespace L10_DOM {
             div.innerText += target.id + " " + target.value + "Euro" + "\n";
             neu.appendChild(div);
 
-
+//            let summe:number;
+//            summe= document.getElementById("Schmuck1").value;
 
 
 
