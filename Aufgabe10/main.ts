@@ -254,18 +254,21 @@ namespace L10_DOM {
             let divList: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("warenkorb");
 
             for (let i: number = 0; i < divList.length; i++) {
-                if (target.id == divList[i].id) {
+                if (target.id + "bla" == divList[i].id) {
 
                     divList[i].remove();
 
                 }
-               
-
-
-
             }
+            
+
+
+
+
+
+
             let div: HTMLElement = document.createElement("div");
-            div.id = target.id;
+            div.id = target.id + "bla";
             div.className = "warenkorb";
             div.innerText += target.id + " " + target.value + "Euro" + "\n";
             neu.appendChild(div);
