@@ -260,12 +260,12 @@ namespace L10_DOM {
 
                 }
             }
-//            if (target.id + "bla" == "Baum1bla") {
-//                document.getElementById("Baum1bla").remove;
-//                document.getElementById("Baum2bla").remove;
-//                document.getElementById("Baum3bla").remove;
-//            }
-
+            if (target.id + "bla" == "Baum1bla") {
+                document.getElementById("Baum1bla").remove;
+                document.getElementById("Baum2bla").remove;
+                document.getElementById("Baum3bla").remove;
+            
+}
 
 
 
@@ -277,14 +277,14 @@ namespace L10_DOM {
             div.innerText += target.id + " " + target.value + "Euro" + "\n";
             neu.appendChild(div);
 
-//            let summe:number;
-//            summe= document.getElementById("Schmuck1").value;
+            //            let summe: HTMLInputElement;
+            //         summe = document.getElementById("Schmuck1").value;
 
 
 
 
         }
-        
+
 
         let button: HTMLButtonElement = document.createElement("button");
         button.name = "Button";
