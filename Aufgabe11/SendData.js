@@ -5,6 +5,7 @@ var SendData;
         console.log("Init");
         setupColorDivs();
     }
+    //Diese Funktion erzeugt die Farbfelder
     function setupColorDivs() {
         console.log("Hallo");
         let colors = ["red", "green", "blue"];
@@ -16,18 +17,22 @@ var SendData;
             divs[i].addEventListener("click", handleClickOnDiv);
         }
     }
+    //Diese Funktion handelt den EventListener und l�st die Request sendende Funktion "sendRequest" aus
     function handleClickOnDiv(_event) {
         let style = _event.target.style;
         console.log(style.backgroundColor);
         sendRequest(style.backgroundColor);
     }
+    //Durch xhr.open wird von der Seite ohne sie neu zu laden die eingegeben Farbe angefordert
+    // readystatechange hat ihr eine �hnliche Funktion wie DOMCOntenloaded
     function sendRequest(_color) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", "http://localhost:8100?color=" + _color, true);
-        //xhr.open("GET", "https://eia2aufgabe11marcelhasemann.herokuapp.com?color=" + _color, true);
+        xhr.open("GET", "https://eia2aufgabe11marcelhasemann.herokuapp.com?color=" + _color, true);
         xhr.addEventListener("readystatechange", handleStateChange);
         xhr.send();
     }
+    //Wurde der Request nun beantwortet werden in der Console und in einer Alertbox etwas ausgegeben
     function handleStateChange(_event) {
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
