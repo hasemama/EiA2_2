@@ -6,30 +6,11 @@ namespace Abschlussaufgabe {
 
         }
         draw(): void {
-            crc2.beginPath();
-            crc2.arc(this.x, this.y, 20, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
-
-            crc2.beginPath();
-            crc2.arc(this.x - 10, this.y + 10, 20, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
-
-            crc2.beginPath();
-            crc2.arc(this.x - 10, this.y - 10, 20, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
-
-            crc2.beginPath();
-            crc2.arc(this.x - 25, this.y - 15, 20, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
-
-            crc2.beginPath();
-            crc2.arc(this.x - 35, this.y + 5, 20, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
+           //Car
+        crc2.fillStyle = "blue";
+        crc2.fillRect(50, 200, 40, 20);
+        crc2.fillStyle = "red";
+        crc2.fillRect(50 + 10, 200, 20, 20);
 
         }
         move(): void {
