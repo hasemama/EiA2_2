@@ -20,7 +20,8 @@ namespace Abschlussaufgabe {
         let s: Street = new Street;
         s.draw();
         let g: Guy = new Guy(400, 550);
-        g.draw();
+       
+        object.push(g);
 
         let c: Car = new Car(0, 128, 3 * Math.random() + 5);
         object.push(c);
@@ -35,21 +36,85 @@ namespace Abschlussaufgabe {
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
-        function animate(): void {
-            crc2.putImageData(img, 0, 0);
-
-            for (let i: number = 0; i < object.length; i++) {
-
-                let a: Super = object[i];
-                a.update();
-            }
+        buttondraw();
 
 
 
-            window.setTimeout(animate, 20);
+    }
+    function animate(): void {
+        crc2.putImageData(img, 0, 0);
 
+        for (let i: number = 0; i < object.length; i++) {
+
+            let a: Super = object[i];
+            a.update();
         }
 
+
+
+        window.setTimeout(animate, 20);
+
+    }
+    function buttondraw(): void {
+        let buttonup: HTMLButtonElement = document.createElement("button");
+        buttonup.innerText = "UP";
+        buttonup.style.position = "absolute";
+        buttonup.style.top = "85%";
+        buttonup.style.left = "15%";
+        buttonup.style.height = "8%";
+        buttonup.style.width = "25%";
+        buttonup.id = "ButtonUp";
+        buttonup.addEventListener("click", moveUp); 
+        document.body.appendChild(buttonup);
+
+        let buttonleft: HTMLButtonElement = document.createElement("button");
+        buttonleft.innerText = "LEFT";
+        buttonleft.style.position = "absolute";
+        buttonleft.style.top = "93%";
+        buttonleft.style.left = "15%";
+        buttonleft.style.height = "8%";
+        buttonleft.style.width = "12%";
+        buttonleft.id = "ButtonLeft";
+        buttonleft.addEventListener("click", moveLeft);
+        document.body.appendChild(buttonleft);
+
+        let buttondown: HTMLButtonElement = document.createElement("button");
+        buttondown.innerText = "DOWN";
+        buttondown.style.position = "absolute";
+        buttondown.style.top = "101%";
+        buttondown.style.left = "15%";
+        buttondown.style.height = "8%";
+        buttondown.style.width = "25%";
+        buttondown.id = "ButtonDown";
+        buttondown.addEventListener("click", moveDown);
+        document.body.appendChild(buttondown);
+
+        let buttonright: HTMLButtonElement = document.createElement("button");
+        buttonright.innerText = "RIGHT";
+        buttonright.style.position = "absolute";
+        buttonright.style.top = "93%";
+        buttonright.style.left = "28%";
+        buttonright.style.height = "8%";
+        buttonright.style.width = "12%";
+        buttonright.id = "ButtonRight";
+        buttonright.addEventListener("click", moveRight);
+        document.body.appendChild(buttonright);
+
+    }
+    function moveUp(): void {
+        object[0].y -= 10;
+
+    }
+    function moveDown(): void {
+        object[0].y += 10;
+
+    }
+    function moveLeft(): void {
+        object[0].x -= 10;
+
+    }
+    function moveRight(): void {
+        object[0].x += 10;
 
     }
 }
