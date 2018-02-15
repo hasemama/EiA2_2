@@ -1,4 +1,4 @@
-namespace aufgabe6 {
+namespace Abschlussaufgabe{
 
     export class MovingObjects {
         x: number;

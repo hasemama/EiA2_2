@@ -1,4 +1,4 @@
-namespace aufgabe6 {
+namespace Abschlussaufgabe {
     export class Wolken extends MovingObjects {
        
         constructor(_x: number, _y: number) {

@@ -1,5 +1,5 @@
-var aufgabe6;
-(function (aufgabe6) {
+var Abschlussaufgabe;
+(function (Abschlussaufgabe) {
     class MovingObjects {
         constructor(_x, _y) {
             this.x = _x;
@@ -19,6 +19,6 @@ var aufgabe6;
         }
         ;
     }
-    aufgabe6.MovingObjects = MovingObjects;
-})(aufgabe6 || (aufgabe6 = {}));
+    Abschlussaufgabe.MovingObjects = MovingObjects;
+})(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=MovingObject.js.map
