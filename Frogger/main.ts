@@ -10,14 +10,13 @@ namespace Abschlussaufgabe {
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
 
-    let object: MovingObjects[] = [];
+    let object: Super[] = [];
 
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 
         crc2 = canvas.getContext("2d");
-        let n: number = 5;
-        //Hintergrund
+
         //Gras
         crc2.fillStyle = "green";
         crc2.fillRect(0, 0, 800, 100);
@@ -97,7 +96,18 @@ namespace Abschlussaufgabe {
         //Gras
         crc2.fillStyle = "green";
         crc2.fillRect(0, 500, 800, 100);
-        
+
+        let s: Car = new Car(0, 128, 3 * Math.random() + 5);
+        object.push(s);
+
+        s = new Car(0, 228, 3 * Math.random() + 5);
+        object.push(s);
+        s = new Car(0, 328, 3 * Math.random() + 5);
+        object.push(s);
+        s = new Car(0, 402, 3 * Math.random() + 5);
+        object.push(s);
+
+
 
 
 
@@ -112,7 +122,21 @@ namespace Abschlussaufgabe {
 
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
+        animate();
+        function animate(): void {
+            crc2.putImageData(img, 0, 0);
 
+            for (let i: number = 0; i < object.length; i++) {
+
+                let s: Super = object[i];
+                s.update();
+            }
+
+
+
+            window.setTimeout(animate, 20);
+
+        }
 
 
     }

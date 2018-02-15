@@ -13,8 +13,6 @@ var Abschlussaufgabe;
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         Abschlussaufgabe.crc2 = canvas.getContext("2d");
-        let n = 5;
-        //Hintergrund
         //Gras
         Abschlussaufgabe.crc2.fillStyle = "green";
         Abschlussaufgabe.crc2.fillRect(0, 0, 800, 100);
@@ -70,8 +68,25 @@ var Abschlussaufgabe;
         //Gras
         Abschlussaufgabe.crc2.fillStyle = "green";
         Abschlussaufgabe.crc2.fillRect(0, 500, 800, 100);
+        let s = new Abschlussaufgabe.Car(0, 128, 3 * Math.random() + 5);
+        object.push(s);
+        s = new Abschlussaufgabe.Car(0, 228, 3 * Math.random() + 5);
+        object.push(s);
+        s = new Abschlussaufgabe.Car(0, 328, 3 * Math.random() + 5);
+        object.push(s);
+        s = new Abschlussaufgabe.Car(0, 402, 3 * Math.random() + 5);
+        object.push(s);
         img = Abschlussaufgabe.crc2.getImageData(0, 0, 800, 600);
         console.log(img);
+        animate();
+        function animate() {
+            Abschlussaufgabe.crc2.putImageData(img, 0, 0);
+            for (let i = 0; i < object.length; i++) {
+                let s = object[i];
+                s.update();
+            }
+            window.setTimeout(animate, 20);
+        }
     }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=main.js.map

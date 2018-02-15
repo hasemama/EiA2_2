@@ -1,24 +1,27 @@
 namespace Abschlussaufgabe {
     export class Car extends Super {
-       
-        constructor(_x: number, _y: number) {
-             super(_x, _y);
+        dx: number;
+
+
+        constructor(_x: number, _y: number, _dx: number) {
+            super(_x, _y);
+            this.dx = _dx;
 
         }
         draw(): void {
-           //Car
-        crc2.fillStyle = "blue";
-        crc2.fillRect(50, 200, 40, 20);
-        crc2.fillStyle = "red";
-        crc2.fillRect(50 + 10, 200, 20, 20);
+            //Car
+            crc2.fillStyle = "blue";
+            crc2.fillRect(this.x, this.y, 40, 20);
+            crc2.fillStyle = "red";
+            crc2.fillRect(this.x + 10, this.y, 20, 20);
 
         }
         move(): void {
             if (this.x > 800) {
                 this.x = 0;
             }
-            this.x += 1;
-            
+            this.x += this.dx;
+
         }
     }
 
