@@ -1,6 +1,6 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    class Baum extends Abschlussaufgabe.MovingObjects {
+    class Car extends Abschlussaufgabe.MovingObjects {
         constructor(_x, _y) {
             super(_x, _y);
         }
@@ -17,6 +17,6 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.fillRect(this.x - 10, this.y + 39, 20, 50);
         }
     }
-    Abschlussaufgabe.Baum = Baum;
+    Abschlussaufgabe.Car = Car;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=Baum.js.map
