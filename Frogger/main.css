@@ -1,0 +1,9 @@
+@media screen and (min-width:540px){
+	
+	#ButtonUp, #ButtonDown {
+	margin-left: -28%;}
+	#ButtonLeft{
+	margin-left: -20%;}
+	#ButtonRight{
+	margin-left: -30%;}
+}
