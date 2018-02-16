@@ -102,19 +102,19 @@ var Abschlussaufgabe;
     }
     function collision() {
         if (object[0].x == object[1].x) {
-            object[1].x = 5000;
-            alert("Verloren");
+            object[1].x += 5000;
+            loose();
         }
     }
     function win() {
         if (object[0].y <= 90) {
             alert("Gewonnen");
+            location.reload();
         }
     }
     function loose() {
-        if (object[0].y <= 90) {
-            alert("Verloren");
-        }
+        alert("Verloren");
+        location.reload();
     }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=main.js.map
