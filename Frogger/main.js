@@ -102,7 +102,6 @@ var Abschlussaufgabe;
     }
     function collision() {
         if (object[0].x == object[1].x) {
-            object[1].x += 5000;
             loose();
         }
     }
