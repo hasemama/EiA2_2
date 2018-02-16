@@ -82,15 +82,39 @@ var Abschlussaufgabe;
     }
     function moveUp() {
         object[0].y -= 10;
+        collision();
+        win();
     }
     function moveDown() {
         object[0].y += 10;
+        collision();
+        win();
     }
     function moveLeft() {
         object[0].x -= 10;
+        collision();
+        win();
     }
     function moveRight() {
         object[0].x += 10;
+        collision();
+        win();
+    }
+    function collision() {
+        if (object[0].x == object[1].x) {
+            object[1].x = 5000;
+            alert("Verloren");
+        }
+    }
+    function win() {
+        if (object[0].y <= 90) {
+            alert("Gewonnen");
+        }
+    }
+    function loose() {
+        if (object[0].y <= 90) {
+            alert("Verloren");
+        }
     }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=main.js.map
