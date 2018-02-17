@@ -1,22 +1,36 @@
-@media (min-device-width: 768px){
+@media screen and (min-width:768px){
 	
 	#ButtonUp{
 	
-	top: 38%
+	top: 44%
 	}
 	 #ButtonDown{
-	 
+	 top:62%
 	 }
 	 #ButtonLeft{
-	 top:42%
+	 top:52%
 	 }
 	  #ButtonRight{
-	  top:42%
+	  top:52%
 	  }
 	
 	
 
-@media (min-device-width: 1024px){
+@media screen and (min-width:1024px){
+		
+	#ButtonUp{
+	
+	top: 85%
+	}
+	 #ButtonDown{
+	 top:103%
+	 }
+	 #ButtonLeft{
+	 top:93%
+	 }
+	  #ButtonRight{
+	  top:93%
+	  }
 	
 	
 	
