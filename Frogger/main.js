@@ -9,6 +9,7 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
     let img;
+    let hitbox = 50;
     let object = [];
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -102,6 +103,27 @@ var Abschlussaufgabe;
     }
     function collision() {
         //
+        for (let i = 1; i < object.length; i++) {
+            let x;
+            let y;
+            if (object[i].x < object[0].x) {
+                x = object[0].x - object[i].x;
+            }
+            if (object[i].x > object[0].x) {
+                x = (object[0].x - object[i].x) * (-1);
+            }
+            if (object[i].y < object[0].y) {
+                y = object[0].y - object[i].y;
+            }
+            if (object[i].y > object[0].y) {
+                y = (object[0].y - object[i].y) * (-1);
+            }
+            if (x < hitbox && y < hitbox) {
+                object[i].x = 5000; // Wird auf die x Koordinate 5000 gesetzt, somit ist es aus dem Bild.
+                object[i].y = 5000;
+                loose();
+            }
+        }
     }
     function win() {
         if (object[0].y <= 90) {

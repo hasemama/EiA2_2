@@ -9,6 +9,7 @@ namespace Abschlussaufgabe {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
+    let hitbox: number = 50;
 
     let object: Super[] = [];
 
@@ -127,8 +128,30 @@ namespace Abschlussaufgabe {
         win();
     }
     function collision(): void {
-//
+        //
+        for (let i: number = 1; i < object.length; i++) {
+            let x: number;
+            let y: number;
+            if (object[i].x < object[0].x) {
+                x = object[0].x - object[i].x;
+            }
+            if (object[i].x > object[0].x) {
+                x = (object[0].x - object[i].x) * (-1);
+            }
+            if (object[i].y < object[0].y) {
+                y = object[0].y - object[i].y;
+            }
+            if (object[i].y > object[0].y) {
+                y = (object[0].y - object[i].y) * (-1);
+            }
 
+            if (x < hitbox && y < hitbox) {  //Hitbox = Radius bei dem eine Berührung als "Hit" gezählt wird
+                object[i].x = 5000; // Wird auf die x Koordinate 5000 gesetzt, somit ist es aus dem Bild.
+                object[i].y = 5000;
+                loose();
+
+            }
+        }
 
     }
     function win(): void {
