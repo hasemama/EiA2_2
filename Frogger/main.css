@@ -1,16 +1,20 @@
 @media screen and (min-width:768px){
 	
 	#ButtonUp{
-	
+	position:absolute;
 	top: 44%;
 	}
 	#ButtonDown{
+	 position:absolute;
 	 top:62%;
+	 
 	 }
 	 #ButtonLeft{
+	 position:absolute;
 	 top:52%;
 	 }
 	  #ButtonRight{
+	  position:absolute;
 	  top:52%;
 	  }
 	
@@ -19,16 +23,19 @@
 @media screen and (min-width:1024px){
 		
 	#ButtonUp{
-	
+	position:absolute;
 	top: 85%;
 	}
 	 #ButtonDown{
+	 position:absolute;
 	 top:103%;
 	 }
 	 #ButtonLeft{
+	 position:absolute;
 	 top:93%;
 	 }
 	  #ButtonRight{
+	  position:absolute;
 	  top:93%;
 	  }
 	

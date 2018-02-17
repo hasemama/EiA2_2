@@ -101,9 +101,7 @@ var Abschlussaufgabe;
         win();
     }
     function collision() {
-        if (object[0].x == object[1].x) {
-            loose();
-        }
+        //
     }
     function win() {
         if (object[0].y <= 90) {

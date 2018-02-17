@@ -127,9 +127,8 @@ namespace Abschlussaufgabe {
         win();
     }
     function collision(): void {
-        if (object[0].x == object[1].x) {
-           loose();
-        }
+//
+
 
     }
     function win(): void {
