@@ -60,8 +60,8 @@ namespace Abschlussaufgabe {
         let buttonup: HTMLButtonElement = document.createElement("button");
         buttonup.innerText = "UP";
         buttonup.style.position = "absolute";
-        buttonup.style.top = "85%";
-        buttonup.style.left = "15%";
+        buttonup.style.top = "46%";
+        buttonup.style.left = "28%";
         buttonup.style.height = "8%";
         buttonup.style.width = "25%";
         buttonup.id = "ButtonUp";
@@ -71,8 +71,8 @@ namespace Abschlussaufgabe {
         let buttonleft: HTMLButtonElement = document.createElement("button");
         buttonleft.innerText = "LEFT";
         buttonleft.style.position = "absolute";
-        buttonleft.style.top = "93%";
-        buttonleft.style.left = "15%";
+        buttonleft.style.top = "54%";
+        buttonleft.style.left = "28%";
         buttonleft.style.height = "8%";
         buttonleft.style.width = "12%";
         buttonleft.id = "ButtonLeft";
@@ -82,8 +82,8 @@ namespace Abschlussaufgabe {
         let buttondown: HTMLButtonElement = document.createElement("button");
         buttondown.innerText = "DOWN";
         buttondown.style.position = "absolute";
-        buttondown.style.top = "101%";
-        buttondown.style.left = "15%";
+        buttondown.style.top = "62%";
+        buttondown.style.left = "28%";
         buttondown.style.height = "8%";
         buttondown.style.width = "25%";
         buttondown.id = "ButtonDown";
@@ -93,8 +93,8 @@ namespace Abschlussaufgabe {
         let buttonright: HTMLButtonElement = document.createElement("button");
         buttonright.innerText = "RIGHT";
         buttonright.style.position = "absolute";
-        buttonright.style.top = "93%";
-        buttonright.style.left = "28%";
+        buttonright.style.top = "54%";
+        buttonright.style.left = "41%";
         buttonright.style.height = "8%";
         buttonright.style.width = "12%";
         buttonright.id = "ButtonRight";
