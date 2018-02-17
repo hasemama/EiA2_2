@@ -9,7 +9,7 @@ namespace Abschlussaufgabe {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
-    let hitbox: number = 50;
+    let hitbox: number = 10;
 
     let object: Super[] = [];
 
@@ -145,9 +145,7 @@ namespace Abschlussaufgabe {
                 y = (object[0].y - object[i].y) * (-1);
             }
 
-            if (x < hitbox && y < hitbox) {  //Hitbox = Radius bei dem eine Berührung als "Hit" gezählt wird
-                object[i].x = 5000; // Wird auf die x Koordinate 5000 gesetzt, somit ist es aus dem Bild.
-                object[i].y = 5000;
+            if (x < hitbox && y < hitbox) {  
                 loose();
 
             }

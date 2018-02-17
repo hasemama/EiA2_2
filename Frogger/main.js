@@ -9,7 +9,7 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
     let img;
-    let hitbox = 50;
+    let hitbox = 10;
     let object = [];
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -119,8 +119,6 @@ var Abschlussaufgabe;
                 y = (object[0].y - object[i].y) * (-1);
             }
             if (x < hitbox && y < hitbox) {
-                object[i].x = 5000; // Wird auf die x Koordinate 5000 gesetzt, somit ist es aus dem Bild.
-                object[i].y = 5000;
                 loose();
             }
         }
