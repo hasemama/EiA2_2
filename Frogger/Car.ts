@@ -1,3 +1,10 @@
+//Aufgabe: (Abschlussaufgabe)
+//Name: (Marcel Hasemann)
+//Matrikel: (256646)
+//Datum: (23.02.2018)
+//Hiermit versichere ich, dass ich diesen
+//Code selbst geschrieben habe. Er wurde
+//nicht kopiert und auch nicht diktiert.
 namespace Abschlussaufgabe {
     export class Car extends Super {
         dx: number;
