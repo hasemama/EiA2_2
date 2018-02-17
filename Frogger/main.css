@@ -2,34 +2,34 @@
 	
 	#ButtonUp{
 	
-	top: 44%
+	top: 44%;
 	}
-	 #ButtonDown{
-	 top:62%
+	#ButtonDown{
+	 top:62%;
 	 }
 	 #ButtonLeft{
-	 top:52%
+	 top:52%;
 	 }
 	  #ButtonRight{
-	  top:52%
+	  top:52%;
 	  }
 	
 	
-
+}
 @media screen and (min-width:1024px){
 		
 	#ButtonUp{
 	
-	top: 85%
+	top: 85%;
 	}
 	 #ButtonDown{
-	 top:103%
+	 top:103%;
 	 }
 	 #ButtonLeft{
-	 top:93%
+	 top:93%;
 	 }
 	  #ButtonRight{
-	  top:93%
+	  top:93%;
 	  }
 	
 	
