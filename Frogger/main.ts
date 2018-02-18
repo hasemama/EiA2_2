@@ -51,6 +51,7 @@ namespace Abschlussaufgabe {
             let a: Super = object[i];
             a.update();
         }
+        collision();
 
 
 
@@ -105,18 +106,18 @@ namespace Abschlussaufgabe {
     }
     function moveUp(): void {
         object[0].y -= 10;
-        collision();
+        
         win();
 
     }
     function moveDown(): void {
         object[0].y += 10;
-        collision();
+        
         win();
     }
     function moveLeft(): void {
         object[0].x -= 10;
-        collision();
+       
         win();
 
 
@@ -124,7 +125,7 @@ namespace Abschlussaufgabe {
     }
     function moveRight(): void {
         object[0].x += 10;
-        collision();
+        
         win();
     }
     function collision(): void {

@@ -37,6 +37,7 @@ var Abschlussaufgabe;
             let a = object[i];
             a.update();
         }
+        collision();
         window.setTimeout(animate, 20);
     }
     function buttondraw() {
@@ -83,22 +84,18 @@ var Abschlussaufgabe;
     }
     function moveUp() {
         object[0].y -= 10;
-        collision();
         win();
     }
     function moveDown() {
         object[0].y += 10;
-        collision();
         win();
     }
     function moveLeft() {
         object[0].x -= 10;
-        collision();
         win();
     }
     function moveRight() {
         object[0].x += 10;
-        collision();
         win();
     }
     function collision() {
