@@ -9,9 +9,9 @@ namespace Abschlussaufgabe {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
-    let hitbox: number = 10;
+    let hitbox: number = 10;  //-> da die Autos nicht quadratisch sind, passt das nicht so ganz
 
-    let object: Super[] = [];
+    let object: Super[] = []; //-> der Name Super ist nicht sehr aussagekräftig
 
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -22,46 +22,43 @@ namespace Abschlussaufgabe {
         s.draw();
         let g: Guy = new Guy(400, 550);
 
-        object.push(g);
+        object.push(g); //-> guy sollte nicht in Array, da er doch eine klare Sonderfunktion hat.
+        //-> Besser über eine Variable z.B. namens guy ansprechen
 
-        let c: Car = new Car(0, 128, 3 * Math.random() + 5);
+        let c: Car = new Car(0, 128, 5 * Math.random() - 2); //-> so können Autos auch nach links fahren
         object.push(c);
 
-        c = new Car(0, 228, 3 * Math.random() + 5);
+        c = new Car(0, 228, 5 * Math.random() - 2);
         object.push(c);
-        c = new Car(0, 328, 3 * Math.random() + 5);
+        c = new Car(0, 328, 5 * Math.random() - 2);
         object.push(c);
-        c = new Car(0, 402, 3 * Math.random() + 5);
+        c = new Car(0, 402, 5 * Math.random() - 2);
         object.push(c);
+        //-> mehr Autos wären schön
 
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
         buttondraw();
-
-
-
-
     }
+
     function animate(): void {
         crc2.putImageData(img, 0, 0);
 
         for (let i: number = 0; i < object.length; i++) {
-
             let a: Super = object[i];
             a.update();
         }
+
         collision();
-
-
-
+        win(); //-> wenn man die win-condition hier abfragt, muss sie nicht vier mal bei den moves eingetragen werden.
         window.setTimeout(animate, 20);
-
     }
+
     function buttondraw(): void {
         let buttonup: HTMLButtonElement = document.createElement("button");
         buttonup.innerText = "UP";
-        buttonup.style.position = "absolute";
+        buttonup.style.position = "absolute"; //-> es ist auch erlaubt ein Stylesheet zu nutzen, dann bläht man den Code nicht so auf.
         buttonup.style.top = "46%";
         buttonup.style.left = "28%";
         buttonup.style.height = "8%";
@@ -104,65 +101,43 @@ namespace Abschlussaufgabe {
         document.body.appendChild(buttonright);
 
     }
+    
     function moveUp(): void {
         object[0].y -= 10;
-        
-        win();
-
     }
     function moveDown(): void {
         object[0].y += 10;
-        
-        win();
     }
     function moveLeft(): void {
         object[0].x -= 10;
-       
-        win();
-
-
-
     }
     function moveRight(): void {
         object[0].x += 10;
-        
-        win();
     }
+
     function collision(): void {
         //
         for (let i: number = 1; i < object.length; i++) {
             let x: number;
             let y: number;
-            if (object[i].x < object[0].x) {
-                x = object[0].x - object[i].x;
-            }
-            if (object[i].x > object[0].x) {
-                x = (object[0].x - object[i].x) * (-1);
-            }
-            if (object[i].y < object[0].y) {
-                y = object[0].y - object[i].y;
-            }
-            if (object[i].y > object[0].y) {
-                y = (object[0].y - object[i].y) * (-1);
-            }
+            x = Math.abs(object[i].x - object[0].x);
+            y = Math.abs(object[i].y - object[0].y);
 
-            if (x < hitbox && y < hitbox) {  
+            if (x < hitbox && y < hitbox) {
                 loose();
-
             }
         }
-
     }
+
     function win(): void {
         if (object[0].y <= 90) {
             alert("Gewonnen");
             location.reload();
         }
     }
-    function loose(): void {
 
+    function loose(): void {
         alert("Verloren");
         location.reload();
-
     }
 }
