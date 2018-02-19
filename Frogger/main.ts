@@ -9,7 +9,7 @@ namespace Abschlussaufgabe {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
-    let hitbox: number = 10;  //-> da die Autos nicht quadratisch sind, passt das nicht so ganz
+    let hitbox: number = 10;
 
     let object: Superklasse[] = [];
 
@@ -24,6 +24,7 @@ namespace Abschlussaufgabe {
 
         object.push(g); //-> guy sollte nicht in Array, da er doch eine klare Sonderfunktion hat.
         //-> Besser über eine Variable z.B. namens guy ansprechen
+        // Wenn ich das mache funktioniert das Spiel irgendwie nicht mehr
 
         let c: Car = new Car(0, 128, 5 * Math.random() + 5); 
         object.push(c);

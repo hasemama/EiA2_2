@@ -9,7 +9,7 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
     let img;
-    let hitbox = 10; //-> da die Autos nicht quadratisch sind, passt das nicht so ganz
+    let hitbox = 10;
     let object = [];
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -19,6 +19,7 @@ var Abschlussaufgabe;
         let g = new Abschlussaufgabe.Guy(400, 550);
         object.push(g); //-> guy sollte nicht in Array, da er doch eine klare Sonderfunktion hat.
         //-> Besser über eine Variable z.B. namens guy ansprechen
+        // Wenn ich das mache funktioniert das Spiel irgendwie nicht mehr
         let c = new Abschlussaufgabe.Car(0, 128, 5 * Math.random() + 5);
         object.push(c);
         c = new Abschlussaufgabe.Car(0, 100, 5 * Math.random() + 8);
