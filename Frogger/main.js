@@ -11,15 +11,13 @@ var Abschlussaufgabe;
     let img;
     let hitbox = 10;
     let object = [];
+    let guy = new Abschlussaufgabe.Guy(400, 500);
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         Abschlussaufgabe.crc2 = canvas.getContext("2d");
         let s = new Abschlussaufgabe.Street;
         s.draw();
-        let g = new Abschlussaufgabe.Guy(400, 550);
-        object.push(g); //-> guy sollte nicht in Array, da er doch eine klare Sonderfunktion hat.
-        //-> Besser über eine Variable z.B. namens guy ansprechen
-        // Wenn ich das mache funktioniert das Spiel irgendwie nicht mehr
+        guy.draw();
         let c = new Abschlussaufgabe.Car(0, 128, 5 * Math.random() + 5);
         object.push(c);
         c = new Abschlussaufgabe.Car(0, 100, 5 * Math.random() + 8);
@@ -33,6 +31,14 @@ var Abschlussaufgabe;
         object.push(c);
         c = new Abschlussaufgabe.Car(0, 402, 5 * Math.random() + 5);
         object.push(c);
+        let e = new Abschlussaufgabe.Coin(50, 125);
+        object.push(e);
+        e = new Abschlussaufgabe.Coin(350, 225);
+        object.push(e);
+        e = new Abschlussaufgabe.Coin(200, 325);
+        object.push(e);
+        e = new Abschlussaufgabe.Coin(550, 425);
+        object.push(e);
         img = Abschlussaufgabe.crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
@@ -71,30 +77,30 @@ var Abschlussaufgabe;
         document.body.appendChild(buttondown);
     }
     function moveUp() {
-        object[0].y -= 10;
+        guy.y -= 10;
     }
     function moveDown() {
-        object[0].y += 10;
+        guy.y += 10;
     }
     function moveLeft() {
-        object[0].x -= 10;
+        guy.x -= 10;
     }
     function moveRight() {
-        object[0].x += 10;
+        guy.x += 10;
     }
     function collision() {
         for (let i = 1; i < object.length; i++) {
             let x;
             let y;
-            x = Math.abs(object[i].x - object[0].x);
-            y = Math.abs(object[i].y - object[0].y);
+            x = Math.abs(object[i].x - guy.x);
+            y = Math.abs(object[i].y - guy.y);
             if (x < hitbox && y < hitbox) {
                 loose();
             }
         }
     }
     function win() {
-        if (object[0].y <= 90) {
+        if (guy.y <= 90) {
             alert("Gewonnen");
             location.reload();
         }

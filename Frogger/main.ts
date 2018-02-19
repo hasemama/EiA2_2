@@ -13,6 +13,8 @@ namespace Abschlussaufgabe {
 
     let object: Superklasse[] = [];
 
+    let guy: Guy = new Guy(400, 500);
+
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 
@@ -20,12 +22,10 @@ namespace Abschlussaufgabe {
 
         let s: Street = new Street;
         s.draw();
-        let g: Guy = new Guy(400, 550);
+        guy.draw();
 
-        object.push(g); //-> guy sollte nicht in Array, da er doch eine klare Sonderfunktion hat.
-        //-> Besser über eine Variable z.B. namens guy ansprechen
-        // Wenn ich das mache funktioniert das Spiel irgendwie nicht mehr
 
+        
         let c: Car = new Car(0, 128, 5 * Math.random() + 5); 
         object.push(c);
         c = new Car(0, 100, 5 * Math.random() + 8);
@@ -40,7 +40,16 @@ namespace Abschlussaufgabe {
         object.push(c);
         c = new Car(0, 402, 5 * Math.random() + 5);
         object.push(c);
-        
+
+        let e: Coin = new Coin(50, 125);
+        object.push(e);
+        e = new Coin(350, 225);
+        object.push(e);
+        e = new Coin(200, 325);
+        object.push(e);
+        e = new Coin(550, 425);
+        object.push(e);
+
 
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
@@ -54,8 +63,7 @@ namespace Abschlussaufgabe {
         for (let i: number = 0; i < object.length; i++) {
             let a: Superklasse = object[i];
             a.update();
-        }
-       
+        } 
 
 
         collision();
@@ -80,47 +88,44 @@ namespace Abschlussaufgabe {
         buttonright.innerText = "RIGHT";
         buttonright.id = "ButtonRight";
         buttonright.addEventListener("click", moveRight);
-        document.body.appendChild(buttonright);
-        
+        document.body.appendChild(buttonright); 
         let buttondown: HTMLButtonElement = document.createElement("button");
         buttondown.innerText = "DOWN";
         buttondown.id = "ButtonDown";
         buttondown.addEventListener("click", moveDown);
         document.body.appendChild(buttondown);
-
-       
+ 
 
     }
 
-    function moveUp(): void {
-        object[0].y -= 10;
+    function moveUp(): void {        guy.y  -= 10;
     }
     function moveDown(): void {
-        object[0].y += 10;
+        guy.y  += 10;
     }
     function moveLeft(): void {
-        object[0].x -= 10;
+        guy.x  -= 10;
     }
     function moveRight(): void {
-        object[0].x += 10;
+        guy.x  += 10;
     }
 
-    function collision(): void {
-        
+    function collision(): void { 
         for (let i: number = 1; i < object.length; i++) {
             let x: number;
             let y: number;
-            x = Math.abs(object[i].x - object[0].x);
-            y = Math.abs(object[i].y - object[0].y);
+            x = Math.abs(object[i].x - guy.x);
+            y = Math.abs(object[i].y - guy.y);
 
             if (x < hitbox && y < hitbox) {
                 loose();
+
             }
         }
     }
 
     function win(): void {
-        if (object[0].y <= 90) {
+        if (guy.y <= 90) {
             alert("Gewonnen");
             location.reload();
         }
