@@ -20,6 +20,7 @@ namespace Abschlussaufgabe {
         update(): void {
             this.draw();
             this.move();
+
         }
         draw(): void {
             //bla
@@ -27,5 +28,6 @@ namespace Abschlussaufgabe {
         move(): void {
             //bla    
         };
+
     }
 }

@@ -30,6 +30,7 @@ namespace Abschlussaufgabe {
             this.x += this.dx;
 
         }
-    }
+        
+        }
 
-}
+    }

@@ -54,6 +54,8 @@ namespace Abschlussaufgabe {
             let a: Superklasse = object[i];
             a.update();
         }
+       
+
 
         collision();
         win(); 
