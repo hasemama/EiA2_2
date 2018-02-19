@@ -6,7 +6,7 @@
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
 namespace Abschlussaufgabe {
-    export class Guy extends Super {
+    export class Guy extends Superklasse {
 
         constructor(_x: number, _y: number) {
             super(_x, _y);

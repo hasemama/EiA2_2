@@ -7,7 +7,7 @@
 //nicht kopiert und auch nicht diktiert.
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    class Guy extends Abschlussaufgabe.Super {
+    class Guy extends Abschlussaufgabe.Superklasse {
         constructor(_x, _y) {
             super(_x, _y);
         }

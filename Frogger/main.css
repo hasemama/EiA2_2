@@ -7,24 +7,62 @@ Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.
 */
+#ButtonUp{
+	
+	position:absolute;
+	top:46%;
+	left:28%;
+	height:8%;
+	width:25%;
+}   
+#ButtonLeft{
+	
+	position:absolute;
+	top:54%;
+	left:28%;
+	height:8%;
+	width:12%;
+}    
+#ButtonDown{
+	
+	position:absolute;
+	top:62%;
+	left:28%;
+	height:8%;
+	width:25%;
+}        
+#ButtonRight{
+	
+	position:absolute;
+	top:54%;
+	left:41%;
+	height:8%;
+	width:12%;
+}        
+
+    
+     
+
+
+
 @media screen and (min-width:768px){
 	
 	#ButtonUp{
 	position:absolute;
-	top: 44%;
+	top: 54%;
 	}
 	#ButtonDown{
 	 position:absolute;
-	 top:62%;
+	 top:72%;
 	 
 	 }
 	 #ButtonLeft{
 	 position:absolute;
-	 top:52%;
+	 top:62%;
 	 }
 	  #ButtonRight{
 	  position:absolute;
-	  top:52%;
+	  top:62%;
 	  }
 	
 	
@@ -34,18 +72,22 @@ nicht kopiert und auch nicht diktiert.
 	#ButtonUp{
 	position:absolute;
 	top: 85%;
+	left:20%;
 	}
 	 #ButtonDown{
 	 position:absolute;
-	 top:103%;
+	 top:100%;
+	 left:20%;
 	 }
 	 #ButtonLeft{
 	 position:absolute;
 	 top:93%;
+	 left:20%;
 	 }
 	  #ButtonRight{
 	  position:absolute;
 	  top:93%;
+	  left:33%;
 	  }
 	
 	

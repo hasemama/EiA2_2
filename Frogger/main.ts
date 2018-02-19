@@ -11,7 +11,7 @@ namespace Abschlussaufgabe {
     let img: ImageData;
     let hitbox: number = 10;  //-> da die Autos nicht quadratisch sind, passt das nicht so ganz
 
-    let object: Super[] = []; //-> der Name Super ist nicht sehr aussagekräftig
+    let object: Superklasse[] = [];
 
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -25,14 +25,14 @@ namespace Abschlussaufgabe {
         object.push(g); //-> guy sollte nicht in Array, da er doch eine klare Sonderfunktion hat.
         //-> Besser über eine Variable z.B. namens guy ansprechen
 
-        let c: Car = new Car(0, 128, 5 * Math.random() - 2); //-> so können Autos auch nach links fahren
+        let c: Car = new Car(0, 128, 5 * Math.random() + 5); 
         object.push(c);
 
-        c = new Car(0, 228, 5 * Math.random() - 2);
+        c = new Car(0, 228, 5 * Math.random() + 5);
         object.push(c);
-        c = new Car(0, 328, 5 * Math.random() - 2);
+        c = new Car(0, 328, 5 * Math.random() + 5);
         object.push(c);
-        c = new Car(0, 402, 5 * Math.random() - 2);
+        c = new Car(0, 402, 5 * Math.random() + 5);
         object.push(c);
         //-> mehr Autos wären schön
 
@@ -46,62 +46,44 @@ namespace Abschlussaufgabe {
         crc2.putImageData(img, 0, 0);
 
         for (let i: number = 0; i < object.length; i++) {
-            let a: Super = object[i];
+            let a: Superklasse = object[i];
             a.update();
         }
 
         collision();
-        win(); //-> wenn man die win-condition hier abfragt, muss sie nicht vier mal bei den moves eingetragen werden.
+        win(); 
         window.setTimeout(animate, 20);
     }
 
     function buttondraw(): void {
         let buttonup: HTMLButtonElement = document.createElement("button");
         buttonup.innerText = "UP";
-        buttonup.style.position = "absolute"; //-> es ist auch erlaubt ein Stylesheet zu nutzen, dann bläht man den Code nicht so auf.
-        buttonup.style.top = "46%";
-        buttonup.style.left = "28%";
-        buttonup.style.height = "8%";
-        buttonup.style.width = "25%";
         buttonup.id = "ButtonUp";
         buttonup.addEventListener("click", moveUp);
         document.body.appendChild(buttonup);
 
         let buttonleft: HTMLButtonElement = document.createElement("button");
         buttonleft.innerText = "LEFT";
-        buttonleft.style.position = "absolute";
-        buttonleft.style.top = "54%";
-        buttonleft.style.left = "28%";
-        buttonleft.style.height = "8%";
-        buttonleft.style.width = "12%";
         buttonleft.id = "ButtonLeft";
         buttonleft.addEventListener("click", moveLeft);
         document.body.appendChild(buttonleft);
 
+        let buttonright: HTMLButtonElement = document.createElement("button");
+        buttonright.innerText = "RIGHT";
+        buttonright.id = "ButtonRight";
+        buttonright.addEventListener("click", moveRight);
+        document.body.appendChild(buttonright);
+        
         let buttondown: HTMLButtonElement = document.createElement("button");
         buttondown.innerText = "DOWN";
-        buttondown.style.position = "absolute";
-        buttondown.style.top = "62%";
-        buttondown.style.left = "28%";
-        buttondown.style.height = "8%";
-        buttondown.style.width = "25%";
         buttondown.id = "ButtonDown";
         buttondown.addEventListener("click", moveDown);
         document.body.appendChild(buttondown);
 
-        let buttonright: HTMLButtonElement = document.createElement("button");
-        buttonright.innerText = "RIGHT";
-        buttonright.style.position = "absolute";
-        buttonright.style.top = "54%";
-        buttonright.style.left = "41%";
-        buttonright.style.height = "8%";
-        buttonright.style.width = "12%";
-        buttonright.id = "ButtonRight";
-        buttonright.addEventListener("click", moveRight);
-        document.body.appendChild(buttonright);
+       
 
     }
-    
+
     function moveUp(): void {
         object[0].y -= 10;
     }
@@ -116,7 +98,7 @@ namespace Abschlussaufgabe {
     }
 
     function collision(): void {
-        //
+        
         for (let i: number = 1; i < object.length; i++) {
             let x: number;
             let y: number;

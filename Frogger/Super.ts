@@ -7,7 +7,7 @@
 //nicht kopiert und auch nicht diktiert.
 namespace Abschlussaufgabe {
 
-    export class Super {
+    export class Superklasse {
         x: number;
         y: number;
 

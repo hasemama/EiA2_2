@@ -9,7 +9,7 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
     let img;
-    let hitbox = 10;
+    let hitbox = 10; //-> da die Autos nicht quadratisch sind, passt das nicht so ganz
     let object = [];
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -17,15 +17,17 @@ var Abschlussaufgabe;
         let s = new Abschlussaufgabe.Street;
         s.draw();
         let g = new Abschlussaufgabe.Guy(400, 550);
-        object.push(g);
-        let c = new Abschlussaufgabe.Car(0, 128, 3 * Math.random() + 5);
+        object.push(g); //-> guy sollte nicht in Array, da er doch eine klare Sonderfunktion hat.
+        //-> Besser über eine Variable z.B. namens guy ansprechen
+        let c = new Abschlussaufgabe.Car(0, 128, 5 * Math.random() + 5);
         object.push(c);
-        c = new Abschlussaufgabe.Car(0, 228, 3 * Math.random() + 5);
+        c = new Abschlussaufgabe.Car(0, 228, 5 * Math.random() + 5);
         object.push(c);
-        c = new Abschlussaufgabe.Car(0, 328, 3 * Math.random() + 5);
+        c = new Abschlussaufgabe.Car(0, 328, 5 * Math.random() + 5);
         object.push(c);
-        c = new Abschlussaufgabe.Car(0, 402, 3 * Math.random() + 5);
+        c = new Abschlussaufgabe.Car(0, 402, 5 * Math.random() + 5);
         object.push(c);
+        //-> mehr Autos wären schön
         img = Abschlussaufgabe.crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
@@ -38,83 +40,49 @@ var Abschlussaufgabe;
             a.update();
         }
         collision();
+        win();
         window.setTimeout(animate, 20);
     }
     function buttondraw() {
         let buttonup = document.createElement("button");
         buttonup.innerText = "UP";
-        buttonup.style.position = "absolute";
-        buttonup.style.top = "46%";
-        buttonup.style.left = "28%";
-        buttonup.style.height = "8%";
-        buttonup.style.width = "25%";
         buttonup.id = "ButtonUp";
         buttonup.addEventListener("click", moveUp);
         document.body.appendChild(buttonup);
         let buttonleft = document.createElement("button");
         buttonleft.innerText = "LEFT";
-        buttonleft.style.position = "absolute";
-        buttonleft.style.top = "54%";
-        buttonleft.style.left = "28%";
-        buttonleft.style.height = "8%";
-        buttonleft.style.width = "12%";
         buttonleft.id = "ButtonLeft";
         buttonleft.addEventListener("click", moveLeft);
         document.body.appendChild(buttonleft);
-        let buttondown = document.createElement("button");
-        buttondown.innerText = "DOWN";
-        buttondown.style.position = "absolute";
-        buttondown.style.top = "62%";
-        buttondown.style.left = "28%";
-        buttondown.style.height = "8%";
-        buttondown.style.width = "25%";
-        buttondown.id = "ButtonDown";
-        buttondown.addEventListener("click", moveDown);
-        document.body.appendChild(buttondown);
         let buttonright = document.createElement("button");
         buttonright.innerText = "RIGHT";
-        buttonright.style.position = "absolute";
-        buttonright.style.top = "54%";
-        buttonright.style.left = "41%";
-        buttonright.style.height = "8%";
-        buttonright.style.width = "12%";
         buttonright.id = "ButtonRight";
         buttonright.addEventListener("click", moveRight);
         document.body.appendChild(buttonright);
+        let buttondown = document.createElement("button");
+        buttondown.innerText = "DOWN";
+        buttondown.id = "ButtonDown";
+        buttondown.addEventListener("click", moveDown);
+        document.body.appendChild(buttondown);
     }
     function moveUp() {
         object[0].y -= 10;
-        win();
     }
     function moveDown() {
         object[0].y += 10;
-        win();
     }
     function moveLeft() {
         object[0].x -= 10;
-        win();
     }
     function moveRight() {
         object[0].x += 10;
-        win();
     }
     function collision() {
-        //
         for (let i = 1; i < object.length; i++) {
             let x;
             let y;
-            if (object[i].x < object[0].x) {
-                x = object[0].x - object[i].x;
-            }
-            if (object[i].x > object[0].x) {
-                x = (object[0].x - object[i].x) * (-1);
-            }
-            if (object[i].y < object[0].y) {
-                y = object[0].y - object[i].y;
-            }
-            if (object[i].y > object[0].y) {
-                y = (object[0].y - object[i].y) * (-1);
-            }
+            x = Math.abs(object[i].x - object[0].x);
+            y = Math.abs(object[i].y - object[0].y);
             if (x < hitbox && y < hitbox) {
                 loose();
             }

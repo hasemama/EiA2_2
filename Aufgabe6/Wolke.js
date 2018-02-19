@@ -1,6 +1,6 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    class Wolken extends Abschlussaufgabe.MovingObjects {
+    class Wolken extends Abschlussaufgabe.Superklasse {
         constructor(_x, _y) {
             super(_x, _y);
         }

@@ -1,5 +1,5 @@
 namespace Abschlussaufgabe {
-    export class Wolken extends MovingObjects {
+    export class Wolken extends Superklasse {
        
         constructor(_x: number, _y: number) {
              super(_x, _y);

@@ -6,7 +6,7 @@
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
 namespace Abschlussaufgabe {
-    export class Car extends Super {
+    export class Car extends Superklasse {
         dx: number;
 
 

@@ -7,7 +7,7 @@
 //nicht kopiert und auch nicht diktiert.
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    class Super {
+    class Superklasse {
         constructor(_x, _y) {
             this.x = _x;
             this.y = _y;
@@ -26,6 +26,6 @@ var Abschlussaufgabe;
         }
         ;
     }
-    Abschlussaufgabe.Super = Super;
+    Abschlussaufgabe.Superklasse = Superklasse;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=Super.js.map
