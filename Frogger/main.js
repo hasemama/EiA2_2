@@ -21,13 +21,17 @@ var Abschlussaufgabe;
         //-> Besser über eine Variable z.B. namens guy ansprechen
         let c = new Abschlussaufgabe.Car(0, 128, 5 * Math.random() + 5);
         object.push(c);
+        c = new Abschlussaufgabe.Car(0, 100, 5 * Math.random() + 8);
+        object.push(c);
         c = new Abschlussaufgabe.Car(0, 228, 5 * Math.random() + 5);
         object.push(c);
         c = new Abschlussaufgabe.Car(0, 328, 5 * Math.random() + 5);
         object.push(c);
+        c = new Abschlussaufgabe.Car(0, 300, 5 * Math.random() + 3);
+        object.push(c);
+        object.push(c);
         c = new Abschlussaufgabe.Car(0, 402, 5 * Math.random() + 5);
         object.push(c);
-        //-> mehr Autos wären schön
         img = Abschlussaufgabe.crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();

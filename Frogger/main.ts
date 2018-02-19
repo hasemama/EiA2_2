@@ -27,14 +27,19 @@ namespace Abschlussaufgabe {
 
         let c: Car = new Car(0, 128, 5 * Math.random() + 5); 
         object.push(c);
+        c = new Car(0, 100, 5 * Math.random() + 8);
+        object.push(c);
 
         c = new Car(0, 228, 5 * Math.random() + 5);
         object.push(c);
         c = new Car(0, 328, 5 * Math.random() + 5);
         object.push(c);
+        c = new Car(0, 300, 5 * Math.random() + 3);
+        object.push(c);
+        object.push(c);
         c = new Car(0, 402, 5 * Math.random() + 5);
         object.push(c);
-        //-> mehr Autos wären schön
+        
 
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
