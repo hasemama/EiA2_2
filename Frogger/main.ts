@@ -11,7 +11,8 @@ namespace Abschlussaufgabe {
     let img: ImageData;
     let hitbox: number = 10;
 
-    let object: Superklasse[] = [];
+    let car: Car[] = [];
+    let coin: Coin[] = [];
 
     let guy: Guy = new Guy(400, 500);
 
@@ -22,33 +23,33 @@ namespace Abschlussaufgabe {
 
         let s: Street = new Street;
         s.draw();
-        guy.draw();
+      
 
 
-        
-        let c: Car = new Car(0, 128, 5 * Math.random() + 5); 
-        object.push(c);
+
+        let c: Car = new Car(0, 128, 5 * Math.random() + 5);
+        car.push(c);
         c = new Car(0, 100, 5 * Math.random() + 8);
-        object.push(c);
+        car.push(c);
 
         c = new Car(0, 228, 5 * Math.random() + 5);
-        object.push(c);
+        car.push(c);
         c = new Car(0, 328, 5 * Math.random() + 5);
-        object.push(c);
+        car.push(c);
         c = new Car(0, 300, 5 * Math.random() + 3);
-        object.push(c);
-        object.push(c);
+        car.push(c);
+        car.push(c);
         c = new Car(0, 402, 5 * Math.random() + 5);
-        object.push(c);
+        car.push(c);
 
         let e: Coin = new Coin(50, 125);
-        object.push(e);
+        coin.push(e);
         e = new Coin(350, 225);
-        object.push(e);
+        coin.push(e);
         e = new Coin(200, 325);
-        object.push(e);
+        coin.push(e);
         e = new Coin(550, 425);
-        object.push(e);
+        coin.push(e);
 
 
         img = crc2.getImageData(0, 0, 800, 600);
@@ -60,14 +61,20 @@ namespace Abschlussaufgabe {
     function animate(): void {
         crc2.putImageData(img, 0, 0);
 
-        for (let i: number = 0; i < object.length; i++) {
-            let a: Superklasse = object[i];
+        for (let i: number = 0; i < car.length; i++) {
+            let a: Superklasse = car[i];
             a.update();
-        } 
+           
+        }
+        for (let i: number = 0; i < coin.length; i++) {
+            let a: Superklasse = coin[i];
+            a.update();
+        }
 
-
+        guy.update();
         collision();
-        win(); 
+        collisioncoins();
+        win();
         window.setTimeout(animate, 20);
     }
 
@@ -88,37 +95,53 @@ namespace Abschlussaufgabe {
         buttonright.innerText = "RIGHT";
         buttonright.id = "ButtonRight";
         buttonright.addEventListener("click", moveRight);
-        document.body.appendChild(buttonright); 
+        document.body.appendChild(buttonright);
         let buttondown: HTMLButtonElement = document.createElement("button");
         buttondown.innerText = "DOWN";
         buttondown.id = "ButtonDown";
         buttondown.addEventListener("click", moveDown);
         document.body.appendChild(buttondown);
- 
+
 
     }
 
-    function moveUp(): void {        guy.y  -= 10;
+    function moveUp(): void {        guy.y -= 10;
     }
     function moveDown(): void {
-        guy.y  += 10;
+        guy.y += 10;
     }
     function moveLeft(): void {
-        guy.x  -= 10;
+        guy.x -= 10;
     }
     function moveRight(): void {
-        guy.x  += 10;
+        guy.x += 10;
     }
 
-    function collision(): void { 
-        for (let i: number = 1; i < object.length; i++) {
+    function collision(): void {
+        for (let i: number = 1; i < car.length; i++) {
             let x: number;
             let y: number;
-            x = Math.abs(object[i].x - guy.x);
-            y = Math.abs(object[i].y - guy.y);
+            x = Math.abs(car[i].x - guy.x);
+            y = Math.abs(car[i].y - guy.y);
 
             if (x < hitbox && y < hitbox) {
                 loose();
+
+            }
+        }
+    }
+    
+    function collisioncoins(): void {
+
+        for (let i: number = 1; i < coin.length; i++) {
+            let x: number;
+            let y: number;
+            x = Math.abs(coin[i].x - guy.x);
+            y = Math.abs(coin[i].y - guy.y);
+
+            if (x < hitbox && y < hitbox) {
+                coin[i].x = 5000; 
+                coin[i].y = 5000;
 
             }
         }
