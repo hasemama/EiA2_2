@@ -10,10 +10,11 @@ namespace Abschlussaufgabe {
     export let crc2: CanvasRenderingContext2D;
     let img: ImageData;
     let hitbox: number = 10;
-
+//Zuerst wollte ich ein Array aus der Superklasse machen, allerdings hat das dann nicht richtig funktioniert, da ich für meine
+//Kollisionsfunktionen zwei einzelne Arrays gebraucht habe.
     let car: Car[] = [];
     let coin: Coin[] = [];
-
+//Guy wird global erstellt, damit ich in jeder Funktion damit arbeiten kann
     let guy: Guy = new Guy(400, 500);
 
     function init(): void {
@@ -23,10 +24,11 @@ namespace Abschlussaufgabe {
 
         let s: Street = new Street;
         s.draw();
+        //Hier ist es unnötig Street in ein  Array zu pushen
 
 
 
-
+        //Erstellung der ganzen Objekte wie Autos und Coins. Diese können je nach Schwierigkeit des Spiels erweitert werden
         let c: Car = new Car(0, 128, 5 * Math.random() + 5);
         car.push(c);
         c = new Car(0, 100, 5 * Math.random() + 8);
@@ -51,13 +53,13 @@ namespace Abschlussaufgabe {
         e = new Coin(550, 425);
         coin.push(e);
 
-
+        //Img wird erstellt damit animate funktioniert und animate/button Funktionen werden ausgeführt
         img = crc2.getImageData(0, 0, 800, 600);
         console.log(img);
         animate();
         buttondraw();
     }
-
+//Zeichnen und Animation der Autos + Zeichnen der Coins
     function animate(): void {
         crc2.putImageData(img, 0, 0);
 
@@ -70,8 +72,10 @@ namespace Abschlussaufgabe {
             let a: Superklasse = coin[i];
             a.update();
         }
-
+//Zeichnen des Spielcharakters
         guy.update();
+//Bei jeder Auführung von animate soll überprüft werden, ob zwei Objekte kollidieren oder ob das Gras erreich wurde
+//und man dadurch gewonnen hat
         collision();
         collisioncoins();
         win();
@@ -104,7 +108,7 @@ namespace Abschlussaufgabe {
 
 
     }
-
+//Funktionen zur Bewegung der Figur über Buttons
     function moveUp(): void {        guy.y -= 10;
     }
     function moveDown(): void {
@@ -116,7 +120,7 @@ namespace Abschlussaufgabe {
     function moveRight(): void {
         guy.x += 10;
     }
-
+    //Funktion zur Überprüfung ob die Spielfigur und ein Auto kollidiert sind
     function collision(): void {
         for (let i: number = 1; i < car.length; i++) {
             let x: number;
@@ -130,7 +134,7 @@ namespace Abschlussaufgabe {
             }
         }
     }
-
+    //Funktion zur Überprüfung ob die Spielfigur einen Coin eingesammelt hat
     function collisioncoins(): void {
 
         for (let i: number = 1; i < coin.length; i++) {
@@ -139,23 +143,23 @@ namespace Abschlussaufgabe {
             let y: number;
             x = Math.abs(coin[i].x - guy.x);
             y = Math.abs(coin[i].y - guy.y);
-
+    //Einsatz von splice() zur Entfernung des ArrayElements
             if (x < hitbox && y < hitbox) {
                 coin.splice(i, 1);
 
             }
         }
     }
-
+    //GewinnFunktion
     function win(): void {
         if (guy.y <= 90) {
-            alert("Gewonnen");
+            alert("You did it!");
             location.reload();
         }
     }
-
+    //Game Over Funktion
     function loose(): void {
-        alert("Verloren");
+        alert("Game Over");
         location.reload();
     }
 }
