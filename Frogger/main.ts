@@ -23,7 +23,7 @@ namespace Abschlussaufgabe {
 
         let s: Street = new Street;
         s.draw();
-      
+
 
 
 
@@ -64,7 +64,7 @@ namespace Abschlussaufgabe {
         for (let i: number = 0; i < car.length; i++) {
             let a: Superklasse = car[i];
             a.update();
-           
+
         }
         for (let i: number = 0; i < coin.length; i++) {
             let a: Superklasse = coin[i];
@@ -130,18 +130,18 @@ namespace Abschlussaufgabe {
             }
         }
     }
-    
+
     function collisioncoins(): void {
 
         for (let i: number = 1; i < coin.length; i++) {
+
             let x: number;
             let y: number;
             x = Math.abs(coin[i].x - guy.x);
             y = Math.abs(coin[i].y - guy.y);
 
             if (x < hitbox && y < hitbox) {
-                coin[i].x = 5000; 
-                coin[i].y = 5000;
+                coin.splice(i, 1);
 
             }
         }

@@ -112,8 +112,7 @@ var Abschlussaufgabe;
             x = Math.abs(coin[i].x - guy.x);
             y = Math.abs(coin[i].y - guy.y);
             if (x < hitbox && y < hitbox) {
-                coin[i].x = 5000;
-                coin[i].y = 5000;
+                coin.splice(i, 1);
             }
         }
     }
